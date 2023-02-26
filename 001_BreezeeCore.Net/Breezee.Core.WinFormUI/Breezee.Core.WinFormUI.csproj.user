@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Common\FrmMenuHtmlHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Common\FrmPrintView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Common\GlobalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Common\MsgBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DataGrid\GridPager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FTP\AttachmentItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="FTP\AttachmentList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

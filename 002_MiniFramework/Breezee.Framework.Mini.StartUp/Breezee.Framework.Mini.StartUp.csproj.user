@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="Base\FrmDllManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Base\FrmMenuManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Base\FrmMiniSystemSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Common\AboutAuthor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Common\FrmSupport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Common\FrmUserEnvironmentSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmMiniMainMDI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Login\FrmChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Login\FrmMiniLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Login\LockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ShortCutMenu\ShortCutItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ShortCutMenu\ShortCutList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

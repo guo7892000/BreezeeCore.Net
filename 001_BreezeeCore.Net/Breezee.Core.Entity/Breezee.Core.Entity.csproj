@@ -1,0 +1,97 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <BaseOutputPath>..\..\bin</BaseOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Table\**" />
+    <EmbeddedResource Remove="Table\**" />
+    <None Remove="Table\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="EntityHelper.cs" />
+    <Compile Remove="Entity\ESYS_USER.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Table\DT_BAS_CITY.cs" />
+    <Compile Include="Table\DT_BAS_COUNTY.cs" />
+    <Compile Include="Table\DT_BAS_PROVINCE.cs" />
+    <Compile Include="Table\DT_BAS_TYPE.cs" />
+    <Compile Include="Table\DT_BAS_VALUE.cs" />
+    <Compile Include="Table\DT_CFG_CODE_CONFIG_TYPE.cs" />
+    <Compile Include="Table\DT_CFG_CODE_RULE.cs" />
+    <Compile Include="Table\DT_CFG_CODE_USE.cs" />
+    <Compile Include="Table\DT_COM_BUTTON.cs" />
+    <Compile Include="Table\DT_COM_DEPT.cs" />
+    <Compile Include="Table\DT_COM_POSITION.cs" />
+    <Compile Include="Table\DT_COM_POSITION_LEVEL.cs" />
+    <Compile Include="Table\DT_ORG_COMPANY.cs" />
+    <Compile Include="Table\DT_ORG_DEPT.cs" />
+    <Compile Include="Table\DT_ORG_EMPLOYEE.cs" />
+    <Compile Include="Table\DT_ORG_GROUP.cs" />
+    <Compile Include="Table\DT_ORG_ORGANIZATION.cs" />
+    <Compile Include="Table\DT_ORG_PERSON.cs" />
+    <Compile Include="Table\DT_ORG_POSITION.cs" />
+    <Compile Include="Table\DT_ORG_POSITION_LEVEL.cs" />
+    <Compile Include="Table\DT_ORG_REL_EMPLOYEE_POSITION.cs" />
+    <Compile Include="Table\DT_SE_REPAIR_FEE_SHARE.cs" />
+    <Compile Include="Table\DT_SYS_ATTACHMENT.cs" />
+    <Compile Include="Table\DT_SYS_BUTTON.cs" />
+    <Compile Include="Table\DT_SYS_DELETE_DATA_JUDGE.cs" />
+    <Compile Include="Table\DT_SYS_DELETE_DATA_JUDGE_D.cs" />
+    <Compile Include="Table\DT_SYS_DLL.cs" />
+    <Compile Include="Table\DT_SYS_FORM.cs" />
+    <Compile Include="Table\DT_SYS_FTP_SERVER.cs" />
+    <Compile Include="Table\DT_SYS_LOG.cs" />
+    <Compile Include="Table\DT_SYS_MENU.cs" />
+    <Compile Include="Table\DT_SYS_MENU_BUTTON.cs" />
+    <Compile Include="Table\DT_SYS_MSG.cs" />
+    <Compile Include="Table\DT_SYS_MSG_AUTO_SEND_CONFIG.cs" />
+    <Compile Include="Table\DT_SYS_MSG_AUTO_SEND_CONFIG_D.cs" />
+    <Compile Include="Table\DT_SYS_MSG_AUTO_SEND_LOG.cs" />
+    <Compile Include="Table\DT_SYS_MSG_BULLETIN.cs" />
+    <Compile Include="Table\DT_SYS_MSG_DB_RECEIVER_GROUP.cs" />
+    <Compile Include="Table\DT_SYS_MSG_DB_RECEIVER_GROUP_D.cs" />
+    <Compile Include="Table\DT_SYS_MSG_PENDING.cs" />
+    <Compile Include="Table\DT_SYS_MSG_PENDING_D.cs" />
+    <Compile Include="Table\DT_SYS_MSG_SEND.cs" />
+    <Compile Include="Table\DT_SYS_MSG_SEND_OBJECT.cs" />
+    <Compile Include="Table\DT_SYS_MSG_SEND_RECEIVER.cs" />
+    <Compile Include="Table\DT_SYS_MSG_TEMPLET.cs" />
+    <Compile Include="Table\DT_SYS_MSG_TEMPLET_PARA.cs" />
+    <Compile Include="Table\DT_SYS_POSITION.cs" />
+    <Compile Include="Table\DT_SYS_REL_COM_POSITION.cs" />
+    <Compile Include="Table\DT_SYS_REL_GROUP_OBJECT.cs" />
+    <Compile Include="Table\DT_SYS_REL_MENU_OBJECT.cs" />
+    <Compile Include="Table\DT_SYS_REL_OBJECT_BUTTON_PRIV.cs" />
+    <Compile Include="Table\DT_SYS_REL_PERSON_SYSTEM.cs" />
+    <Compile Include="Table\DT_SYS_REL_ROLE_OBJECT.cs" />
+    <Compile Include="Table\DT_SYS_REL_USER_ENVIRONMENT_SET.cs" />
+    <Compile Include="Table\DT_SYS_ROLE.cs" />
+    <Compile Include="Table\DT_SYS_SYSTEM.cs" />
+    <Compile Include="Table\DT_SYS_SYSTEM_CONFIG.cs" />
+    <Compile Include="Table\DT_SYS_SYSTEM_GLOBAL_CONFIG.cs" />
+    <Compile Include="Table\DT_SYS_USER.cs" />
+    <Compile Include="Table\DT_SYS_USER_GROUP.cs" />
+    <Compile Include="Table\DT_V_COM_PROVICE_CITY.cs" />
+    <Compile Include="Table\DT_V_ORG_INFO.cs" />
+    <Compile Include="Table\DT_V_SYS_AND_MENU.cs" />
+    <Compile Include="Table\DT_V_SYS_MENU_BUTTON.cs" />
+    <Compile Include="Table\DT_V_SYS_MENU_COMMON_BUTTON.cs" />
+    <Compile Include="Table\DT_V_SYS_MENU_FULL_PATH.cs" />
+    <Compile Include="Table\DT_V_SYS_RECEIVER_GROUP_USER_EMP.cs" />
+    <Compile Include="Table\DT_V_USER_MENU.cs" />
+    <Compile Include="Table\DT_V_USER_MENU_BUTTON.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Breezee.Core.Interface\Breezee.Core.Interface.csproj" />
+  </ItemGroup>
+
+</Project>

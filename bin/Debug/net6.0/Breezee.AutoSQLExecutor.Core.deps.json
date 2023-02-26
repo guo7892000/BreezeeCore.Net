@@ -1,0 +1,47 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Breezee.AutoSQLExecutor.Core/1.0.0": {
+        "dependencies": {
+          "Breezee.Core.Interface": "1.0.0",
+          "org.breezee.MyPeachNet": "1.0.0"
+        },
+        "runtime": {
+          "Breezee.AutoSQLExecutor.Core.dll": {}
+        }
+      },
+      "Breezee.Core.Interface/1.0.0": {
+        "runtime": {
+          "Breezee.Core.Interface.dll": {}
+        }
+      },
+      "org.breezee.MyPeachNet/1.0.0": {
+        "runtime": {
+          "org.breezee.MyPeachNet.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Breezee.AutoSQLExecutor.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Breezee.Core.Interface/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "org.breezee.MyPeachNet/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

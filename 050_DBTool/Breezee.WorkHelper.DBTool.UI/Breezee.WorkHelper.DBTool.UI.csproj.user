@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="AutoEntity\FrmDBAutoEntityTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AutoEntity\FrmDBGenerateFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AutoEntity\Old\FrmDBAutoEntity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Base\FrmDBConfigSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Base\FrmDBConfigSet_D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Base\FrmDBTDefaultValueSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Base\FrmDBTDefaultValueSet_D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Base\FrmDBTSystemSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Common\FrmKeyValueSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Common\FrmVersionInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Common\UC_DbConnection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ConnectString\FrmDBTCopyData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ConnectString\FrmDBTExcelCol2Row.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ConnectString\FrmDBTInList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ConnectString\FrmDBTMergeData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ConnectString\FrmDBTReadDataBaseString.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DataSql\FrmDBTExcelImportData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DataSql\FrmDBTReadDBData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="StringBuild\FrmDBTClickCopyStringAuto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="StringBuild\FrmDBTExchangeStringPlace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="StringBuild\FrmDBTScriptMerge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="StringBuild\FrmDBTSplitString.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="StringBuild\FrmDirectoryFileString.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="TableSql\FrmDBTExcelGenerateTableSQL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="TableSql\FrmDBTGetTableQuerySql.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="TableSql\FrmDBTTableExtendProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

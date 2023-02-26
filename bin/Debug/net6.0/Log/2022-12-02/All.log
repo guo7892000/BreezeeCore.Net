@@ -1,0 +1,6 @@
+2022-12-02 22:11:33.0853        ■Error
+    ▲Program.<Main>$ => BADPLog_NLog.LogError
+    ◇Breezee.Core.Adapter.BLL.BADPLog_NLog.LogError(E:\11_Gitee\WorkHelper2\001_BreezeeCore.Net\Breezee.Core.Adapter.BLL\Log\BADPLog_NLog.cs:29)
+    ◆AutofacContainer error log info.
+
+***************************************************************************

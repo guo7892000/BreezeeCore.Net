@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Breezee.Core.Entity/1.0.0": {
+        "dependencies": {
+          "Breezee.Core.Interface": "1.0.0"
+        },
+        "runtime": {
+          "Breezee.Core.Entity.dll": {}
+        }
+      },
+      "Breezee.Core.Interface/1.0.0": {
+        "runtime": {
+          "Breezee.Core.Interface.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Breezee.Core.Entity/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Breezee.Core.Interface/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

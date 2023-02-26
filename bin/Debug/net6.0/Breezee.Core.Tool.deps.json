@@ -1,0 +1,66 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Breezee.Core.Tool/1.0.0": {
+        "dependencies": {
+          "Breezee.Core.Entity": "1.0.0",
+          "Breezee.Core.Interface": "1.0.0",
+          "NLog": "5.0.4"
+        },
+        "runtime": {
+          "Breezee.Core.Tool.dll": {}
+        }
+      },
+      "NLog/5.0.4": {
+        "runtime": {
+          "lib/netstandard2.0/NLog.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.4.1331"
+          }
+        }
+      },
+      "Breezee.Core.Entity/1.0.0": {
+        "dependencies": {
+          "Breezee.Core.Interface": "1.0.0"
+        },
+        "runtime": {
+          "Breezee.Core.Entity.dll": {}
+        }
+      },
+      "Breezee.Core.Interface/1.0.0": {
+        "runtime": {
+          "Breezee.Core.Interface.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Breezee.Core.Tool/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NLog/5.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hMyC7jq1m7c339DZXTRz96b+0YsIYSwAUB8sAWMtqXd2uwJjYe+y1k74fbItODPqDuE/krd6A4mxew9gLMS+PQ==",
+      "path": "nlog/5.0.4",
+      "hashPath": "nlog.5.0.4.nupkg.sha512"
+    },
+    "Breezee.Core.Entity/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Breezee.Core.Interface/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

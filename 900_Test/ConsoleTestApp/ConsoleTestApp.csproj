@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <BaseOutputPath>..\..\bin</BaseOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core.Adapter.BLL\Breezee.Core.Adapter.BLL.csproj" />
+    <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core.Adapter.IBLL\Breezee.Core.Adapter.IBLL.csproj" />
+    <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core.Interface\Breezee.Core.Interface.csproj" />
+    <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core.IOC\Breezee.Core.IOC.csproj" />
+    <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core.Tool\Breezee.Core.Tool.csproj" />
+    <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core\Breezee.Core.csproj" />
+    <ProjectReference Include="..\..\002_MiniFramework\Breezee.Framework.Mini.BLL\Breezee.Framework.Mini.BLL.csproj" />
+    <ProjectReference Include="..\..\002_MiniFramework\Breezee.Framework.Mini.DAL.SQLite\Breezee.Framework.Mini.DAL.SQLite.csproj" />
+    <ProjectReference Include="..\..\002_MiniFramework\Breezee.Framework.Mini.DAL\Breezee.Framework.Mini.DAL.csproj" />
+    <ProjectReference Include="..\..\003_AutoSQLExecutor.Net\Breezee.AutoSQLExecutor.Common\Breezee.AutoSQLExecutor.Common.csproj" />
+    <ProjectReference Include="..\..\003_AutoSQLExecutor.Net\Breezee.AutoSQLExecutor.Core\Breezee.AutoSQLExecutor.Core.csproj" />
+    <ProjectReference Include="..\..\003_AutoSQLExecutor.Net\Breezee.AutoSQLExecutor.MySql\Breezee.AutoSQLExecutor.MySql.csproj" />
+    <ProjectReference Include="..\..\003_AutoSQLExecutor.Net\Breezee.AutoSQLExecutor.Oracle\Breezee.AutoSQLExecutor.Oracle.csproj" />
+    <ProjectReference Include="..\..\003_AutoSQLExecutor.Net\Breezee.AutoSQLExecutor.PostgreSQL\Breezee.AutoSQLExecutor.PostgreSQL.csproj" />
+    <ProjectReference Include="..\..\003_AutoSQLExecutor.Net\Breezee.AutoSQLExecutor.SQLite\Breezee.AutoSQLExecutor.SQLite.csproj" />
+    <ProjectReference Include="..\..\003_AutoSQLExecutor.Net\Breezee.AutoSQLExecutor.SqlServer\Breezee.AutoSQLExecutor.SqlServer.csproj" />
+    <ProjectReference Include="..\..\004_MyPeach.Net\MyPeachNet\MyPeachNet.csproj" />
+    <ProjectReference Include="..\..\050_DBTool\Breezee.WorkHelper.DBTool.BLL\Breezee.WorkHelper.DBTool.BLL.csproj" />
+    <ProjectReference Include="..\..\050_DBTool\Breezee.WorkHelper.DBTool.DAL.SQLite\Breezee.WorkHelper.DBTool.DAL.SQLite.csproj" />
+    <ProjectReference Include="..\..\050_DBTool\Breezee.WorkHelper.DBTool.DAL\Breezee.WorkHelper.DBTool.DAL.csproj" />
+  </ItemGroup>
+
+</Project>

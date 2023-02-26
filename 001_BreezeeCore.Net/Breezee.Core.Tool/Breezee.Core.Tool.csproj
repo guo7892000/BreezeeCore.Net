@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <BaseOutputPath>..\..\bin</BaseOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="PException\**" />
+    <EmbeddedResource Remove="PException\**" />
+    <None Remove="PException\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NLog" Version="5.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Breezee.Core.Entity\Breezee.Core.Entity.csproj" />
+    <ProjectReference Include="..\Breezee.Core.Interface\Breezee.Core.Interface.csproj" />
+  </ItemGroup>
+
+</Project>

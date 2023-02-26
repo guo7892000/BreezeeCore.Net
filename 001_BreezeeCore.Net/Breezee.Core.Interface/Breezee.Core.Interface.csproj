@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <BaseOutputPath>..\..\bin</BaseOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Enum\SystemModelEnum.cs" />
+    <Compile Remove="Enum\TableDataEnum.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Breezee.AutoSQLExecutor.Core">
+      <HintPath>..\..\..\AutoSQLExecutor.Net\bin\Debug\net6.0\Breezee.AutoSQLExecutor.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
