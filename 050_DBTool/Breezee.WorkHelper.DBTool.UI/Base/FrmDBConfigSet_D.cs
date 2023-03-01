@@ -154,9 +154,6 @@ namespace Breezee.WorkHelper.DBTool.UI
         {
             //重置控件
             ResetControl(txbServerIP, txbUserName, txbPassword, txbDbName, txbPortNO, txbSchemaName);
-            //默认不显示登录类型
-            lblLoginType.Visible = false;
-            cbbLoginType.Visible = false;
             //默认显示端口号
             lblPortNO.Visible = true;
             txbPortNO.Visible = true;
