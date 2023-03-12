@@ -236,7 +236,7 @@ namespace Breezee.Core.WinFormUI
                 FlexGridColumn column = new FlexGridColumn();
                 column.DBColumnName = this.DBColumnName;
                 column.ColumnName = this.ColumnName;
-                column.ColumnCaption = this.ColumnCaption;
+                column.ColumnCaption = string.IsNullOrEmpty(ColumnCaption) ? ColumnName : ColumnCaption;
                 column.AllowEditing = this.AllowEditing;
                 column.Alignment = this.Alignment;
                 column.ColumnWidth = this.ColumnWidth;
