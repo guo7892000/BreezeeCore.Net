@@ -79,8 +79,8 @@ namespace Breezee.WorkHelper.DBTool.UI
             IDictionary<string, string> dic_List = new Dictionary<string, string>
             {
                 { "0", "无" },
-                { "1", "驼峰式" },
-                { "2", "首字母大写" }
+                { "1", "小驼峰式" },
+                { "2", "大驼峰式" }
             };
             cbbWordConvert.BindTypeValueDropDownList(dic_List.GetTextValueTable(false), false, true);
             #endregion
@@ -263,30 +263,13 @@ namespace Breezee.WorkHelper.DBTool.UI
 
             #region 变量
             string sWordConvert = cbbWordConvert.SelectedValue.ToString();
-            string sBegin = "BEGIN_";
-            string sEnd = "END_";
+            string sBegin = "_BEGIN";
+            string sEnd = "_END";
             sqlEntity = new DBSqlEntity();
             sqlEntity.NewLine = ckbNewLine.Checked ? DataBaseCommon.NewLine : "";
             sqlEntity.Tab = ckbNewLine.Checked ? DataBaseCommon.Tab : "";
             sqlEntity.IsHasRemark = ckbUseRemark.Checked;
             sqlEntity.IsUseGlobal = ckbUseDefaultConfig.Checked;
-            if ("1".Equals(sWordConvert))
-            {
-                sqlEntity.WordUpperType = WordUpperType.FirstUpperSecond;
-                sBegin = "begin";
-                sEnd = "end";
-            }
-            else if ("2".Equals(sWordConvert))
-            {
-                sqlEntity.WordUpperType = WordUpperType.FirstUpperAll;
-                sBegin = "Begin";
-                sEnd = "End";
-            }
-            else
-            {
-                sqlEntity.WordUpperType = WordUpperType.None;
-            }
-
 
             StringBuilder sbAllSql = new StringBuilder();
             StringBuilder sbWhereSql = new StringBuilder();
@@ -295,7 +278,6 @@ namespace Breezee.WorkHelper.DBTool.UI
 
 
             string strAnd = " AND ";
-
 
             switch (cbbParaType.SelectedValue.ToString())
             {
@@ -316,6 +298,17 @@ namespace Breezee.WorkHelper.DBTool.UI
                     break;
                 default:
                     throw new Exception("不支持的SqlParamType枚举类型：" + sqlEntity.ParamType.ToString());
+            }
+
+            switch (sWordConvert)
+            {
+                case "1":
+                    sqlEntity.WordUpperType = WordUpperType.LowerCamelCase; break;
+                case "2":
+                    sqlEntity.WordUpperType = WordUpperType.UpperCamelCase; break;
+                default:
+                    sqlEntity.WordUpperType = WordUpperType.None;
+                    break;
             }
 
             string sParamPre = txbParamPre.Text.Trim();
@@ -364,7 +357,10 @@ namespace Breezee.WorkHelper.DBTool.UI
             string sFiter = string.Format("{0}='1'", _sGridColumnSelect);
             foreach (DataRow dr in dtSec.Select(sFiter, DBColumnEntity.SqlString.SortNum + " ASC"))
             {
-                dtColumnSelect.ImportRow(dr); //对非修改，不是排除列就导入
+                if(!(sqlEntity.SqlType == SqlType.Update && "PK".Equals(dr[DBColumnEntity.SqlString.KeyType].ToString())))
+                {
+                    dtColumnSelect.ImportRow(dr); //对更新语句的主键列，就导入
+                }
             }
 
             //得到【条件】选中的列
@@ -410,11 +406,11 @@ namespace Breezee.WorkHelper.DBTool.UI
 
                 //转换列的编码
                 string strColCodeParm = strColCode;
-                if(sqlEntity.WordUpperType == WordUpperType.FirstUpperSecond)
+                if(sqlEntity.WordUpperType == WordUpperType.LowerCamelCase)
                 {
                     strColCodeParm =  FirstLetterUpper(strColCode,false);
                 }
-                else if(sqlEntity.WordUpperType == WordUpperType.FirstUpperAll)
+                else if(sqlEntity.WordUpperType == WordUpperType.UpperCamelCase)
                 {
                     strColCodeParm = FirstLetterUpper(strColCode);
                 }
@@ -452,37 +448,49 @@ namespace Breezee.WorkHelper.DBTool.UI
                     #region 查询的日期时间段处理
                     string strQueryWhereDateRange;
 
-                    string strBeginDateParm = "#" + sBegin + strColCode + "#";
-                    string strEndDateParm = "#" + sEnd + strColCode + "#";
+                    string strBeginDateParm = "#"  + strColCode + sBegin + "#";
+                    string strEndDateParm = "#" + strColCode + sEnd + "#";
 
                     switch (sqlEntity.ParamType)
                     {
                         case SqlParamFormatType.BeginEndHash:
-                            strBeginDateParm = sParamPre + sBegin + strColCode;
-                            strEndDateParm = sParamPre + sEnd + strColCode;
+                            strBeginDateParm =  "#"  + strColCode + sBegin + "#";
+                            strEndDateParm = "#" + strColCode + sEnd + "#";
                             break;
                         case SqlParamFormatType.SqlParm:
-                            strBeginDateParm = sParamPre + sBegin + strColCode;
-                            strEndDateParm = sParamPre + sEnd + strColCode;
+                            strBeginDateParm = sParamPre + strColCode + sBegin;
+                            strEndDateParm = sParamPre + strColCode + sEnd;
                             break;
                         case SqlParamFormatType.MyBatis:
-                            strBeginDateParm = "#{" + sBegin + strColCode + "}";
-                            strEndDateParm = "#{" + sEnd + strColCode + "}";
+                            strBeginDateParm = sDefineFormat.Replace(sParamPre, strColCode + sBegin); ;
+                            strEndDateParm = sDefineFormat.Replace(sParamPre, strColCode + sEnd);
                             break;
                         case SqlParamFormatType.MyBatisDynamicColoumn:
-                            strBeginDateParm = sBegin + strColCode;
-                            strEndDateParm = sEnd + strColCode;
+                            strBeginDateParm = strColCode + sBegin;
+                            strEndDateParm =  strColCode + sEnd;
 
                             break;
                         case SqlParamFormatType.UserDefine://自定义
-                            strBeginDateParm = sDefineFormat.Replace(sParamPre, sBegin + strColCode);
-                            strEndDateParm = sDefineFormat.Replace(sParamPre, sEnd + strColCode);
+                            strBeginDateParm = sDefineFormat.Replace(sParamPre, strColCode + sBegin);
+                            strEndDateParm = sDefineFormat.Replace(sParamPre, strColCode + sEnd);
                             break;
+                    }
+
+                    //大小写转换
+                    if (sqlEntity.WordUpperType == WordUpperType.LowerCamelCase)
+                    {
+                        strBeginDateParm = FirstLetterUpper(strBeginDateParm, false);
+                        strEndDateParm = FirstLetterUpper(strEndDateParm, false);
+                    }
+                    else if (sqlEntity.WordUpperType == WordUpperType.UpperCamelCase)
+                    {
+                        strBeginDateParm = FirstLetterUpper(strBeginDateParm);
+                        strEndDateParm = FirstLetterUpper(strEndDateParm);
                     }
 
                     if (_dbServer.DatabaseType == DataBaseType.SqlServer)//SQL Server的时间范围
                     {
-                        strQueryWhereDateRange = sConditionColumn + " >='" + strBeginDateParm + "' " + sqlEntity.NewLine + sConditionColumn + " < '" + strBeginDateParm + "' " + sqlEntity.NewLine; //结束日期：注要传入界面结束时间的+1天。
+                        strQueryWhereDateRange = sConditionColumn + " >='" + strBeginDateParm + "' " + sqlEntity.NewLine + sConditionColumn + " < '" + strEndDateParm + "' " + sqlEntity.NewLine; //结束日期：注要传入界面结束时间的+1天。
                     }
                     else if (_dbServer.DatabaseType == DataBaseType.SqlServer)//Oracle的时间范围
                     {
@@ -544,6 +552,7 @@ namespace Breezee.WorkHelper.DBTool.UI
 
                 #region 生成SQL
                 int iSelectLastNumber = dtColumnSelect.Rows.Count - 1; //选择列的最后一行数值
+
                 for (int j = 0; j < dtColumnSelect.Rows.Count; j++)//针对列清单循环：因为只有一个表，所以第二个网格是该表的全部列
                 {
                     DataRow drCol = dtColumnSelect.Rows[j];
@@ -566,17 +575,21 @@ namespace Breezee.WorkHelper.DBTool.UI
 
                     //转换列的编码
                     string strColCodeParm = strColCode;
-                    if (sqlEntity.WordUpperType == WordUpperType.FirstUpperSecond)
+                    if (sqlEntity.WordUpperType == WordUpperType.LowerCamelCase)
                     {
                         strColCodeParm = FirstLetterUpper(strColCode, false);
                     }
-                    else if (sqlEntity.WordUpperType == WordUpperType.FirstUpperAll)
+                    else if (sqlEntity.WordUpperType == WordUpperType.UpperCamelCase)
                     {
                         strColCodeParm = FirstLetterUpper(strColCode);
                     }
 
-                    if (string.IsNullOrEmpty(strColFixedValue)) //没有输入固定值
+                    if (string.IsNullOrEmpty(strColFixedValue) || ckbCancelDefault.Checked) //没有输入固定值或忽略默认值
                     {
+                        if (ckbCancelDefault.Checked)
+                        {
+                            strColValue = "";//如果忽略固定值，那么将列值设置为空
+                        }
                         switch (sqlEntity.ParamType)
                         {
                             case SqlParamFormatType.BeginEndHash:
@@ -910,17 +923,22 @@ namespace Breezee.WorkHelper.DBTool.UI
                 return;
             }
 
-            if (sqlTypeNow == SqlType.Update)//只针对更新，其条件要加上并发控制ID
+            if (sqlTypeNow == SqlType.Update || sqlTypeNow == SqlType.Delete)//只针对更新和删除，其条件要默认加上主键ID和并发控制ID
             {
+                bool isReturn = false;
                 DataRow[] drUpdateControlColumn = dtSec.Select(DBColumnEntity.SqlString.Name + "='" + _strUpdateCtrolColumnCode + "'");//得到并发ID行
-                if (drUpdateControlColumn.Length == 0)
-                {
-                    return;
-                }
-                if (drUpdateControlColumn[0][_sGridColumnCondition].ToString().Equals("0"))//
+                if (drUpdateControlColumn.Length > 0)
                 {
                     drUpdateControlColumn[0][_sGridColumnCondition] = "1";
+                    isReturn = true;
                 }
+                drUpdateControlColumn = dtSec.Select(DBColumnEntity.SqlString.KeyType + "='PK'");//得到主键ID
+                if (drUpdateControlColumn.Length > 0)
+                {
+                    drUpdateControlColumn[0][_sGridColumnCondition] = "1";
+                    isReturn = true;
+                }
+                if (isReturn) return;
             }
 
             if (ckbUseDefaultConfig.Checked)
@@ -971,15 +989,16 @@ namespace Breezee.WorkHelper.DBTool.UI
                     lblDefineFormat.Visible = false;
                     txbDefineFormart.Visible = false;
                     break;
-                case "3":
+                case "3": //MyBatis参数
                     lblParam.Visible = true;
                     txbParamPre.Visible = true;
-                    lblDefineFormat.Text = "列名替代符：";
+                    lblParam.Text = "列名替代符：";
+                    lblDefineFormat.Text = "参数格式：";
                     lblDefineFormat.Visible = true;
                     txbDefineFormart.Visible = true;
                     txbDefineFormart.Text = "#{param.@}";
                     break;
-                case "4":
+                case "4": //MyBatis动态参数
                     lblParam.Visible = true;
                     lblParam.Text = "列名替代符：";
                     txbParamPre.Visible = true;
@@ -988,7 +1007,7 @@ namespace Breezee.WorkHelper.DBTool.UI
                     txbDefineFormart.Visible = true;
                     txbDefineFormart.Text = "param.";
                     break;
-                case "10":
+                case "10": //自定义
                     lblParam.Visible = true;
                     lblParam.Text = "列名替代符：";
                     txbParamPre.Visible = true;
@@ -1184,13 +1203,13 @@ namespace Breezee.WorkHelper.DBTool.UI
     public enum WordUpperType
     {
         /// <summary>
-        /// 所有单词首字母转换大写，如SqlType
+        /// 大驼峰式（所有单词首字母大写）
         /// </summary>
-        FirstUpperAll,
+        UpperCamelCase,
         /// <summary>
-        /// 首字母大写（除了第一个）
+        /// 小驼峰式（所有单词首字母大写，除了第一个单词）
         /// </summary>
-        FirstUpperSecond,
+        LowerCamelCase,
         /// <summary>
         /// 不做转换
         /// </summary>

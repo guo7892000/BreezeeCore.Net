@@ -26,17 +26,17 @@ namespace Breezee.Core.Interface
         /// <summary>
         /// 主菜单
         /// </summary>
-        public MenuEntity Root { get; }
+        MenuEntity Root { get; }
         /// <summary>
         /// 子菜单集合
         /// </summary>
-        public IDictionary<string, MenuEntity> Childs { get; }
+        IDictionary<string, MenuEntity> Childs { get; }
         /// <summary>
         /// 菜单初始化
         /// </summary>
-        public void Init();
+        void Init();
 
-        public MenuConfigType MenuConfigType { get; }
+        MenuConfigType MenuConfigType { get; }
     }
 
     public enum MenuConfigType

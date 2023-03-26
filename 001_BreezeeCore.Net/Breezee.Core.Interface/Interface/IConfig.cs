@@ -25,14 +25,14 @@ namespace Breezee.Core.Interface
         /// <summary>
         /// 主配置
         /// </summary>
-        public ConfigEntity Root { get; set; }
+        ConfigEntity Root { get; set; }
         /// <summary>
         /// 子配置集合
         /// </summary>
-        public IDictionary<string, ConfigEntity> Childs { get; set; }
+        IDictionary<string, ConfigEntity> Childs { get; set; }
         /// <summary>
         /// 配置初始化
         /// </summary>
-        public void Init();
+        void Init();
     }
 }

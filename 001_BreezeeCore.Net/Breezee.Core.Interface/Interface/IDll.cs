@@ -26,10 +26,10 @@ namespace Breezee.Core.Interface
         /// <summary>
         /// 程序集集合
         /// </summary>
-        public IDictionary<string, DllEntity> DicDll { get; }
+        IDictionary<string, DllEntity> DicDll { get; }
         /// <summary>
         /// 初始化
         /// </summary>
-        public void Init();
+        void Init();
     }
 }

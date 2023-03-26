@@ -26,21 +26,21 @@ namespace Breezee.Core
         /// <summary>
         /// 应用配置
         /// </summary>
-        public IConfig Config { get; set; }
+        IConfig Config { get; set; }
         /// <summary>
         /// 模块列表
         /// </summary>
-        public List<IModule> Modules { get; }
+        List<IModule> Modules { get; }
         /// <summary>
         /// 菜单
         /// </summary>
-        public IMenu Menu { get; }
+        IMenu Menu { get; }
 
-        public AppEntity Root { get; }
+        AppEntity Root { get; }
 
-        public void Init();
+        void Init();
 
-        public void SetMain();
+        void SetMain();
 
     }
 }

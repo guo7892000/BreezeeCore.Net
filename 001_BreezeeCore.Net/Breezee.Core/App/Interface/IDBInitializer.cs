@@ -23,14 +23,14 @@ namespace Breezee.Core
     /// </summary>
     public interface IDBInitializer
     {
-        public IDataAccess DataAccess { get; }
-        public bool IsNeedInit();
-        public void InitDataBase();
-        public void DropObject();
-        public void InitTableStruct();
-        public void InitTableData();
-        public void InitView();
-        public void InitProduce();
-        public void InitFunction();
+        IDataAccess DataAccess { get; }
+        bool IsNeedInit();
+        void InitDataBase();
+        void DropObject();
+        void InitTableStruct();
+        void InitTableData();
+        void InitView();
+        void InitProduce();
+        void InitFunction();
     }
 }

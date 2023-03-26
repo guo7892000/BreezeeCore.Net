@@ -50,6 +50,7 @@
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiUserManual = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiOpenLatestDownURL = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tstbMenuSearch = new System.Windows.Forms.ToolStripTextBox();
@@ -240,7 +241,8 @@
             // 
             this.helpMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiUserManual,
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem,
+            this.tsmiOpenLatestDownURL});
             this.helpMenu.Name = "helpMenu";
             this.helpMenu.Size = new System.Drawing.Size(61, 21);
             this.helpMenu.Text = "帮助(&H)";
@@ -258,6 +260,13 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "关于(&A) ";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // tsmiOpenLatestDownURL
+            // 
+            this.tsmiOpenLatestDownURL.Name = "tsmiOpenLatestDownURL";
+            this.tsmiOpenLatestDownURL.Size = new System.Drawing.Size(180, 22);
+            this.tsmiOpenLatestDownURL.Text = "复制下载地址";
+            this.tsmiOpenLatestDownURL.Click += new System.EventHandler(this.tsmiOpenLatestDownURL_Click);
             // 
             // toolStrip
             // 
@@ -621,6 +630,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiMenuSheetTop;
         private System.Windows.Forms.ToolStripMenuItem tsmiMenuSheetBottom;
         private System.Windows.Forms.ToolStripMenuItem tsmiCloseMenu;
+        private ToolStripMenuItem tsmiOpenLatestDownURL;
     }
 }
 

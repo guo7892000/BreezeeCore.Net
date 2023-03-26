@@ -26,37 +26,37 @@ namespace Breezee.Core
         /// <summary>
         /// 所属的App
         /// </summary>
-        public IApp BelongApp { get; set; }
+        IApp BelongApp { get; set; }
 
-        public IDBInitializer DBInitializer { get; }
+        IDBInitializer DBInitializer { get; }
         /// <summary>
         /// 模块根菜单
         /// </summary>
-        public IMenu Menu { get; }
+        IMenu Menu { get; }
 
         /// <summary>
         /// 应用配置
         /// </summary>
-        public IConfig Config { get; set; }
+        IConfig Config { get; set; }
 
         /// <summary>
         /// 主数据库信息
         /// </summary>
-        public DbServerInfo MainDbServer { get; }
+        DbServerInfo MainDbServer { get; }
 
         /// <summary>
         /// 外部关联的模块
         /// </summary>
-        public IDictionary<string, IModule> OutModules { get; }
+        IDictionary<string, IModule> OutModules { get; }
 
         /// <summary>
         /// 是否主模块
         /// </summary>
-        public bool IsMain { get; }
+        bool IsMain { get; }
 
         /// <summary>
         /// 是否内部模块
         /// </summary>
-        public bool IsInner { get; }
+        bool IsInner { get; }
     }
 }

@@ -1,13 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="AutoEntity\FrmDBAutoEntityTemplate.cs">
+    <Compile Update="AutoEntity\FrmDBTDBAutoCodeFile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="AutoEntity\FrmDBGenerateFile.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="AutoEntity\Old\FrmDBAutoEntity.cs">
+    <Compile Update="AutoEntity\FrmDBTDBAutoEntityFile.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Base\FrmDBConfigSet.cs">
@@ -47,6 +44,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="ConnectString\FrmDBTReadDataBaseString.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ConnectString\FrmDBTTableColumnDictionary.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="ConnectString\FrmDBTTableColumnString.cs">

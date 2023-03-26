@@ -23,6 +23,6 @@ namespace Breezee.Core
         /// <summary>
         /// 所属模块
         /// </summary>
-        public IModule Module { get; set; }
+        IModule Module { get; set; }
     }
 }

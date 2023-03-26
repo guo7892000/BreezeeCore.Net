@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05_StartUp", "05_StartUp", "{76E7DD32-D90A-47FE-B6EC-BF80B3093D0D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01_StartUp", "01_StartUp", "{76E7DD32-D90A-47FE-B6EC-BF80B3093D0D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "11_Mini", "11_Mini", "{1F3C07A6-6873-4C52-8C87-0F85D5AC185A}"
 EndProject
@@ -59,7 +59,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Breezee.WorkHelper.DBTool.I
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Breezee.WorkHelper.DBTool.Doc", "..\050_DBTool\Breezee.WorkHelper.DBTool.Doc\Breezee.WorkHelper.DBTool.Doc.csproj", "{64A5F521-E8DC-4A64-9234-89F59C7D6B55}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01_Base", "01_Base", "{A57749F4-75AF-49AD-A1AB-F1F99B4D7EE1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02_Base", "02_Base", "{A57749F4-75AF-49AD-A1AB-F1F99B4D7EE1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Breezee.Core.Adapter.BLL", "..\001_BreezeeCore.Net\Breezee.Core.Adapter.BLL\Breezee.Core.Adapter.BLL.csproj", "{FB85812D-EB5F-4EC6-8565-D3ECA251C497}"
 EndProject
@@ -75,9 +75,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Breezee.Core.Tool", "..\001
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Breezee.Core.WinFormUI", "..\001_BreezeeCore.Net\Breezee.Core.WinFormUI\Breezee.Core.WinFormUI.csproj", "{F9150EBC-E315-4E28-9D67-A0EC21E599D0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02_AutoSql", "02_AutoSql", "{D1E44E44-99A2-4FEE-98E7-5D82D35653E1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10_AutoSql", "10_AutoSql", "{D1E44E44-99A2-4FEE-98E7-5D82D35653E1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04_MyPeach.Net", "04_MyPeach.Net", "{9FCD60D9-C176-42D4-A0F4-F1AA3900C3A8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05_MyPeach.Net", "05_MyPeach.Net", "{9FCD60D9-C176-42D4-A0F4-F1AA3900C3A8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyPeachNet", "..\004_MyPeach.Net\MyPeachNet\MyPeachNet.csproj", "{8DCF55B1-DA05-4C27-AD0C-B0CCDF952E78}"
 EndProject
@@ -99,7 +99,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Breezee.WorkHelper.DBTool.U
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Breezee.Core", "..\001_BreezeeCore.Net\Breezee.Core\Breezee.Core.csproj", "{A9DEF692-0264-4792-A175-59B78B5B4590}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTestApp", "..\900_Test\ConsoleTestApp\ConsoleTestApp.csproj", "{248E84B2-B55F-4E09-A444-9493333F5829}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleTestApp", "..\900_Test\ConsoleTestApp\ConsoleTestApp.csproj", "{248E84B2-B55F-4E09-A444-9493333F5829}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

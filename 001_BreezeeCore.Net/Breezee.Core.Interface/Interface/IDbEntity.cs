@@ -26,6 +26,6 @@ namespace Breezee.Core.Interface
         /// <summary>
         /// 表编码
         /// </summary>
-        public string TableCode { get; }
+        string TableCode { get; }
     }
 }

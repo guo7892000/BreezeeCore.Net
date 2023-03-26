@@ -10,6 +10,35 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="AutoEntity\FrmDBAutoEntityTemplate.cs" />
+    <Compile Remove="AutoEntity\FrmDBAutoEntityTemplate.Designer.cs" />
+    <Compile Remove="AutoEntity\FrmDBGenerateFile.cs" />
+    <Compile Remove="AutoEntity\FrmDBGenerateFile.Designer.cs" />
+    <Compile Remove="Common\MiniXmlCommon.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="AutoEntity\FrmDBAutoEntityTemplate.resx" />
+    <EmbeddedResource Remove="AutoEntity\FrmDBGenerateFile.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="DataTemplate\DBTool\AutoEntity\ColumnConfig.xml" />
+    <None Remove="DataTemplate\DBTool\AutoEntity\columnProperty.txt" />
+    <None Remove="DataTemplate\DBTool\AutoEntity\columnString.txt" />
+    <None Remove="DataTemplate\DBTool\AutoEntity\param.txt" />
+    <None Remove="DataTemplate\DBTool\AutoEntity\table.txt" />
+    <None Remove="DataTemplate\DBTool\AutoFile\B.txt" />
+    <None Remove="DataTemplate\DBTool\AutoFile\D.txt" />
+    <None Remove="DataTemplate\DBTool\AutoFile\Frm.designer.txt" />
+    <None Remove="DataTemplate\DBTool\AutoFile\Frm.txt" />
+    <None Remove="DataTemplate\DBTool\AutoFile\I.txt" />
+    <None Remove="DataTemplate\DBTool\AutoFile\ID.txt" />
+    <None Remove="DataTemplate\DBTool\AutoFile\Para.txt" />
+    <None Remove="DataTemplate\DBTool\AutoFile\模板_生成IBD文件.xlsx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core.Entity\Breezee.Core.Entity.csproj" />
     <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core.Interface\Breezee.Core.Interface.csproj" />
     <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core.IOC\Breezee.Core.IOC.csproj" />
@@ -73,6 +102,183 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Config\DBTool\SqlServer\SQL.SqlServer.DBTool.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataTemplate\DBTool\AutoEntity\模板_生成实体.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataTemplate\DBTool\AutoFile\模板_生成代码文件-CSharp.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataTemplate\DBTool\AutoFile\模板_生成代码文件.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\AutoEntity.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\AutoFile.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\DataSqlDBQuery.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\DataSqlExcel.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\DataStringDBQuery.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\DataStringIn.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\DBColumnDictionary.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\DBColumnStringConn.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\DBConnectSet.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\DefaultValueSet.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\AutoEntity.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\AutoEntity.002.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\AutoEntity.003.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\AutoEntity.004.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\AutoEntity.005.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\AutoEntity.006.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\AutoEntity.007.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\AutoFile.001.02.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\AutoFile.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\AutoFile.002.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\AutoFile.003.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\AutoFile.004.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\AutoFile.005.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\AutoFile.006.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\AutoFile.007.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\CommonMergeScript.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\CommonMergeScript.002.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\DataSqlDBQuery.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\DataSqlExcelImport.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\DataSqlExcelImport.002.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\DataSqlExcelImport.003.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\DataSqlExcelImport.004.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\DataStringDBQuery.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\DataStringIn.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\DBColumnDictionary.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\DBColumnDictionary.002.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\DBColumnStringConn.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\DBConnectSet.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\DBConnectSet.002.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\DefaultValue.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\SqlDBQuery.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\TableSqlExcelImport.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\TableSqlExcelImport.002.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\TableSqlExcelImport.003.02.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\TableSqlExcelImport.003.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\TableSqlExcelImport.004.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\TableSqlExcelImport.005.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\TableSqlExcelImport.006.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\TableSqlExcelImport.007.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\TableSqlExcelImport.008.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\TableSqlRemark.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\TableSqlRemark.002.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\MergeScript.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\SqlDBQuery.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\SqlTableColumnRemark.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\SqlTableConstuct.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Properties\Settings.settings">

@@ -21,7 +21,7 @@ namespace Breezee.Core.Interface
     /// </summary>
     public interface IEntity
     {
-        public string Id { get; }
+        string Id { get; }
 
     }
 }
