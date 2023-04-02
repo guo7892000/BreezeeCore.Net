@@ -86,7 +86,6 @@ namespace Breezee.WorkHelper.DBTool.UI
             _listSupply.Add(new DBColumnControlRelation(DT_DBT_BD_DB_CONFIG.SqlString.PORT_NO, txbPortNO));
             _listSupply.Add(new DBColumnControlRelation(DT_DBT_BD_DB_CONFIG.SqlString.DB_NAME, txbDbName));
             _listSupply.Add(new DBColumnControlRelation(DT_DBT_BD_DB_CONFIG.SqlString.SCHEMA_NAME, txbSchemaName));
-            //_listSupply.Add(new DBColumnControlRelation(DT_DBT_BD_DB_CONFIG.SqlString.LOGIN_TYPE, cbbLoginType));
             _listSupply.Add(new DBColumnControlRelation(DT_DBT_BD_DB_CONFIG.SqlString.USER_NAME, txbUserName));
             _listSupply.Add(new DBColumnControlRelation(DT_DBT_BD_DB_CONFIG.SqlString.USER_PASSWORD, txbPassword));
             _listSupply.Add(new DBColumnControlRelation(DT_DBT_BD_DB_CONFIG.SqlString.REMARK, txbRemark));
@@ -115,13 +114,13 @@ namespace Breezee.WorkHelper.DBTool.UI
 
                 List<string> coloumns = isAdd ? null : _listSupply.GetSaveColumnNameList();
                 dtSave = DBToolHelper.Instance.DataAccess.GetTableConstruct(DT_DBT_BD_DB_CONFIG.TName, coloumns);
-                dtSave.DefaultValue(_loginUser);
+                dtSave.DefaultValue(_loginUser);//设置登录用户的默认值
                 _listSupply.GetControlValue(dtSave, isAdd);
                 if (isAdd)
                 {
                     dtSave.Rows[0][DT_DBT_BD_DB_CONFIG.SqlString.DB_CONFIG_ID] = StringHelper.GetGUID();
-                    //dtSave.Columns[DT_DBT_BD_DB_CONFIG.SqlString.CREATE_TIME].ExtProp(TableCoulnmDefaultType.DateTime);
-                    //dtSave.Columns[DT_DBT_BD_DB_CONFIG.SqlString.LAST_UPDATED_TIME].ExtProp(TableCoulnmDefaultType.DateTime);
+                    dtSave.Columns[DT_DBT_BD_DB_CONFIG.SqlString.CREATE_TIME].ExtProp(DbDefaultValueType.DateTime);
+                    dtSave.Columns[DT_DBT_BD_DB_CONFIG.SqlString.LAST_UPDATED_TIME].ExtProp(DbDefaultValueType.DateTime);
                 }
                 #endregion
                 //保存传入参数处理
@@ -163,7 +162,13 @@ namespace Breezee.WorkHelper.DBTool.UI
             txbDbName.Visible = true;
             //
             lblServerAddr.Text = "服务器地址：";
+            toolTip1.SetToolTip(txbServerIP, "服务器地址");
             btnSelectDbFile.Visible = false;
+
+            if (cbbDatabaseType.SelectedValue == null)
+            {
+                return;
+            }
 
             int iDbType = int.Parse(cbbDatabaseType.SelectedValue.ToString());
             DataBaseType selectDBType = (DataBaseType)iDbType;
@@ -179,7 +184,8 @@ namespace Breezee.WorkHelper.DBTool.UI
                     //txbPortNO.Text = "1433";
                     break;
                 case DataBaseType.Oracle:
-                    lblServerAddr.Text = "TNS名称：";
+                    lblServerAddr.Text = "数据源名称：";
+                    toolTip1.SetToolTip(txbServerIP, "可以是TNS名称；\r\n或类似【//localhost:1521/orcl】；\r\n或TNS实际配置内容（不换行），如【(DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=127.0.0.1)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=ORCL)))】");
                     //不显示端口号
                     lblPortNO.Visible = false;
                     txbPortNO.Visible = false;
@@ -192,6 +198,7 @@ namespace Breezee.WorkHelper.DBTool.UI
                     break;
                 case DataBaseType.SQLite:
                     lblServerAddr.Text = "数据库文件路径：";
+                    toolTip1.SetToolTip(txbServerIP, "请选择SQLite文件");
                     btnSelectDbFile.Visible = true;
                     //不显示端口号
                     lblPortNO.Visible = false;
@@ -230,7 +237,7 @@ namespace Breezee.WorkHelper.DBTool.UI
         }
         #endregion
 
-        private void tsbTestConnect_Click(object sender, EventArgs e)
+        private void tsbConnetTest_Click(object sender, EventArgs e)
         {
             try
             {
@@ -320,9 +327,9 @@ namespace Breezee.WorkHelper.DBTool.UI
                 DataTable UserTableList = _dataAccess.GetSchemaTables();
                 MsgBox.Show("连接成功！");
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                MsgHelper.ShowErr("连接失败，请检查！具体错误：" + ex.Message);
+                MsgHelper.ShowErr("连接失败，请检查！具体错误："+ex.Message);
             }
         }
     }
