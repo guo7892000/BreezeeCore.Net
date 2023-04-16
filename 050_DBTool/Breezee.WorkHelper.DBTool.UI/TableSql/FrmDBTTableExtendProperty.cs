@@ -119,6 +119,10 @@ namespace Breezee.WorkHelper.DBTool.UI
                 //}
 
                 dsExcel = ExportHelper.GetExcelDataSet();//得到Excel数据
+                if (dsExcel == null)
+                {
+                    return;
+                }
                 bsTable.DataSource = dsExcel.Tables[0];
                 dgvTableList.DataSource = bsTable;
                 //导入成功后处理
