@@ -20,7 +20,7 @@ namespace Breezee.WorkHelper.DBTool.UI
     /// <summary>
     /// 生成表结构SQL
     /// </summary>
-    public partial class FrmDBTExcelGenerateTableSQL : BaseForm
+    public partial class FrmDBTGenerateTableSQL : BaseForm
     {
         #region 变量
         private readonly string _strTableName = "变更表清单";
@@ -56,7 +56,7 @@ namespace Breezee.WorkHelper.DBTool.UI
         #endregion
 
         #region 构造函数
-        public FrmDBTExcelGenerateTableSQL()
+        public FrmDBTGenerateTableSQL()
         {
             InitializeComponent();
         }

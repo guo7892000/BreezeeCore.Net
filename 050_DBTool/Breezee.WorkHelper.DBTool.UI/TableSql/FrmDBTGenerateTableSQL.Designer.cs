@@ -1,6 +1,6 @@
 ﻿namespace Breezee.WorkHelper.DBTool.UI
 {
-    partial class FrmDBTExcelGenerateTableSQL
+    partial class FrmDBTGenerateTableSQL
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDBTExcelGenerateTableSQL));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDBTGenerateTableSQL));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpImport = new System.Windows.Forms.TabPage();
             this.grbColumn = new System.Windows.Forms.GroupBox();
