@@ -1,0 +1,327 @@
+﻿using Breezee.Core.WinFormUI;
+using Breezee.Core.Interface;
+using Breezee.Core.Tool;
+using Breezee.Core.Entity;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.IO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using Breezee.AutoSQLExecutor.Common;
+using Breezee.AutoSQLExecutor.Core;
+
+namespace Breezee.Framework.Mini.StartUp
+{
+    /// <summary>
+    /// 数据库配置：保存在配置文件中
+    /// </summary>
+    public partial class FrmDBConfig : BaseForm,IMainCommonFormCross
+    {
+        #region 变量
+        private DataRow _drEdit;
+        public bool IsDbNameNotNull = true;//是否数据库名非空
+        public bool IsFilterDbExtnedFile = true;//是否过滤db后缀名的数据库文件
+        //控件集合字典
+        List<DBColumnControlRelation> _listSupply = new List<DBColumnControlRelation>();
+        //
+        string _sKey;
+        string _strConfigFilePath;
+        string _sConfigFileName;
+
+        MiniXmlConfig _xmlCommon;
+        DataTable dtXml;
+        #endregion
+
+        #region 构造函数
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sKey">数据库访问对象IDataAccess获取实例的键，这个由系统提定，不能修改</param>
+        /// <param name="strConfigFilePath"></param>
+        /// <param name="sConfigFileName"></param>
+        public FrmDBConfig(string sKey,string strConfigFilePath, string sConfigFileName)
+        {
+            InitializeComponent();
+            _sKey = sKey;
+            _strConfigFilePath = strConfigFilePath;
+            _sConfigFileName = sConfigFileName;
+            
+        }
+        #endregion
+
+        #region 窗体加载事件
+        private void FrmDBConfigSet_D_Load(object sender, EventArgs e)
+        {
+            _xmlCommon = new MiniXmlConfig(_strConfigFilePath, _sConfigFileName, DbServerInfo.XmlAttrString.getList(), DbServerInfo.XmlAttrString.key, "xml", "dbConfig", XmlConfigSaveType.Element);
+            //接口对象
+
+            #region 绑定下拉框
+            _dicQuery.Clear();
+            string[] enumKey = Enum.GetNames(typeof(DataBaseType));
+            int[] enumValue = new int[enumKey.Length];
+            Enum.GetValues(typeof(DataBaseType)).CopyTo(enumValue, 0);
+            for (int i = 0; i < enumKey.Length; i++)
+            {
+                _dicQuery.Add(enumValue[i].ToString(), enumKey[i]);
+            }
+
+            //数据库类型
+            DataTable dtDbType = _dicQuery.GetTextValueTable(false);
+            cbbDatabaseType.BindTypeValueDropDownList(dtDbType, false, true);
+            #endregion
+
+            //设置控件关系
+            SetControlColumnRelation();
+            dtXml = _xmlCommon.Load();
+            if (dtXml.Rows.Count > 0)
+            {
+                _listSupply.SetControlValue(dtXml.Rows[0]);
+            }
+            else
+            {
+                cbbDatabaseType.SelectedValue = ((int)DataBaseType.SQLite).ToString();
+            }
+            txbDBConfigCode.Text = _sKey;
+            txbDBConfigCode.ReadOnly = true;
+        }
+        #endregion
+
+        #region 设置列名与控件关系
+        private void SetControlColumnRelation()
+        {
+            //配置表
+            _listSupply.Add(new DBColumnControlRelation(DbServerInfo.XmlAttrString.key, txbDBConfigCode, "key"));
+            _listSupply.Add(new DBColumnControlRelation(DbServerInfo.XmlAttrString.dbType, cbbDatabaseType, "数据库类型"));
+            _listSupply.Add(new DBColumnControlRelation(DbServerInfo.XmlAttrString.serverName, txbServerIP, "服务器IP"));
+            _listSupply.Add(new DBColumnControlRelation(DbServerInfo.XmlAttrString.portNo, txbPortNO));
+            _listSupply.Add(new DBColumnControlRelation(DbServerInfo.XmlAttrString.dataBase, txbDbName));
+            _listSupply.Add(new DBColumnControlRelation(DbServerInfo.XmlAttrString.schemaName, txbSchemaName));
+            _listSupply.Add(new DBColumnControlRelation(DbServerInfo.XmlAttrString.userName, txbUserName));
+            _listSupply.Add(new DBColumnControlRelation(DbServerInfo.XmlAttrString.password, txbPassword));
+            _listSupply.Add(new DBColumnControlRelation(DbServerInfo.XmlAttrString.otherString, txbRemark));
+        }
+        #endregion
+
+        #region 保存按钮事件
+        private void tsbSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                #region 保存前判断
+                string strInfo = _listSupply.JudgeNotNull(true);
+                if (!string.IsNullOrEmpty(strInfo))
+                {
+                    ShowInfo("保存失败！\n" + strInfo);
+                    return;
+                }
+                #endregion
+                _listSupply.GetControlValue(dtXml, false);
+                _xmlCommon.Save(dtXml);
+                ShowInfo("保存成功！");
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            catch (Exception ex)
+            {
+                ShowErr(ex.Message);
+            }
+        }
+        #endregion
+
+        #region 退出按钮事件
+        private void tsbExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        #endregion
+
+        #region 选择变化事件
+        private void cbbDatabaseType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //重置控件
+            ResetControl(txbServerIP, txbUserName, txbPassword, txbDbName, txbPortNO, txbSchemaName);
+            //默认显示端口号
+            lblPortNO.Visible = true;
+            txbPortNO.Visible = true;
+            //显示数据库
+            lblDbName.Visible = true;
+            txbDbName.Visible = true;
+            //
+            lblServerAddr.Text = "服务器地址：";
+            toolTip1.SetToolTip(txbServerIP, "服务器地址");
+            btnSelectDbFile.Visible = false;
+
+            if (cbbDatabaseType.SelectedValue == null)
+            {
+                return;
+            }
+
+            int iDbType = int.Parse(cbbDatabaseType.SelectedValue.ToString());
+            DataBaseType selectDBType = (DataBaseType)iDbType;
+
+            switch (selectDBType)
+            {
+                case DataBaseType.SqlServer:
+                    //显示登录类型
+                    //lblLoginType.Visible = true;
+                    //cbbLoginType.Visible = true;
+                    //
+                    txbServerIP.Text = "localhost";
+                    //txbPortNO.Text = "1433";
+                    break;
+                case DataBaseType.Oracle:
+                    lblServerAddr.Text = "数据源名称：";
+                    toolTip1.SetToolTip(txbServerIP, "可以是TNS名称；\r\n或类似【//localhost:1521/orcl】；\r\n或TNS实际配置内容（不换行），如【(DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=127.0.0.1)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=ORCL)))】");
+                    //不显示端口号
+                    lblPortNO.Visible = false;
+                    txbPortNO.Visible = false;
+                    //不显示数据库
+                    lblDbName.Visible = false;
+                    txbDbName.Visible = false;
+                    break;
+                case DataBaseType.MySql:
+                    txbPortNO.Text = "3306";
+                    break;
+                case DataBaseType.SQLite:
+                    lblServerAddr.Text = "数据库文件路径：";
+                    toolTip1.SetToolTip(txbServerIP, "请选择SQLite文件");
+                    btnSelectDbFile.Visible = true;
+                    //不显示端口号
+                    lblPortNO.Visible = false;
+                    txbPortNO.Visible = false;
+                    //不显示数据库
+                    lblDbName.Visible = false;
+                    txbDbName.Visible = false;
+
+                    break;
+                case DataBaseType.PostgreSql:
+                    lblPortNO.Visible = true;
+                    txbPortNO.Visible = true;
+                    txbPortNO.Text = "5432";
+                    break;
+                default:
+                    throw new Exception("暂不支持该数据库类型！");
+                    //break;
+            }
+        }
+        #endregion
+
+        #region 选择数据库文件
+        private void btnSelectDbFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Multiselect = false;
+            if (IsFilterDbExtnedFile)
+            {
+                ofd.Filter = "所有db文件|*.db";
+            }
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                txbServerIP.Text = ofd.FileName;
+                //txbServerIP.Text = ofd.SafeFileName;
+            }
+        }
+        #endregion
+
+        private void tsbConnetTest_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var DbServer = new DbServerInfo()
+                {
+                    Database = txbDbName.Text.Trim(),
+                    DatabaseType = (DataBaseType)int.Parse(cbbDatabaseType.SelectedValue.ToString()),
+                    Password = txbPassword.Text.Trim(),
+                    PortNo = txbPortNO.Text.Trim(),
+                    SchemaName = txbSchemaName.Text.Trim(),
+                    ServerName = txbServerIP.Text.Trim(),
+                    UserName = txbUserName.Text.Trim(),
+                    UseConnString = false,
+                    ConnString = "",
+                };
+
+                int iDbType = int.Parse(cbbDatabaseType.SelectedValue.ToString());
+                DataBaseType selectDBType = (DataBaseType)iDbType;
+
+                if (selectDBType != DataBaseType.Oracle && selectDBType != DataBaseType.SQLite)
+                {
+                    if (IsDbNameNotNull && string.IsNullOrEmpty(DbServer.Database))
+                    {
+                        MsgHelper.ShowErr("数据库名称不能为空！");
+                        return;
+                    }
+                }
+
+                switch (selectDBType)
+                {
+                    case DataBaseType.SqlServer:
+                        if (string.IsNullOrEmpty(DbServer.ServerName))
+                        {
+                            MsgHelper.ShowErr("服务器地址不能为空！");
+                            return;
+                        }
+                        break;
+                    case DataBaseType.Oracle:
+                        if (string.IsNullOrEmpty(DbServer.ServerName))
+                        {
+                            MsgHelper.ShowErr("TNS名称不能为空！");
+                            return;
+                        }
+                        if (string.IsNullOrEmpty(DbServer.UserName) || string.IsNullOrEmpty(DbServer.Password))
+                        {
+                            MsgHelper.ShowErr("用户名和密码都不能为空！");
+                            return;
+                        }
+                        break;
+                    case DataBaseType.MySql:
+                        if (string.IsNullOrEmpty(DbServer.ServerName))
+                        {
+                            MsgHelper.ShowErr("服务器地址不能为空！");
+                            return;
+                        }
+                        if (string.IsNullOrEmpty(DbServer.UserName) || string.IsNullOrEmpty(DbServer.Password))
+                        {
+                            MsgHelper.ShowErr("用户名和密码都不能为空！");
+                            return;
+                        }
+                        break;
+                    case DataBaseType.SQLite:
+                        if (string.IsNullOrEmpty(DbServer.ServerName))
+                        {
+                            MsgHelper.ShowErr("数据库文件路径不能为空！");
+                            return;
+                        }
+                        break;
+                    case DataBaseType.PostgreSql:
+                        if (string.IsNullOrEmpty(DbServer.ServerName))
+                        {
+                            MsgHelper.ShowErr("服务器地址不能为空！");
+                            return;
+                        }
+                        if (string.IsNullOrEmpty(DbServer.UserName) || string.IsNullOrEmpty(DbServer.Password))
+                        {
+                            MsgHelper.ShowErr("用户名和密码都不能为空！");
+                            return;
+                        }
+                        break;
+                    default:
+                        throw new Exception("暂不支持该数据库类型！");
+                        //break;
+                }
+                //得到数据库访问对象
+                IDataAccess _dataAccess = AutoSQLExecutors.Connect(DbServer);
+                DataTable UserTableList = _dataAccess.GetSchemaTables();
+                MsgBox.Show("连接成功！");
+            }
+            catch (Exception ex)
+            {
+                MsgHelper.ShowErr("连接失败，请检查！具体错误：" + ex.Message);
+            }
+        }
+    }
+}
