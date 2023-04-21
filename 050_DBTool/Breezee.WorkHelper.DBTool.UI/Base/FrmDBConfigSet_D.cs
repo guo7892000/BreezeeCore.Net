@@ -64,11 +64,12 @@ namespace Breezee.WorkHelper.DBTool.UI
 
             if (_drEdit == null)//新增
             {
-
+                tsbCopyAdd.Visible = false;
             }
             else //修改
             {
                 _listSupply.SetControlValue(_drEdit);
+                tsbCopyAdd.Visible = true;
             }
         }
         #endregion
@@ -331,6 +332,17 @@ namespace Breezee.WorkHelper.DBTool.UI
             {
                 MsgHelper.ShowErr("连接失败，请检查！具体错误："+ex.Message);
             }
+        }
+
+        /// <summary>
+        /// 复制新增按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsbCopyAdd_Click(object sender, EventArgs e)
+        {
+            txbID.Text = string.Empty;
+            txbUPDATE_CONTROL_ID.Text = string.Empty;
         }
     }
 }

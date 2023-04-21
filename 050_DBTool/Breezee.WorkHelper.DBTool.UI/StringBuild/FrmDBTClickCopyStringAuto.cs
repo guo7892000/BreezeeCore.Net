@@ -4,6 +4,12 @@ using Breezee.Core.Interface;
 using Breezee.WorkHelper.DBTool.Entity;
 using Setting = Breezee.WorkHelper.DBTool.UI.Properties.Settings;
 using Breezee.Core.Tool;
+using System;
+using System.IO;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Breezee.WorkHelper.DBTool.UI.StringBuild
 {
@@ -12,6 +18,8 @@ namespace Breezee.WorkHelper.DBTool.UI.StringBuild
     /// </summary>
     public partial class FrmDBTClickCopyStringAuto : BaseForm
     {
+        private List<GroupBox> listGroupBox = new List<GroupBox>();
+
         public FrmDBTClickCopyStringAuto()
         {
             InitializeComponent();
@@ -100,13 +108,22 @@ namespace Breezee.WorkHelper.DBTool.UI.StringBuild
                         {
                             if (!string.IsNullOrWhiteSpace(cs.PathRel))
                             {
-                                tb.AppendText(File.ReadAllText(Path.Combine(DBTGlobalValue.AppPath, cs.PathRel)));
-                                cs.Tip = string.Format("文本框是相对路径【{0}】文件的内容", cs.PathRel);
+                                string sPath = Path.Combine(Path.GetDirectoryName(sXmlPath), cs.PathRel);
+                                if (File.Exists(sPath))
+                                {
+                                    //相对配置文件所在目录
+                                    tb.AppendText(File.ReadAllText(sPath));
+                                    cs.Tip = string.Format("文本框是相对路径【{0}】文件的内容", cs.PathRel);
+                                }
                             }
                             if (!string.IsNullOrWhiteSpace(cs.PathAbs))
                             {
-                                tb.AppendText(File.ReadAllText(cs.PathAbs));
-                                cs.Tip = string.Format("文本框是绝对路径【{0}】文件的内容", cs.PathAbs);
+                                //绝对路径
+                                if (File.Exists(cs.PathAbs))
+                                {
+                                    tb.AppendText(File.ReadAllText(cs.PathAbs));
+                                    cs.Tip = string.Format("文本框是绝对路径【{0}】文件的内容", cs.PathAbs);
+                                }
                             }
                         }
                         else
@@ -117,7 +134,7 @@ namespace Breezee.WorkHelper.DBTool.UI.StringBuild
                     else
                     {
                         tb.Text = cs.Text;
-                        
+
                         if (!string.IsNullOrWhiteSpace(cs.Pwdchar))
                         {
                             (tb as TextBox).PasswordChar = cs.Pwdchar[0];
@@ -180,7 +197,7 @@ namespace Breezee.WorkHelper.DBTool.UI.StringBuild
                 gb.AutoSize = true;
                 tlp.Dock = DockStyle.Top;
                 pnlAll.Controls.Add(gb);
-
+                listGroupBox.Add(gb);//增加到集合中
                 iGroup++;
             }
             pnlAll.Controls.Add(gbGlobal);
@@ -225,11 +242,11 @@ namespace Breezee.WorkHelper.DBTool.UI.StringBuild
         {
             CopyString cs = null;
             string sText = "";
-            if(xn.TryGetAttrValue(CopyStringPropertyName.StringType,out sText))
+            if (xn.TryGetAttrValue(CopyStringPropertyName.StringType, out sText))
             {
                 cs = new CopyString();
                 cs.Type = sText;
-                if(xn.TryGetAttrValue(CopyStringPropertyName.StringCtrol,out sText))
+                if (xn.TryGetAttrValue(CopyStringPropertyName.StringCtrol, out sText))
                 {
                     cs.Ctrol = sText;
                 }
@@ -276,6 +293,10 @@ namespace Breezee.WorkHelper.DBTool.UI.StringBuild
             dia.Multiselect = false;
             if (dia.ShowDialog() == DialogResult.OK)
             {
+                foreach (GroupBox gb in listGroupBox)
+                {
+                    pnlAll.Controls.Remove(gb);
+                }
                 txbXmlPath.Text = dia.FileName;
                 GenerateControls();
                 Setting.Default.ClickCopyPath = txbXmlPath.Text;
@@ -291,7 +312,7 @@ namespace Breezee.WorkHelper.DBTool.UI.StringBuild
 
     class CopyStringPropertyName
     {
-        public static string GroupText="text";
+        public static string GroupText = "text";
         public static string GroupMax = "max";
         public static string StringType = "type";
         public static string StringCtrol = "ctrol";

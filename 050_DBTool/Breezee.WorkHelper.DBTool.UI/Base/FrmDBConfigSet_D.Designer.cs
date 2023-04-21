@@ -60,6 +60,7 @@
             this.txbPassword = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.tsbCopyAdd = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -70,6 +71,7 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbSave,
+            this.tsbCopyAdd,
             this.tsbConnetTest,
             this.tsbExit});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -379,6 +381,15 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "架构名称：";
             // 
+            // tsbCopyAdd
+            // 
+            this.tsbCopyAdd.Image = ((System.Drawing.Image)(resources.GetObject("tsbCopyAdd.Image")));
+            this.tsbCopyAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCopyAdd.Name = "tsbCopyAdd";
+            this.tsbCopyAdd.Size = new System.Drawing.Size(80, 24);
+            this.tsbCopyAdd.Text = "复制新增";
+            this.tsbCopyAdd.Click += new System.EventHandler(this.tsbCopyAdd_Click);
+            // 
             // FrmDBConfigSet_D
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -435,5 +446,6 @@
         private System.Windows.Forms.TextBox txbRemark;
         private System.Windows.Forms.ToolStripButton tsbConnetTest;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolStripButton tsbCopyAdd;
     }
 }
