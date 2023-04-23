@@ -36,6 +36,19 @@
     <None Remove="DataTemplate\DBTool\AutoFile\ID.txt" />
     <None Remove="DataTemplate\DBTool\AutoFile\Para.txt" />
     <None Remove="DataTemplate\DBTool\AutoFile\模板_生成IBD文件.xlsx" />
+    <None Remove="DataTemplate\DBTool\TableSQL\Columns.txt" />
+    <None Remove="DataTemplate\DBTool\TableSQL\Html.txt" />
+    <None Remove="DataTemplate\DBTool\TableSQL\LY\Columns.txt" />
+    <None Remove="DataTemplate\DBTool\TableSQL\LY\Table.txt" />
+    <None Remove="DataTemplate\DBTool\TableSQL\Table.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="DataTemplate\DBTool\TableSQL\Columns.txt" />
+    <EmbeddedResource Include="DataTemplate\DBTool\TableSQL\Html.txt" />
+    <EmbeddedResource Include="DataTemplate\DBTool\TableSQL\LY\Columns.txt" />
+    <EmbeddedResource Include="DataTemplate\DBTool\TableSQL\LY\Table.txt" />
+    <EmbeddedResource Include="DataTemplate\DBTool\TableSQL\Table.txt" />
   </ItemGroup>
 
   <ItemGroup>
