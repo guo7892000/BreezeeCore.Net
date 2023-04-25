@@ -27,14 +27,8 @@ namespace Breezee.WorkHelper.DBTool.UI.StringBuild
 
         private void FrmDBTClickCopyStringAuto_Load(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(Setting.Default.ClickCopyPath))
-            {
-                txbXmlPath.Text = Path.Combine(DBTGlobalValue.AppPath, DBTGlobalValue.StringBuild.Xml_CopyString);
-            }
-            else
-            {
-                txbXmlPath.Text = Setting.Default.ClickCopyPath;
-            }
+            //加载用户偏好值
+            txbXmlPath.Text = WinFormContext.UserLoveSettings.Get(DBTUserLoveConfig.ClickCopyPath, Path.Combine(DBTGlobalValue.AppPath, DBTGlobalValue.StringBuild.Xml_CopyString)).Value;
             GenerateControls();
         }
 
@@ -52,7 +46,7 @@ namespace Breezee.WorkHelper.DBTool.UI.StringBuild
             int iDefaultMax = 5;
 
             XmlDocument doc = new XmlDocument();
-            doc.Load(sXmlPath);
+            doc.Load(sXmlPath); 
 
             XmlNode root = doc.SelectSingleNode("strings");
             iDefaultMax = int.Parse(root.GetOrDefaultAttrValue(CopyStringPropertyName.GroupMax, iDefaultMax.ToString()));
@@ -134,7 +128,7 @@ namespace Breezee.WorkHelper.DBTool.UI.StringBuild
                     else
                     {
                         tb.Text = cs.Text;
-
+                        
                         if (!string.IsNullOrWhiteSpace(cs.Pwdchar))
                         {
                             (tb as TextBox).PasswordChar = cs.Pwdchar[0];
@@ -242,11 +236,11 @@ namespace Breezee.WorkHelper.DBTool.UI.StringBuild
         {
             CopyString cs = null;
             string sText = "";
-            if (xn.TryGetAttrValue(CopyStringPropertyName.StringType, out sText))
+            if(xn.TryGetAttrValue(CopyStringPropertyName.StringType,out sText))
             {
                 cs = new CopyString();
                 cs.Type = sText;
-                if (xn.TryGetAttrValue(CopyStringPropertyName.StringCtrol, out sText))
+                if(xn.TryGetAttrValue(CopyStringPropertyName.StringCtrol,out sText))
                 {
                     cs.Ctrol = sText;
                 }
@@ -299,8 +293,12 @@ namespace Breezee.WorkHelper.DBTool.UI.StringBuild
                 }
                 txbXmlPath.Text = dia.FileName;
                 GenerateControls();
-                Setting.Default.ClickCopyPath = txbXmlPath.Text;
-                Setting.Default.Save();
+
+                //保存用户偏好值
+                WinFormContext.UserLoveSettings.Set(DBTUserLoveConfig.ClickCopyPath, txbXmlPath.Text, "【点击复制】选择路径");
+                WinFormContext.UserLoveSettings.Save();
+                //Setting.Default.ClickCopyPath = txbXmlPath.Text;
+                //Setting.Default.Save();
             }
         }
 
@@ -312,7 +310,7 @@ namespace Breezee.WorkHelper.DBTool.UI.StringBuild
 
     class CopyStringPropertyName
     {
-        public static string GroupText = "text";
+        public static string GroupText="text";
         public static string GroupMax = "max";
         public static string StringType = "type";
         public static string StringCtrol = "ctrol";

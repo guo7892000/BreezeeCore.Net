@@ -87,16 +87,16 @@ namespace Breezee.WorkHelper.DBTool.UI
             uC_DbConnection1.DBType_SelectedIndexChanged += cbbDatabaseType_SelectedIndexChanged;//数据库类型下拉框变化事件
             uC_DbConnection1.DBConnName_SelectedIndexChanged += cbbConnName_SelectedIndexChanged;
             #endregion
-
-            txbSavePath.Text = "d:/javaAuto";
+            //加载用户偏好值
+            txbSavePath.Text = WinFormContext.UserLoveSettings.Get(DBTUserLoveConfig.AutoCode_Path, "").Value;
             //设置下拉框查找数据源
             cbbTableName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cbbTableName.AutoCompleteSource = AutoCompleteSource.CustomSource;
             tsbAutoSQL.Enabled = false;
 
             //以下为测试使用
-            txbEntityName.Text= "BaseConfig";
-            txbEntityNameCN.Text = "基础配置";
+            //txbEntityName.Text= "BaseConfig";
+            //txbEntityNameCN.Text = "基础配置";
         }
 
         private void cbbConnName_SelectedIndexChanged(object sender, EventArgs e)
@@ -158,9 +158,13 @@ namespace Breezee.WorkHelper.DBTool.UI
                 DataRow dr = dtTable.NewRow();
                 dr[DBTableEntity.SqlString.Owner] = drArr[0][DBTableEntity.SqlString.Owner].ToString();
                 dr[DBTableEntity.SqlString.Name] = drArr[0][DBTableEntity.SqlString.Name].ToString();
+                dr[DBTableEntity.SqlString.NameCN] = drArr[0][DBTableEntity.SqlString.NameCN].ToString();
                 dr[DBTableEntity.SqlString.Schema] = drArr[0][DBTableEntity.SqlString.Schema].ToString();
                 dr[DBTableEntity.SqlString.Comments] = drArr[0][DBTableEntity.SqlString.Comments].ToString();
                 dtTable.Rows.Add(dr);
+
+                //给实体账值
+                txbEntityNameCN.Text = dr[DBTableEntity.SqlString.NameCN].ToString();
             }
             dtTable.TableName = _strTableName;
             
@@ -519,7 +523,9 @@ namespace Breezee.WorkHelper.DBTool.UI
                 //生成SQL成功后提示
                 //ShowInfo(strInfo);
                 lblInfo.Text = _strAutoSqlSuccess;
-
+                //保存用户偏好值
+                WinFormContext.UserLoveSettings.Set(DBTUserLoveConfig.AutoCode_Path, param["SavePath"], "【代码生成】保存路径");
+                WinFormContext.UserLoveSettings.Save();
             }
             catch (Exception ex)
             {
