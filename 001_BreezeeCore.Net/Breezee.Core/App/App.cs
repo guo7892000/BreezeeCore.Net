@@ -1,4 +1,5 @@
 ﻿using Breezee.Core.Interface;
+using System.Collections.Generic;
 
 /*********************************************************************	
  * 对象名称：	
@@ -29,7 +30,7 @@ namespace Breezee.Core
 
         public void SetMain()
         {
-            GlobalContext.Instance.MainApp = this;
+            CoreGlobalContext.Instance.MainApp = this;
         }
     }
 }

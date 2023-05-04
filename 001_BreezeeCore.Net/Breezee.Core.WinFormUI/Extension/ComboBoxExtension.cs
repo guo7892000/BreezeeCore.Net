@@ -1,6 +1,8 @@
 ﻿using Breezee.Core.Entity;
+using Breezee.Core.Interface;
 using System.Data;
-using static Breezee.Core.Interface.KeyValueListConfig;
+using System.Windows.Forms;
+using static Breezee.Core.Interface.KeyValueGroupConfig;
 
 /*********************************************************************		
  * 对象名称：		
@@ -129,8 +131,8 @@ namespace Breezee.Core.Tool
             {
                 dtBind.Rows.InsertAt(dtBind.NewRow(), 0);
             }
-            cbbControl.ValueMember = XmlKeyValueStr.ValueProp.Vid;
-            cbbControl.DisplayMember = XmlKeyValueStr.ValueProp.Name;
+            cbbControl.ValueMember = KeyValueGroupString.ValueProp.Vid;
+            cbbControl.DisplayMember = KeyValueGroupString.ValueProp.Name;
             cbbControl.DataSource = dtBind;
             if (isSelectOnly)
             {
