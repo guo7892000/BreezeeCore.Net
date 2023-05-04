@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using System.Xml;
 using Breezee.Core.Interface;
 using Breezee.Core;
+using System.IO;
 
 namespace Breezee.Framework.Mini.StartUp
 {
@@ -41,9 +42,9 @@ namespace Breezee.Framework.Mini.StartUp
         #region 窗体加载
         private void FrmMenuManage_Load(object sender, EventArgs e)
         {
-            sDllPath = Path.Combine(GlobalValue.StartupPath, MiniStaticString.ConfigDataPath, MiniStaticString.DllFileName);
-            MenuXmlFilePath = Path.Combine(GlobalValue.EntryAssemblyPath, MiniStaticString.ConfigDataPath, MiniStaticString.MenuFileName);
-            MenuXmlFilePath_WPF = Path.Combine(GlobalValue.EntryAssemblyPath, "Config", MiniStaticString.MenuFileName_WPF);
+            sDllPath = Path.Combine(GlobalContext.AppEntryAssemblyPath, MiniStaticString.ConfigDataPath, MiniStaticString.DllFileName);
+            MenuXmlFilePath = Path.Combine(GlobalContext.AppEntryAssemblyPath, MiniStaticString.ConfigDataPath, MiniStaticString.MenuFileName);
+            MenuXmlFilePath_WPF = Path.Combine(GlobalContext.AppEntryAssemblyPath, "Config", MiniStaticString.MenuFileName_WPF);
             _saveMenu = new MenuEntity();
             _xmlMenu =  new XmlMenu(MenuXmlFilePath);
 
@@ -160,7 +161,7 @@ namespace Breezee.Framework.Mini.StartUp
                     xnNew = MenuEntity.CreateElement("Model");
                     if (isAdd)
                     {
-                        xnNew.SetAttribute(MemuAttrString.Guid, StringHelper.GetGUID());
+                        xnNew.SetAttribute(MemuAttrString.Guid, Guid.NewGuid().ToString());
                         MenuEntity.DocumentElement.AppendChild(xnNew);
                     }
                     else
@@ -172,7 +173,7 @@ namespace Breezee.Framework.Mini.StartUp
                     xnNew = MenuEntity.CreateElement("Class");
                     if (isAdd)
                     {
-                        xnNew.SetAttribute(MemuAttrString.Guid, StringHelper.GetGUID());
+                        xnNew.SetAttribute(MemuAttrString.Guid, Guid.NewGuid().ToString());
                         //先找模块
                         XmlNode xnParent = MenuEntity.SelectSingleNode("xml/Model[@Guid='" + _saveMenu.ParentGuid + "']");
                         if (xnParent != null)
@@ -214,7 +215,7 @@ namespace Breezee.Framework.Mini.StartUp
                     xnNew = MenuEntity.CreateElement("Menu");
                     if (isAdd)
                     {
-                        xnNew.SetAttribute(MemuAttrString.Guid, StringHelper.GetGUID());
+                        xnNew.SetAttribute(MemuAttrString.Guid, Guid.NewGuid().ToString());
                     }
                     //第一个分类
                     GetMenuNode(isAdd, MenuEntity, "xml/Model/Class","xml /Model/Class/Menu", ref xnNew);

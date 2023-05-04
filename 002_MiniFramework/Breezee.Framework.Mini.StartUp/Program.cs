@@ -1,39 +1,45 @@
 using Breezee.Core;
+using Breezee.Core.Interface;
 using Breezee.Core.WinFormUI;
 using Breezee.Framework.Mini.Entity;
+using System;
+using System.IO;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Breezee.Framework.Mini.StartUp
 {
     internal static class Program
     {
+        #region 应用程序的主入口点
         /// <summary>
-        ///  The main entry point for the application.
+        /// 应用程序的主入口点
         /// </summary>
         [STAThread]
         static void Main()
         {
             Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            //加载应用配置
+            WinFormContext.Instance.LoadAppConfig();
+            //打开登录界面
             FrmMiniLogin frmLogin = new FrmMiniLogin();
-            if (frmLogin.ShowDialog() == DialogResult.OK)
-            {
-                frmLogin.Dispose();
-                FrmMiniMainMDI frmMain = new FrmMiniMainMDI();
-                WinFormContext.Instance.SetMdiParent(frmMain);
-
-                FormApp app = new MiniApp();
-                app.SetMain();
-                app.LoginForm = frmLogin;
-                app.MainForm = frmMain;
-                app.Init();
-
-                Application.Run(frmMain);
-            }
-        }
+            if (frmLogin.ShowDialog() != DialogResult.OK) return;
+            //创建主窗体
+            FrmMiniMainMDI frmMain = new FrmMiniMainMDI();
+            WinFormContext.Instance.SetMdiParent(frmMain);
+            //全局应用类
+            FormApp app = new MiniApp();
+            app.SetMain();
+            app.LoginForm = frmLogin;
+            app.MainForm = frmMain;
+            app.Init();
+            //运行应用
+            Application.Run(frmMain);
+        }  
+        #endregion
 
         #region 应用程序错误异常
         static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
