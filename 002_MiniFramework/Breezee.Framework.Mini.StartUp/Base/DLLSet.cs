@@ -8,7 +8,6 @@ using Breezee.Core.Entity;
 using Breezee.Framework.Mini.Entity;
 using Breezee.Core.WinFormUI;
 using Breezee.Core.Interface;
-using Breezee.Core;
 
 namespace Breezee.Framework.Mini.StartUp
 {
