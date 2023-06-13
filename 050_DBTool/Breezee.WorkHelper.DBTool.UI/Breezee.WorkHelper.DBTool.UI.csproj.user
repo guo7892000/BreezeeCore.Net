@@ -37,6 +37,9 @@
     <Compile Update="ConnectString\FrmDBTExcelCol2Row.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ConnectString\FrmDBTExcelFormulateString.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="ConnectString\FrmDBTInList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +62,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GetFile\FrmGetUpdateDirectoryFile.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="StringBuild\FrmDBTClickCopyStringAuto.cs">

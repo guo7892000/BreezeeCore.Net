@@ -52,6 +52,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="LibGit2Sharp" Version="0.27.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core.Entity\Breezee.Core.Entity.csproj" />
     <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core.Interface\Breezee.Core.Interface.csproj" />
     <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core.IOC\Breezee.Core.IOC.csproj" />
