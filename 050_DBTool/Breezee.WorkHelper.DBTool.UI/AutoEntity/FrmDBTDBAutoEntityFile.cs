@@ -219,7 +219,7 @@ namespace Breezee.WorkHelper.DBTool.UI
                 }
             }
             //保存用户偏好值
-            WinFormContext.UserLoveSettings.Set(DBTUserLoveConfig.AutoEntity_Path, txtPath.Text, "【实体生成】保存路径");
+            WinFormContext.UserLoveSettings.Set("AutoEntity_Path", txtPath.Text, "实体保存路径");
             WinFormContext.UserLoveSettings.Save();
             //Setting.Default.AutoEntity_Path = txtPath.Text;
             //Setting.Default.Save();
@@ -283,7 +283,7 @@ namespace Breezee.WorkHelper.DBTool.UI
                 dgvTypeConvert.Tag = fdc.GetGridTagString();
                 dgvTypeConvert.BindDataGridView(_dsExcel.Tables[AutoImportModuleString.SheetName.DbTypeConvert], true);
 
-                lblInfo.Text = "导入成功！";
+                ShowInfo("导入成功！");
             }
         }
 
@@ -323,13 +323,14 @@ namespace Breezee.WorkHelper.DBTool.UI
             {
                 txtPath.Text = dialog.SelectedPath;
                 //保存用户偏好值
-                WinFormContext.UserLoveSettings.Set("AutoEntity_Path", dialog.SelectedPath, "【实体生成】保存路径");
+                WinFormContext.UserLoveSettings.Set(DBTUserLoveConfig.AutoEntity_Path, dialog.SelectedPath, "【实体生成】保存路径");
                 WinFormContext.UserLoveSettings.Save();
                 //Setting.Default.AutoEntity_Path1 = dialog.SelectedPath;
                 //Setting.Default.Save();
             }
         } 
         #endregion
+
 
         #region 加载树方法
         private void LoadTreeView(DbServerInfo server)
@@ -532,7 +533,9 @@ namespace Breezee.WorkHelper.DBTool.UI
             }
         }
         #endregion
-     
+
+        
+
         /// <summary>
         /// 模板下拉框变化
         /// </summary>
