@@ -31,6 +31,7 @@ namespace Breezee.WorkHelper.DBTool.UI
         string sDirType;
         //分隔的字符数组
         char[] splitCharArr = new char[] { ',', '，', '：', ';', '；','|' };
+        List<string> _listFilePath;
         #endregion
 
         #region 构造函数
@@ -46,12 +47,12 @@ namespace Breezee.WorkHelper.DBTool.UI
         {
             dtpBegin.Value = DateTime.Now.AddHours(-10);
             dtpEnd.Value = DateTime.Now;
-            lblExcludeTip.Text = "支持逗号（中英文）、分号（中英文）、冒号（中文）、竖线（英文）分隔的多个排除项配置！";
+            lblExcludeTip.Text = "支持逗号（中英文）、分号（中英文）、冒号（中文）、竖线（英文）分隔的多个排除项配置！另外：会过滤以.开头的文件夹";
             //绑定下拉框
             _dicString["1"]= "含git源码的目录";
             _dicString["9"] = "普通目录";
             cbbDirType.BindTypeValueDropDownList(_dicString.GetTextValueTable(false),false,true);
-            toolTip1.SetToolTip(cbbDirType, "【含git源码的目录】：针对新增和修改的文件，拉取下来的文件不含在内，但【普通目录】会包括！");
+            toolTip1.SetToolTip(cbbDirType, "【含git源码的目录】：针对有变化的新增和修改的文件，git拉取下来的文件不含在内，但【普通目录】会包括！");
 
             //加载用户偏好值
             //读取目录
@@ -73,6 +74,12 @@ namespace Breezee.WorkHelper.DBTool.UI
             txbExcludeEndprx.Text = WinFormContext.UserLoveSettings.Get(DBTUserLoveConfig.GetFileExcludeEndprx, "").Value; 
             txbExcludeDirName.Text = WinFormContext.UserLoveSettings.Get(DBTUserLoveConfig.GetFileExcludeDirName, "").Value;
             txbExcludeFullDir.Text = WinFormContext.UserLoveSettings.Get(DBTUserLoveConfig.GetFileExcludeFullDir, "").Value;
+            //包含已提交
+            ckbNowModify.Checked = "1".Equals(WinFormContext.UserLoveSettings.Get(DBTUserLoveConfig.GetFileIsIncludeModify, "1").Value) ? true : false;
+            ckbNowAdd.Checked = "1".Equals(WinFormContext.UserLoveSettings.Get(DBTUserLoveConfig.GetFileIsIncludeAdd, "1").Value) ? true : false;
+            ckbIncludeCommit.Checked = "1".Equals(WinFormContext.UserLoveSettings.Get(DBTUserLoveConfig.GetFileIsIncludeCommit, "1").Value) ? true : false;
+            txbEmail.Text = WinFormContext.UserLoveSettings.Get(DBTUserLoveConfig.GetFileEmail, "").Value;
+            txbUserName.Text = WinFormContext.UserLoveSettings.Get(DBTUserLoveConfig.GetFileUserName, "").Value;
         } 
         #endregion
 
@@ -149,12 +156,24 @@ namespace Breezee.WorkHelper.DBTool.UI
             }
 
             rtbString.Clear();
-
+            _listFilePath = new List<string>();
             StringBuilder sb = new StringBuilder();
             DirectoryInfo rootDirectory = new DirectoryInfo(sPath);
             //查找并输出文件
             iFileNum = 0;
             sDirType = cbbDirType.SelectedValue.ToString();
+            if ("1".Equals(sDirType))
+            { 
+                if(!ckbNowAdd.Checked && !ckbNowModify.Checked && !ckbIncludeCommit.Checked)
+                {
+                    ShowInfo("含正在修改、含将新增、含之前提交，这三个复选框至少选择一个！");
+                    return;
+                }
+            }
+            else
+            {
+
+            }
             tsbAutoSQL.Enabled = false;
             ShowDestopTipMsg("正在异步获取文件清单，请稍等一会...");
             //异步获取文件
@@ -175,6 +194,11 @@ namespace Breezee.WorkHelper.DBTool.UI
             {
                 WinFormContext.UserLoveSettings.Set(DBTUserLoveConfig.GetFileLastSaveEndDateTime, dtpEnd.Value.ToString("yyyy-MM-dd HH:mm:ss"), "【获取修改过的文件】的最后修改时间");
             }
+
+            //包含已提交
+            WinFormContext.UserLoveSettings.Set(DBTUserLoveConfig.GetFileIsIncludeCommit, ckbIncludeCommit.Checked ? "1" : "0", "【获取修改过的文件】的是否包含已提交");
+            WinFormContext.UserLoveSettings.Set(DBTUserLoveConfig.GetFileEmail, txbEmail.Text.Trim(), "【获取修改过的文件】的Email");
+            WinFormContext.UserLoveSettings.Set(DBTUserLoveConfig.GetFileUserName, txbUserName.Text.Trim(), "【获取修改过的文件】的用户名");
 
             WinFormContext.UserLoveSettings.Save();
             if (iFileNum <= 0)
@@ -225,13 +249,49 @@ namespace Breezee.WorkHelper.DBTool.UI
                     isGitDir = true;
                     string sDirName = gitDir.First().FullName;
                     string sParentDirName = gitDir.First().Parent.FullName;
+                    string sEmail= txbEmail.Text.Trim();
+                    string sUserName = txbUserName.Text.Trim();
+
                     using (var repo = new Repository(sDirName))
                     {
                         //查找变化的文件：包括未跟踪的
                         using (var changes = repo.Diff.Compare<TreeChanges>(null, true))
                         {
-                            CopyChangesFile(sb, sParentDirName, changes.Added);//新增的
-                            CopyChangesFile(sb, sParentDirName, changes.Modified); //修改的
+                            if (ckbNowAdd.Checked)
+                            {
+                                CopyChangesFile(sb, sParentDirName, changes.Added);//新增的
+                            }
+                            if (ckbNowModify.Checked)
+                            {
+                                CopyChangesFile(sb, sParentDirName, changes.Modified); //修改的
+                            }
+                        }
+                        //查找已提交的
+                        if (ckbIncludeCommit.Checked)
+                        {
+                            ///get commits from all branches, not just master
+                            var commits = repo.Commits.QueryBy(new CommitFilter());
+                            foreach (var commit in commits)
+                            {
+                                if (!string.IsNullOrEmpty(sEmail) && !sEmail.Equals(commit.Author.Email)) continue; //如邮件不为空，且不相等，则跳过
+                                if (!string.IsNullOrEmpty(sUserName) && !sUserName.Equals(commit.Author.Name)) continue;//如用户名不为空，且不相等，则跳过
+                                //不在选择的时间范围内
+                                if (commit.Committer.When< dtpBegin.Value || commit.Committer.When > dtpEnd.Value)
+                                {
+                                    continue;
+                                }
+                                foreach (var parent in commit.Parents)
+                                {
+                                    foreach (TreeEntryChanges change in repo.Diff.Compare<TreeChanges>(parent.Tree, commit.Tree))
+                                    {
+                                        FileInfo file = new FileInfo(Path.Combine(sParentDirName, change.Path));
+                                        if (file.Exists)
+                                        {
+                                            CopyFileBackup(file, sb,true);
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -264,6 +324,10 @@ namespace Breezee.WorkHelper.DBTool.UI
 
                 foreach (DirectoryInfo path in rootDirectory.GetDirectories())
                 {
+                    if (path.Name.StartsWith("."))
+                    {
+                        continue; //跳过点开头的系统目录
+                    }
                     //目录名、绝对目录
                     if (sExcludeDirName.Contains(path.Name.ToLower()) || sExcludeFullDir.Contains(path.FullName.ToLower()))
                     {
@@ -292,7 +356,7 @@ namespace Breezee.WorkHelper.DBTool.UI
         /// </summary>
         /// <param name="file"></param>
         /// <param name="sb"></param>
-        private void CopyFileBackup(FileInfo file, StringBuilder sb)
+        private void CopyFileBackup(FileInfo file, StringBuilder sb,bool isCommitFile=false)
         {
             string sReadPath = txbReadPath.Text.Trim();
             string sTargetPath = txbTargetPath.Text.Trim();
@@ -306,16 +370,25 @@ namespace Breezee.WorkHelper.DBTool.UI
             {
                 return;
             }
-            //不在修改时间范围内的文件跳过
-            if (file.LastWriteTime < dtpBegin.Value || file.LastWriteTime > dtpEnd.Value)
+            //这里如果是包括已提交，则直接跳过
+            if (!isCommitFile)
             {
-                return;
+                if(file.LastWriteTime < dtpBegin.Value || file.LastWriteTime > dtpEnd.Value)
+                {
+                    return;  //不在修改时间范围内的文件跳过
+                }
             }
             //排除后缀
             if (!string.IsNullOrEmpty(file.Extension) && (sExcludeEndprx.Contains(file.Extension.Substring(1))))
             {
                 return;
             }
+            //跳过已包含的文件
+            if(_listFilePath.Contains(file.FullName))
+            {
+                return;
+            }
+            _listFilePath.Add(file.FullName);
             //生成目录
             string sFinalDir = file.DirectoryName.Replace(sReadPath, sTargetPath);
             //复制文件
@@ -354,6 +427,33 @@ namespace Breezee.WorkHelper.DBTool.UI
             else
             {
                 dtpEnd.Enabled = true;
+            }
+        }
+
+        private void ckbIncludeCommit_CheckedChanged(object sender, EventArgs e)
+        {
+            if(ckbIncludeCommit.Checked)
+            {
+                panel1.Enabled = true;
+            }
+            else
+            {
+                panel1.Enabled = false;
+            }
+        }
+
+        private void cbbDirType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbbDirType.SelectedValue == null) return;
+            if ("1".Equals(cbbDirType.SelectedValue.ToString()))
+            {
+                panel1.Visible = true;
+                panel2.Visible = true;
+            }
+            else
+            {
+                panel1.Visible = false;
+                panel2.Visible = false;
             }
         }
     }
