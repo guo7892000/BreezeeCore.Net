@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
@@ -10,7 +11,7 @@ using Breezee.Core.Entity;
  * 对象类别：接口		
  * 创建作者：黄国辉		
  * 创建日期：2022/11/5 22:29:28		
- * 对象说明：		
+ * 对象说明：样式文件保存路径：C:\ProgramData\Peach\Config\FormStyles		
  * 电邮地址：guo7892000@126.com		
  * 微 信 号：BreezeeHui		
  * 修改历史：		
@@ -25,7 +26,7 @@ namespace Breezee.Core.WinFormUI
     {
         #region 变量
         private List<FlexGridColumn> mColuns = new List<FlexGridColumn>();
-
+ 
         private int mFrozenCols = 0;
         private int mFrozenRows = 0;
         private int mFixedCols = 0;
@@ -81,6 +82,16 @@ namespace Breezee.Core.WinFormUI
             get { return mColuns; }
         } 
         #endregion
+
+        public DataTable GetNullTable()
+        {
+            DataTable dtNull = new DataTable();
+            foreach (var item in mColuns)
+            {
+                dtNull.Columns.Add(item.DBColumnName);
+            }
+            return dtNull;
+        }
 
         #region 添加列
         /// <summary>
