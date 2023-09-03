@@ -10,7 +10,8 @@
         "dependencies": {
           "Breezee.Core.Entity": "1.0.0",
           "Breezee.Core.Interface": "1.0.0",
-          "NLog": "5.0.4"
+          "NLog": "5.0.4",
+          "SharpCompress": "0.33.0"
         },
         "runtime": {
           "Breezee.Core.Tool.dll": {}
@@ -21,6 +22,14 @@
           "lib/netstandard2.0/NLog.dll": {
             "assemblyVersion": "5.0.0.0",
             "fileVersion": "5.0.4.1331"
+          }
+        }
+      },
+      "SharpCompress/0.33.0": {
+        "runtime": {
+          "lib/net6.0/SharpCompress.dll": {
+            "assemblyVersion": "0.33.0.0",
+            "fileVersion": "0.33.0.0"
           }
         }
       },
@@ -51,6 +60,13 @@
       "sha512": "sha512-hMyC7jq1m7c339DZXTRz96b+0YsIYSwAUB8sAWMtqXd2uwJjYe+y1k74fbItODPqDuE/krd6A4mxew9gLMS+PQ==",
       "path": "nlog/5.0.4",
       "hashPath": "nlog.5.0.4.nupkg.sha512"
+    },
+    "SharpCompress/0.33.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FlHfpTAADzaSlVCBF33iKJk9UhOr3Xj+r5LXbW2GzqYr0SrhiOf6shLX2LC2fqs7g7d+YlwKbBXqWFtb+e7icw==",
+      "path": "sharpcompress/0.33.0",
+      "hashPath": "sharpcompress.0.33.0.nupkg.sha512"
     },
     "Breezee.Core.Entity/1.0.0": {
       "type": "project",
