@@ -58,7 +58,7 @@ namespace Breezee.Framework.Mini.StartUp
         #region 加载事件
         private void FrmMainMDI_Load(object sender, EventArgs e)
         {
-            Text = string.Format("工作助手（Work Helper） v{0} 正式版  2023-08-30", Assembly.GetExecutingAssembly().GetName().Version.ToString());
+            Text = string.Format("工作助手（Work Helper） v{0} 正式版  2023-09-03", Assembly.GetExecutingAssembly().GetName().Version.ToString());
             _IADPJson = ContainerContext.Container.Resolve<IADPJson>();
 
             _WinFormConfig = WinFormContext.Instance.WinFormConfig;
@@ -851,7 +851,6 @@ namespace Breezee.Framework.Mini.StartUp
         {
             UpgradeSystem(true);
         }
-
         /// <summary>
         /// 升级系统方法
         /// </summary>
@@ -899,11 +898,12 @@ namespace Breezee.Framework.Mini.StartUp
                     //版本升级
                     WinFormContext.Instance.IsUpgradeRunning = true;
                     //异步获取文件
-                    string sLocalDir = _WinFormConfig.Get(GlobalKey.Upgrade_TempPath, GlobalContext.PathTemp());
+                    DirectoryInfo sPrePath = new DirectoryInfo(GlobalContext.AppEntryAssemblyPath);
+                    string sLocalDir = _WinFormConfig.Get(GlobalKey.Upgrade_TempPath, sPrePath.Parent.FullName);//默认为当前运行程序的父目录
                     string sServerZipUrl = string.Format("https://gitee.com/breezee2000/WorkHelper/releases/download/{0}/WorkHelper{1}.rar", sServerVersion, sServerVersion);
                     await Task.Run(() => FileDirHelper.DownloadWebZipAndUnZipAsync(sServerZipUrl, sLocalDir));
                     WinFormContext.Instance.IsUpgradeRunning = false;
-                    DirectoryInfo sPrePath =new DirectoryInfo(GlobalContext.AppEntryAssemblyPath);
+                    
                     if("release".Equals(sPrePath.Name,StringComparison.OrdinalIgnoreCase) || "bin".Equals(sPrePath.Name, StringComparison.OrdinalIgnoreCase))
                     {
                         _WinFormConfig.Set(GlobalKey.Upgrade_PreVersionPath, "", "当前版本所在的目录，为升级完后删除旧版本使用！"); //开发环境，不记录原版本
