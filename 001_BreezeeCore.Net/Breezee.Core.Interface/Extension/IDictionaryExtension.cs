@@ -1,5 +1,7 @@
 ﻿using System.Data;
 using System.Collections;
+using System.Collections.Generic;
+using System;
 
 /*********************************************************************		
  * 对象名称：		
