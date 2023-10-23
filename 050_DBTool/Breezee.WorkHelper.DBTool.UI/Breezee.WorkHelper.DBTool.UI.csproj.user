@@ -67,6 +67,9 @@
     <Compile Update="GetFile\FrmGetUpdateDirectoryFile.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="GetFile\FrmReplaceTextFileString.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="SqlExecute\FrmDBTAutoSqlVerify.cs">
       <SubType>Form</SubType>
     </Compile>
