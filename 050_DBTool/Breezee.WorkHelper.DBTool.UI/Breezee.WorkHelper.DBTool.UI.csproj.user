@@ -31,6 +31,9 @@
     <Compile Update="Common\UC_DbConnection.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Common\UC_FtpDownUpload.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="ConnectString\FrmDBTCopyData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +71,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="GetFile\FrmReplaceTextFileString.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GetFile\FrmReplaceTextFileStringUC.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="SqlExecute\FrmDBTAutoSqlVerify.cs">
