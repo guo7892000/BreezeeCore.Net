@@ -4,6 +4,9 @@
     <Compile Update="BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Common\BaseUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Common\FrmMenuHtmlHelp.cs">
       <SubType>Form</SubType>
     </Compile>

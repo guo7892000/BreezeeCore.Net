@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="Breezee.AutoSQLExecutor.Core">
       <HintPath>..\..\..\AutoSQLExecutor.Net\bin\Debug\net6.0\Breezee.AutoSQLExecutor.Core.dll</HintPath>
     </Reference>

@@ -1,5 +1,7 @@
 ﻿using System.Data;
 using System.Collections;
+using System.Collections.Generic;
+using System;
 
 /*********************************************************************		
  * 对象名称：		
@@ -202,6 +204,24 @@ namespace Breezee.Core.Interface
             foreach (string strKey in dic.Keys)
             {
                 dtSource.Rows.Add(new object[] { strKey, dic[strKey] });
+            }
+            return dtSource;
+        }
+        #endregion
+
+        #region 根据字典来构造自定义表方法
+        /// <summary>
+        /// 根据字典来构造自定义表（列先后包括ID和Text）
+        /// </summary>
+        /// <param name="dic">字典集合，字典键是值，字典值显示文本</param>
+        /// <param name="bIncludeNull">是否包括空白行</param>
+        /// <returns></returns>
+        public static DataTable GetTable(this IDictionary<string, string> dic)
+        {
+            DataTable dtSource = new DataTable();
+            foreach (string strKey in dic.Keys)
+            {
+                dtSource.Columns.Add(strKey);
             }
             return dtSource;
         }

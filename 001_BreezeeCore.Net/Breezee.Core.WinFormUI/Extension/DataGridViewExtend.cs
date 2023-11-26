@@ -33,21 +33,116 @@ namespace Breezee.Core.WinFormUI
         /// </summary>
         /// <param name="dgv"></param>
         /// <param name="dtSource"></param>
-        public static void BindAutoColumn(this DataGridView dgv, DataTable dtSource)
+        public static void BindAutoColumn(this DataGridView dgv, DataTable dtSource, bool isAutoSize = false,List<FlexGridColumn> fixCol = null)
         {
             BindingSource bs = new BindingSource();
             bs.DataSource = dtSource;
-            dgv.DataSource = bs;
+            BindAutoColumn(dgv, bs, isAutoSize, fixCol);
         }
 
-        public static void BindAutoTable(this DataGridView dgv, DataTable dtSource)
+        /// <summary>
+        /// 使用自动列名绑定数据源
+        /// </summary>
+        /// <param name="dgv"></param>
+        /// <param name="bs"></param>
+        /// <param name="isAutoSize"></param>
+        public static void BindAutoColumn(this DataGridView dgv, BindingSource bs, bool isAutoSize = false, List<FlexGridColumn> fixCol = null)
         {
-            BindAutoColumn(dgv,dtSource);
+            dgv.DataSource = bs;
+            if (isAutoSize)
+            {
+                dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                //设置列和行自动调整
+                dgv.AutoResizeColumns();
+                dgv.AutoResizeRows();
+                //设置网格列宽可手工调整
+                //dgv.AllowUserToResizeColumns = true;
+                //设置网格行高可手工调整
+                //dgv.AllowUserToResizeRows = true;
+            }
+            //针对确定列名显示
+            if (fixCol != null)
+            {
+                foreach (var item in fixCol)
+                {
+                    dgv.Columns[item.ColumnName].HeaderText = item.ColumnCaption;
+                    dgv.Columns[item.ColumnName].Width = item.ColumnWidth;
+                    dgv.Columns[item.ColumnName].DisplayIndex = (bs.DataSource as DataTable).Columns[item.ColumnName].Ordinal; //设置网格顺序跟表一致。
+                }
+            }
+        }
+
+        public static void BindAutoTable(this DataGridView dgv, DataTable dtSource, bool isAutoSize = false, List<FlexGridColumn> fixCol = null)
+        {
+            BindAutoColumn(dgv, dtSource, isAutoSize,fixCol);
         }
 
         public static void BindTagTable(this DataGridView dgv, DataTable dtSource, bool IsUseTagHistoryConfig = true, GridPager gPage = null)
         {
             BindDataGridView(dgv, dtSource, IsUseTagHistoryConfig, gPage);
+        }
+
+        /// <summary>
+        /// 显示行号
+        /// </summary>
+        /// <param name="dgv"></param>
+        /// <param name="isResetRowNum"></param>
+        public static void ShowRowNum(this DataGridView dgv, bool isResetRowNum = false,string sRowNunColumnName="ROWNO")
+        {
+            int rowNumber = 1;
+            if (dgv.Columns.Contains(sRowNunColumnName))
+            {
+                dgv.Columns[sRowNunColumnName].HeaderText = "序号";
+                dgv.Columns[sRowNunColumnName].Width = 50;
+                dgv.Columns[sRowNunColumnName].ValueType = typeof(int); //设置序号为整型
+                dgv.RowHeadersVisible = false;//不显示行标题，即第一个空白列
+                if (!isResetRowNum)
+                {
+                    return;
+                }
+                DataTable dtBind = dgv.GetBindingTable();
+                string sLineNumName = sRowNunColumnName;
+                if (dtBind == null)
+                {
+                    //没有绑定表
+                    if (dgv.Columns.Contains(sLineNumName))
+                    {
+                        foreach (DataGridViewRow row in dgv.Rows)
+                        {
+                            if (row.IsNewRow) continue;
+                            row.Cells[sLineNumName].Value = rowNumber; //这里必须是字符
+                            row.Cells[sLineNumName].ValueType = typeof(int); //设置序号为整型
+                            rowNumber++;
+                        }
+                    }
+                }
+                else
+                {
+                    //有绑定表
+                    if (!dtBind.Columns.Contains(sLineNumName))
+                    {
+                        dtBind.AddLineNum();
+                    }
+                    foreach (DataRow row in dtBind.Rows)
+                    {
+                        row[sLineNumName] = rowNumber; //这里必须是字符
+                        rowNumber++;
+                    }
+                }
+                dgv.RowHeadersVisible = false;//不显示行标题，即第一个空白列
+            }
+            else
+            {
+                dgv.RowHeadersVisible = true;//显示行标题，即第一个空白列
+                dgv.RowHeadersWidth = 50;
+                foreach (DataGridViewRow row in dgv.Rows)
+                {
+                    if (row.IsNewRow) continue;
+                    row.HeaderCell.Value = rowNumber.ToString(); //这里必须是字符，才能显示在行标题中
+                    rowNumber++;
+                }
+                //dgv.AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders);
+            }
         }
 
         #region 绑定网格数据为对象集合
@@ -89,7 +184,7 @@ namespace Breezee.Core.WinFormUI
             {
                 throw new Exception(string.Format("请设置网格{0}的列定义，可以通过Tag或者NewColumnDefinition设置", dgv.Name));
             }
-            bool isDataNull = dtSource == null;
+            
             FlexGridColumnDefinition columnDef = dgv.Tag as FlexGridColumnDefinition;
             if (columnDef == null)
             {
@@ -99,6 +194,11 @@ namespace Breezee.Core.WinFormUI
             if (!columnDef.Columns.Exists(x => x.ColumnCaption == "序号"))
             {
                 columnDef.Columns.Insert(0, FlexGridColumn.NewRowNoCol());
+            }
+
+            if (dtSource == null)
+            {
+                dtSource = GenerateEmptyTable(columnDef.Columns);
             }
 
             if (IsUseTagHistoryConfig)
@@ -113,20 +213,15 @@ namespace Breezee.Core.WinFormUI
                     columnDef = defOther;
                     dgv.Tag = columnDef.GetGridTagString();
                 }
-
-                if (dtSource == null)
-                {
-                    dtSource = GenerateEmptyTable(columnDef.Columns);
-                }
                 #endregion
             }
 
             //ROWNO赋值
             if (!dtSource.Columns.Contains("ROWNO"))
             {
-                dtSource.Columns.Add("ROWNO", typeof(long));
+                dtSource.Columns.Add("ROWNO", typeof(int));
 
-                long i = 1;
+                int i = 1;
                 foreach (DataRow row in dtSource.Rows)
                 {
                     row["ROWNO"] = i++;
@@ -359,6 +454,7 @@ namespace Breezee.Core.WinFormUI
                             dgvc.Width = Convert.ToInt32(strWidth);
                             dgvc.DefaultCellStyle = dgvcs;
                             dgvc.ReadOnly = !isCanEdit;
+                            
                             if (strOnePropety.Length >= 9 && isCanEdit)
                             {
                                 ((DataGridViewTextBoxColumn)dgvc).MaxInputLength = int.Parse(strOnePropety[8]); //对可编辑列设置最大输入长度
@@ -366,6 +462,11 @@ namespace Breezee.Core.WinFormUI
                             if (isCanEdit)
                             {
                                 SetEditGridColumnStyle(dgvc);
+                            }
+                            //当是绑定序号列，设置值类型为整型
+                            if (strName.Equals("ROWNO", StringComparison.OrdinalIgnoreCase))
+                            {
+                                dgvc.ValueType = typeof(int);
                             }
                             break;
                         case "B"://按钮列
@@ -465,6 +566,11 @@ namespace Breezee.Core.WinFormUI
                             {
                                 SetEditGridColumnStyle(dgvc);
                             }
+                            //当是绑定序号列，设置值类型为整型
+                            if (strName.Equals("ROWNO", StringComparison.OrdinalIgnoreCase))
+                            {
+                                dgvc.ValueType = typeof(int);
+                            }
                             break;
                     }
                     #endregion
@@ -511,13 +617,30 @@ namespace Breezee.Core.WinFormUI
             DataTable dt = new DataTable();
             foreach (FlexGridColumn gridColumn in gridColums)
             {
-                DataColumn dc = dt.Columns.Add(gridColumn.ColumnName);
+                DataColumn dc;
+                //行号列，设置为自动增长
+                if ("ROWNO".Equals(gridColumn.ColumnName, StringComparison.OrdinalIgnoreCase) || gridColumn.IsRowNumColumn)
+                {
+                    dc = dt.Columns.Add(gridColumn.ColumnName, typeof(int));
+                    //设置为自增长：但操作过程中删除行后，行号还是会自动增加
+                    dc.AutoIncrement = true;
+                    dc.AutoIncrementSeed = 1;
+                    dc.AutoIncrementStep = 1;
+                }
+                else
+                {
+                    dc = dt.Columns.Add(gridColumn.ColumnName);
+                    if (gridColumn.ColumnDisplayType== DataGridViewColumnTypeEnum.CheckBox)
+                    {
+                        dc.DefaultValue = "1"; //设置默认值
+                    }
+                }
                 dc.Caption = gridColumn.ColumnCaption;
             }
 
             if (!dt.Columns.Contains("ROWNO"))
             {
-                dt.Columns.Add("ROWNO");
+                dt.Columns.Add("ROWNO",typeof(int));
             }
 
             return dt;
@@ -696,8 +819,43 @@ namespace Breezee.Core.WinFormUI
 
             }
             isSelect = !isSelect;
+            ChangeCurrentCell(dgv, strColunmName);
+        }
+
+        /// <summary>
+        /// 改变当前所在网格
+        /// </summary>
+        /// <param name="dgv"></param>
+        /// <param name="strColunmName"></param>
+        public static void ChangeCurrentCell(this DataGridView dgv, string strColunmName)
+        {
             //解决当开始是全部选中，双击后全部取消选 中，但因为焦点没有离开选择列，显示还是选中状态的问题
             if (dgv.CurrentCell.ColumnIndex == dgv.Columns[strColunmName].Index)
+            {
+                int iNewAdd = dgv.CurrentCell.ColumnIndex + 1;
+                int iNewDown = dgv.CurrentCell.ColumnIndex - 1;
+                if (dgv.Columns.Count >= iNewAdd)
+                {
+                    dgv.CurrentCell = dgv.Rows[dgv.CurrentCell.RowIndex].Cells[iNewAdd];
+                    dgv.EndEdit();
+                }
+                else
+                {
+                    dgv.CurrentCell = dgv.Rows[dgv.CurrentCell.RowIndex].Cells[iNewDown];
+                    dgv.EndEdit();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 改变当前所在网格
+        /// </summary>
+        /// <param name="dgv"></param>
+        /// <param name="iColunmIndex"></param>
+        public static void ChangeCurrentCell(this DataGridView dgv, int iColunmIndex)
+        {
+            //解决当开始是全部选中，双击后全部取消选 中，但因为焦点没有离开选择列，显示还是选中状态的问题
+            if (dgv.CurrentCell.ColumnIndex == iColunmIndex)
             {
                 int iNewAdd = dgv.CurrentCell.ColumnIndex + 1;
                 int iNewDown = dgv.CurrentCell.ColumnIndex - 1;
@@ -830,9 +988,7 @@ namespace Breezee.Core.WinFormUI
             }
         }
 
-
-
-        private static bool SetFindEntityInfo(DataGridView dgv, DataGridViewFindText dgvText, DataGridViewCell cell,bool isNext)
+        private static bool SetFindEntityInfo(DataGridView dgv, DataGridViewFindText dgvText, DataGridViewCell cell, bool isNext)
         {
             bool isFind;
             cell.Selected = true;

@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Properties\AssemblyInfo.cs" />
+    <Compile Remove="Properties\**" />
+    <EmbeddedResource Remove="Properties\**" />
+    <None Remove="Properties\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,10 +18,6 @@
     <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core.IOC\Breezee.Core.IOC.csproj" />
     <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core\Breezee.Core.csproj" />
     <ProjectReference Include="..\..\003_AutoSQLExecutor.Net\Breezee.AutoSQLExecutor.Core\Breezee.AutoSQLExecutor.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Properties\" />
   </ItemGroup>
 
 </Project>

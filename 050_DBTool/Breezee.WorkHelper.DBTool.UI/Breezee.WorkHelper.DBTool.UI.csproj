@@ -52,7 +52,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentFTP" Version="48.0.3" />
     <PackageReference Include="LibGit2Sharp" Version="0.27.2" />
+    <PackageReference Include="SSH.NET" Version="2023.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -61,6 +63,7 @@
     <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core.IOC\Breezee.Core.IOC.csproj" />
     <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core.Tool\Breezee.Core.Tool.csproj" />
     <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core.WinFormUI\Breezee.Core.WinFormUI.csproj" />
+    <ProjectReference Include="..\..\002_MiniFramework\Breezee.Framework.Mini.Entity\Breezee.Framework.Mini.Entity.csproj" />
     <ProjectReference Include="..\..\003_AutoSQLExecutor.Net\Breezee.AutoSQLExecutor.Common\Breezee.AutoSQLExecutor.Common.csproj" />
     <ProjectReference Include="..\..\003_AutoSQLExecutor.Net\Breezee.AutoSQLExecutor.Core\Breezee.AutoSQLExecutor.Core.csproj" />
     <ProjectReference Include="..\Breezee.WorkHelper.DBTool.Entity\Breezee.WorkHelper.DBTool.Entity.csproj" />
