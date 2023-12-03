@@ -51,7 +51,7 @@ namespace Breezee.Core.Interface
             }
             else
             {
-                UserLoveSet set = _userLoveSets.First();
+                UserLoveSet set = userSet.First();
                 set.Value = sValue;
                 set.Remark= sRemark;
             }
@@ -68,7 +68,7 @@ namespace Breezee.Core.Interface
             }
             else
             {
-                return _userLoveSets.First();
+                return userSet.First();
             }
         }
 

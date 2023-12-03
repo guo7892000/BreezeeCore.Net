@@ -64,6 +64,9 @@
     <Compile Update="DataSql\FrmDBTReadDBData.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Doc\FrmDBTSqlStady.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

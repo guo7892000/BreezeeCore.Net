@@ -126,7 +126,7 @@ namespace Breezee.Core.WinFormUI
 
                 if (row >= _row && wid >= _maxWidth - 6)
                 {
-                    result += "。。。";
+                    result += "...";
                     IsMore = true;
                     return result;
                 }
@@ -345,7 +345,7 @@ namespace Breezee.Core.WinFormUI
             btnMore.Click += btnMore_Click;
 
             panelErrorInfo.Visible = false;
-            this.Height = 175;
+            this.Height = 125;
 
             #region 设置效果
             switch (sShowType)
