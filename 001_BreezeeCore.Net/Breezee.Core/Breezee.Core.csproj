@@ -8,13 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\003_AutoSQLExecutor.Net\Breezee.AutoSQLExecutor.Core\Breezee.AutoSQLExecutor.Core.csproj" />
-    <ProjectReference Include="..\Breezee.Core.Interface\Breezee.Core.Interface.csproj" />
+    <Compile Remove="Entity\**" />
+    <Compile Remove="Global\**" />
+    <EmbeddedResource Remove="Entity\**" />
+    <EmbeddedResource Remove="Global\**" />
+    <None Remove="Entity\**" />
+    <None Remove="Global\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Entity\" />
-    <Folder Include="Global\" />
+    <ProjectReference Include="..\..\003_AutoSQLExecutor.Net\Breezee.AutoSQLExecutor.Core\Breezee.AutoSQLExecutor.Core.csproj" />
+    <ProjectReference Include="..\Breezee.Core.Interface\Breezee.Core.Interface.csproj" />
   </ItemGroup>
 
 </Project>

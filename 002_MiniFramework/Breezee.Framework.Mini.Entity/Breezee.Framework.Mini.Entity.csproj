@@ -9,8 +9,11 @@
 
   <ItemGroup>
     <Compile Remove="Entity\**" />
+    <Compile Remove="Properties\**" />
     <EmbeddedResource Remove="Entity\**" />
+    <EmbeddedResource Remove="Properties\**" />
     <None Remove="Entity\**" />
+    <None Remove="Properties\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,10 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <None Update="Config\Mini\Data\NetVersion.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Config\Mini\Data\DLLList.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
