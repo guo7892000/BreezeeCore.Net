@@ -7,8 +7,8 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <BaseOutputPath>..\..\bin</BaseOutputPath>
-    <AssemblyVersion>1.2.25</AssemblyVersion>
-    <FileVersion>1.2.25</FileVersion>
+    <AssemblyVersion>1.2.38.2</AssemblyVersion>
+    <FileVersion>1.2.38.2</FileVersion>
     <Title>Work Helper</Title>
     <Authors>BreezeeHui</Authors>
     <Company>BreezeeHui</Company>

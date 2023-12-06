@@ -65,10 +65,10 @@
             this.pnlLogin.Controls.Add(this.chbSavePwd);
             this.pnlLogin.Controls.Add(this.ckbAutoLogin);
             this.pnlLogin.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlLogin.Location = new System.Drawing.Point(0, 387);
-            this.pnlLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlLogin.Location = new System.Drawing.Point(0, 295);
+            this.pnlLogin.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLogin.Name = "pnlLogin";
-            this.pnlLogin.Size = new System.Drawing.Size(496, 222);
+            this.pnlLogin.Size = new System.Drawing.Size(505, 214);
             this.pnlLogin.TabIndex = 106;
             this.pnlLogin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Login_MouseDown);
             // 
@@ -76,7 +76,7 @@
             // 
             this.lblLoginTipInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblLoginTipInfo.AutoSize = true;
-            this.lblLoginTipInfo.Location = new System.Drawing.Point(300, 203);
+            this.lblLoginTipInfo.Location = new System.Drawing.Point(309, 190);
             this.lblLoginTipInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLoginTipInfo.Name = "lblLoginTipInfo";
             this.lblLoginTipInfo.Size = new System.Drawing.Size(92, 17);
@@ -89,8 +89,8 @@
             this.cbbUserName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbbUserName.FormattingEnabled = true;
             this.cbbUserName.IntegralHeight = false;
-            this.cbbUserName.Location = new System.Drawing.Point(310, 14);
-            this.cbbUserName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbbUserName.Location = new System.Drawing.Point(319, 14);
+            this.cbbUserName.Margin = new System.Windows.Forms.Padding(4);
             this.cbbUserName.Name = "cbbUserName";
             this.cbbUserName.Size = new System.Drawing.Size(170, 25);
             this.cbbUserName.TabIndex = 107;
@@ -103,8 +103,8 @@
             this.txbPassword.BackColor = System.Drawing.Color.White;
             this.txbPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbPassword.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txbPassword.Location = new System.Drawing.Point(310, 71);
-            this.txbPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbPassword.Location = new System.Drawing.Point(319, 71);
+            this.txbPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.PasswordChar = '*';
             this.txbPassword.Size = new System.Drawing.Size(163, 22);
@@ -116,8 +116,8 @@
             // 
             this.pictureBoxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxPassword.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxPassword.Image")));
-            this.pictureBoxPassword.Location = new System.Drawing.Point(303, 65);
-            this.pictureBoxPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxPassword.Location = new System.Drawing.Point(312, 65);
+            this.pictureBoxPassword.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxPassword.Name = "pictureBoxPassword";
             this.pictureBoxPassword.Size = new System.Drawing.Size(180, 41);
             this.pictureBoxPassword.TabIndex = 105;
@@ -127,8 +127,8 @@
             // 
             this.pictureBoxUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxUsername.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxUsername.Image")));
-            this.pictureBoxUsername.Location = new System.Drawing.Point(303, 8);
-            this.pictureBoxUsername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxUsername.Location = new System.Drawing.Point(312, 12);
+            this.pictureBoxUsername.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxUsername.Name = "pictureBoxUsername";
             this.pictureBoxUsername.Size = new System.Drawing.Size(180, 41);
             this.pictureBoxUsername.TabIndex = 105;
@@ -142,8 +142,8 @@
             this.btnLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.ErrorImage = null;
-            this.btnLogin.Location = new System.Drawing.Point(301, 154);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogin.Location = new System.Drawing.Point(312, 143);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(182, 41);
             this.btnLogin.TabIndex = 3;
@@ -156,8 +156,8 @@
             this.chbSavePwd.AutoSize = true;
             this.chbSavePwd.BackColor = System.Drawing.Color.Transparent;
             this.chbSavePwd.CausesValidation = false;
-            this.chbSavePwd.Location = new System.Drawing.Point(405, 122);
-            this.chbSavePwd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chbSavePwd.Location = new System.Drawing.Point(414, 114);
+            this.chbSavePwd.Margin = new System.Windows.Forms.Padding(4);
             this.chbSavePwd.Name = "chbSavePwd";
             this.chbSavePwd.Size = new System.Drawing.Size(75, 21);
             this.chbSavePwd.TabIndex = 103;
@@ -173,8 +173,8 @@
             this.ckbAutoLogin.CausesValidation = false;
             this.ckbAutoLogin.Checked = true;
             this.ckbAutoLogin.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbAutoLogin.Location = new System.Drawing.Point(314, 123);
-            this.ckbAutoLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ckbAutoLogin.Location = new System.Drawing.Point(326, 114);
+            this.ckbAutoLogin.Margin = new System.Windows.Forms.Padding(4);
             this.ckbAutoLogin.Name = "ckbAutoLogin";
             this.ckbAutoLogin.Size = new System.Drawing.Size(75, 21);
             this.ckbAutoLogin.TabIndex = 103;
@@ -189,9 +189,9 @@
             this.pnl_All.Controls.Add(this.btnFormClose);
             this.pnl_All.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_All.Location = new System.Drawing.Point(0, 0);
-            this.pnl_All.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnl_All.Margin = new System.Windows.Forms.Padding(4);
             this.pnl_All.Name = "pnl_All";
-            this.pnl_All.Size = new System.Drawing.Size(496, 387);
+            this.pnl_All.Size = new System.Drawing.Size(505, 295);
             this.pnl_All.TabIndex = 108;
             this.pnl_All.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Login_MouseDown);
             // 
@@ -201,8 +201,8 @@
             this.btnFormMin.BackColor = System.Drawing.Color.Transparent;
             this.btnFormMin.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFormMin.BackgroundImage")));
             this.btnFormMin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnFormMin.Location = new System.Drawing.Point(412, 4);
-            this.btnFormMin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFormMin.Location = new System.Drawing.Point(421, 4);
+            this.btnFormMin.Margin = new System.Windows.Forms.Padding(4);
             this.btnFormMin.Name = "btnFormMin";
             this.btnFormMin.Size = new System.Drawing.Size(30, 27);
             this.btnFormMin.TabIndex = 102;
@@ -215,8 +215,8 @@
             this.btnFormClose.BackColor = System.Drawing.Color.Transparent;
             this.btnFormClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFormClose.BackgroundImage")));
             this.btnFormClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnFormClose.Location = new System.Drawing.Point(449, 4);
-            this.btnFormClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFormClose.Location = new System.Drawing.Point(458, 4);
+            this.btnFormClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnFormClose.Name = "btnFormClose";
             this.btnFormClose.Size = new System.Drawing.Size(30, 27);
             this.btnFormClose.TabIndex = 103;
@@ -228,7 +228,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(496, 609);
+            this.ClientSize = new System.Drawing.Size(505, 509);
             this.Controls.Add(this.pnl_All);
             this.Controls.Add(this.pnlLogin);
             this.DoubleBuffered = true;
