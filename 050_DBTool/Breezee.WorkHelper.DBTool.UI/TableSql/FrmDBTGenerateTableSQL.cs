@@ -95,7 +95,9 @@ namespace Breezee.WorkHelper.DBTool.UI
             //uC_DbConnection1.DBType_SelectedIndexChanged += cbbDatabaseType_SelectedIndexChanged;//数据库类型下拉框变化事件
             uC_DbConnection1.DBConnName_SelectedIndexChanged += cbbDBConnName_SelectedIndexChanged;
             #endregion
-
+            //加载用户喜好值
+            ckbExcludeColumn.Checked = "1".Equals(WinFormContext.UserLoveSettings.Get(DBTUserLoveConfig.GenerateTableSQL_IsExcludeColumn, "1").Value) ? true : false;
+            txbExcludeColumn.Text = WinFormContext.UserLoveSettings.Get(DBTUserLoveConfig.GenerateTableSQL_ExcludeColumnList, "").Value;
             //设置下拉框查找数据源
             cbbTableName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cbbTableName.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -180,8 +182,9 @@ namespace Breezee.WorkHelper.DBTool.UI
                     }
                     //绑定网格
                     bsTable.DataSource = dtTable;
-                    dgvTableList.DataSource = bsTable;
-
+                    //dgvTableList.DataSource = bsTable;
+                    dgvTableList.BindAutoColumn(bsTable);
+                    dgvTableList.ShowRowNum();
                     //绑定列
                     dtTable = _dsExcelData.Tables[GetExcelSheetNameCol(importDBType)];
                     //默认主键处理
@@ -225,7 +228,9 @@ namespace Breezee.WorkHelper.DBTool.UI
                     }
                     //绑定网格
                     bsCos.DataSource = dtTable;
-                    dgvColList.DataSource = bsCos;
+                    //dgvColList.DataSource = bsCos;
+                    dgvColList.BindAutoColumn(bsCos);
+                    dgvColList.ShowRowNum();
                     ShowInfo(_strImportSuccess);
                 }
             }
@@ -313,6 +318,11 @@ namespace Breezee.WorkHelper.DBTool.UI
                 dtTableCopy.TableName = _strTableName;
                 SetTableTag(dtTableCopy);
                 SetColTag(sSchma, templateType);
+
+                //保存用户喜好值
+                WinFormContext.UserLoveSettings.Set(DBTUserLoveConfig.GenerateTableSQL_ExcludeColumnList, txbExcludeColumn.Text.Trim(), "【生成表SQL】排除指定列清单");
+                WinFormContext.UserLoveSettings.Set(DBTUserLoveConfig.GenerateTableSQL_IsExcludeColumn, ckbExcludeColumn.Checked ? "1" : "0", "【生成表SQL】是否排除指定列");
+                WinFormContext.UserLoveSettings.Save();
             }
             //设置不能增加行
             dgvTableList.AutoGenerateColumns = true;
@@ -650,10 +660,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             if (cbbInputType.SelectedValue == null) return;
             if (_ImportInput.Equals(cbbInputType.SelectedValue.ToString()))
             {
-                uC_DbConnection1.Visible = false;              
-                lblTableName.Visible = false;
-                cbbTableName.Visible = false;
-                ckbGetTableList.Visible = false;
+                gbTable.Visible = false;              
                 tsbImport.Text = "导入";
                 ckbAllConvert.Checked = true;
                 ckbAllConvert.Visible = true;
@@ -661,13 +668,12 @@ namespace Breezee.WorkHelper.DBTool.UI
             }
             else
             {
-                uC_DbConnection1.Visible = true;
-                lblTableName.Visible = true;
-                cbbTableName.Visible = true;
-                ckbGetTableList.Visible = true;
+                //连接数据库
+                gbTable.Visible = true;
                 tsbImport.Text = "连接";
                 ckbAllConvert.Checked = false;
                 ckbAllConvert.Visible = false;
+                cbbImportDBType.SetControlReadOnly(true);
             }
             dgvTableList.Columns.Clear();
             dgvTableList.DataSource = null;
@@ -689,8 +695,8 @@ namespace Breezee.WorkHelper.DBTool.UI
             dt.Columns.Add(dcSelected);
             dt.Columns[_sGridColumnSelect].SetOrdinal(0);//设置选择列在最前面
             bsTable.DataSource = dt;
-            dgvTableList.DataSource = bsTable;
-            
+            dgvTableList.BindAutoColumn(bsTable);
+            dgvTableList.ShowRowNum();
         }
 
         #region 设置Tag方法
@@ -699,6 +705,8 @@ namespace Breezee.WorkHelper.DBTool.UI
             DataTable dtCols = _dataAccess.GetSqlSchemaTableColumns(cbbTableName.Text.Trim(), sSchema);
 
             DataTable dtColsNew = EntCol.GetTable(templateType);
+            bool isExclude = ckbExcludeColumn.Checked;
+            string[] arrExclude = txbExcludeColumn.Text.Trim().ToLower().Split(new char[] { ',','，',';','；' }, StringSplitOptions.RemoveEmptyEntries);
             //增加选择列
             DataColumn dcSelected = new DataColumn(_sGridColumnSelect, typeof(bool));
             dcSelected.DefaultValue = "True";
@@ -710,10 +718,16 @@ namespace Breezee.WorkHelper.DBTool.UI
                 DataRow dr = dtColsNew.NewRow();
                 string sDataType = drSource[DBColumnEntity.SqlString.DataType].ToString();
                 string sDataLength = drSource[DBColumnEntity.SqlString.DataLength].ToString();
+                //string sDataPrecision = drSource[DBColumnEntity.SqlString.DataPrecision].ToString();
                 string sDataScale = drSource[DBColumnEntity.SqlString.DataScale].ToString();
+                string sColName = drSource[DBColumnEntity.SqlString.Name].ToString();
+                if (isExclude && arrExclude.Length>0 && arrExclude.Contains(sColName.ToLower()))
+                {
+                    dr[_sGridColumnSelect] = "False";
+                }
                 dr[ColCommon.ExcelCol.ChangeType] = "新增";
                 dr[ColCommon.ExcelCol.TableCode] = drSource[DBColumnEntity.SqlString.TableName].ToString();
-                dr[ColCommon.ExcelCol.Code] = drSource[DBColumnEntity.SqlString.Name].ToString();
+                dr[ColCommon.ExcelCol.Code] = sColName;
                 dr[ColCommon.ExcelCol.Name] = drSource[DBColumnEntity.SqlString.NameCN].ToString();
                 dr[ColCommon.ExcelCol.DataType] = sDataType;
                 dr[ColCommon.ExcelCol.DataLength] = sDataLength;
@@ -765,7 +779,9 @@ namespace Breezee.WorkHelper.DBTool.UI
             dtColsNew.TableName = _strColName;
 
             bsCos.DataSource = dtColsNew;
-            dgvColList.DataSource = bsCos;
+            //dgvColList.DataSource= dtColsNew;
+            dgvColList.BindAutoColumn(bsCos,true);
+            dgvColList.ShowRowNum();
         }
         #endregion
 
@@ -809,6 +825,67 @@ namespace Breezee.WorkHelper.DBTool.UI
             if (string.IsNullOrEmpty(sSearch)) return;
             dgvColList.SeachText(sSearch, ref dgvFindText, null, isNext);
             lblFind.Text = dgvFindText.CurrentMsg;
+        }
+
+        /// <summary>
+        /// 显示方向右键按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsmiDirectShow_Click(object sender, EventArgs e)
+        {
+            Orientation orientationNew = splitContainer1.Orientation == Orientation.Horizontal ? Orientation.Vertical : Orientation.Horizontal;
+            if (orientationNew.Equals(Orientation.Vertical))
+            {
+                splitContainer1.SplitterDistance = int.Parse(Math.Ceiling(splitContainer1.Width * 0.3).ToString());
+            }
+            else
+            {
+                splitContainer1.SplitterDistance = int.Parse(Math.Ceiling(splitContainer1.Height * 0.3).ToString());
+            }
+            splitContainer1.Orientation = orientationNew;
+        }
+
+        private void tsmiChooseOrNot_Click(object sender, EventArgs e)
+        {
+            if (dgvColList.SelectedCells == null || dgvColList.SelectedCells.Count == 0) return;
+            if (dgvColList.CurrentCell.ColumnIndex != dgvColList.Columns[_sGridColumnSelect].Index)
+            {
+                return; //选择、条件、MyBatis动态列
+            }
+            //选择
+            bool sNew = bool.Parse(dgvColList.CurrentCell.Value.ToString()) ? false : true;
+            foreach (DataGridViewCell item in dgvColList.SelectedCells)
+            {
+                //为了防止选了其他列，这里只针对选择列赋值
+                if(item.ColumnIndex == dgvColList.Columns[_sGridColumnSelect].Index)
+                {
+                    item.Value = sNew;
+                }
+            }
+
+            dgvColList.CurrentCell.Value = sNew;
+
+            //解决当开始是全部选中，双击后全部取消选 中，但因为焦点没有离开选择列，显示还是选中状态的问题
+            dgvColList.ChangeCurrentCell(dgvColList.CurrentCell.ColumnIndex);
+        }
+
+        private void ckbExcludeColumn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckbExcludeColumn.Checked && bsCos.DataSource != null)
+            {
+                DataTable dtCol = bsCos.DataSource as DataTable;
+                bool isExclude = ckbExcludeColumn.Checked;
+                string[] arrExclude = txbExcludeColumn.Text.Trim().ToLower().Split(new char[] { ',', '，', ';', '；' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (DataRow drSource in dtCol.Rows)
+                {
+                    string sColName = drSource[DBColumnEntity.SqlString.Name].ToString();
+                    if (isExclude && arrExclude.Length > 0 && arrExclude.Contains(sColName.ToLower()))
+                    {
+                        drSource[_sGridColumnSelect] = "False";
+                    }
+                }
+            }
         }
     }
 }

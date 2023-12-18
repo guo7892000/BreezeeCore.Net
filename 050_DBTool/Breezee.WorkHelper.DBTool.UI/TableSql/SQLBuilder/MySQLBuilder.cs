@@ -124,7 +124,6 @@ namespace Breezee.WorkHelper.DBTool.UI
 
             //数据类型(类型+长度+小数点)
             string sDataType_Full = (_isAllConvert && !String.IsNullOrEmpty(drCol.allInOne.MySql_FullDataType)) ? drCol.allInOne.MySql_FullDataType : GetFullTypeString(drCol, strColDataType, strColLen, strColDecimalDigits);
-
             //列加上前后缀
             strColCode = "`" + strColCode + "`";
             if (tableDealType == TableChangeType.Create)
@@ -295,7 +294,9 @@ namespace Breezee.WorkHelper.DBTool.UI
                     break;
                 case DataBaseType.Oracle:
                     //类型
-                    sDbType = sDbType.ToLower().Replace("varchar2", "varchar").Replace("date", "datetime");
+                    sDbType = sDbType.ToLower().Replace("varchar2", "varchar").Replace("date", "datetime").Replace("number", "decimal");
+                    //默认值
+                    sDefaultValue = sDefaultValue.ToLower().Replace("sysdate", "now()");
                     break;
                 case DataBaseType.MySql:
                     break;
@@ -305,8 +306,7 @@ namespace Breezee.WorkHelper.DBTool.UI
                     break;
                 case DataBaseType.PostgreSql:
                     //类型
-                    sDbType = sDbType.ToLower().Replace("character varying", "varchar")
-                        .Replace("date", "datetime");
+                    sDbType = sDbType.ToLower().Replace("character varying", "varchar").Replace("date", "datetime");
                     break;
                 default:
                     throw new Exception("暂不支持该数据库类型！");
