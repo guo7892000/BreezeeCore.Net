@@ -85,6 +85,7 @@ namespace Breezee.WorkHelper.DBTool.UI
                     dtMain.Clear();
                     dtMain.Columns.Clear();
                     pasteText.GetStringTable(ckbAutoColumnName.Checked, dtMain);
+                    dgvTableList.ShowRowNum(); //显示行号
                 }
             }
             catch (Exception ex)
@@ -140,7 +141,7 @@ namespace Breezee.WorkHelper.DBTool.UI
                             strOneData = strOneData.Replace("#" + dtMain.Columns[j].ColumnName + "#", strData);
                         }
                         //所有SQL文本累加
-                        sbAllSql += strOneData + "\n";
+                        sbAllSql += strOneData + (ckbResultNewLine.Checked ? "\n" : "");
                     }
                     #endregion
                 }
@@ -264,21 +265,27 @@ namespace Breezee.WorkHelper.DBTool.UI
         #region 类型选择变化事件
         private void cbbSqlType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            int nowHeight  = splitContainer1.SplitterDistance;
             string strSqlType = cbbSqlType.SelectedValue.ToString();
             if (strSqlType == "1")
             {
                 grbConSting.Visible = true;
                 cbbDbType.Visible = false;
-                cbbWordConvert.Visible = true;
                 lblDbType.Visible = false;
+                cbbWordConvert.Visible = true;
+                lblWordConvert.Visible = true;
+                splitContainer1.Panel1Collapsed = false; //设计上方非折叠
             }
             else
             {
                 grbConSting.Visible = false;
                 cbbDbType.Visible = true;
-                cbbWordConvert.Visible = false;
                 lblDbType.Visible = true;
+                cbbWordConvert.Visible = false;
+                lblWordConvert.Visible = false;
+                splitContainer1.Panel1Collapsed = true;  //设计上方折叠
             }
+            
         }
         #endregion
 

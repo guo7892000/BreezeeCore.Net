@@ -15,11 +15,16 @@ using Setting = Breezee.WorkHelper.DBTool.UI.Properties.Settings;
 using Breezee.Core.WinFormUI;
 using Breezee.AutoSQLExecutor.Core;
 using System.Text.RegularExpressions;
+using org.breezee.MyPeachNet;
 
 namespace Breezee.WorkHelper.DBTool.UI
 {
     /// <summary>
-    /// 生成实体
+    /// 功能名称：生成实体
+    /// 创建作者：黄国辉
+    /// 创建日期：2016-10-20
+    /// 修改历史:
+    ///   2023-09-07 BreezeeHui 模板增加文件后缀
     /// </summary>
 	public partial class FrmDBTDBAutoEntityFile : BaseForm
 	{
@@ -62,6 +67,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             //设置数据库连接控件
             _IDBConfigSet = ContainerContext.Container.Resolve<IDBConfigSet>();
             DataTable dtConn = _IDBConfigSet.QueryDbConfig(_dicQuery).SafeGetDictionaryTable();
+            uC_DbConnection1.ShowGlobalMsg += ShowGlobalMsg_Click;
             uC_DbConnection1.SetDbConnComboBoxSource(dtConn);
             uC_DbConnection1.IsDbNameNotNull = false;
             uC_DbConnection1.DBConnName_SelectedIndexChanged += DBConnNameSelectedIndexChanged;
@@ -89,6 +95,12 @@ namespace Breezee.WorkHelper.DBTool.UI
             dgvTableInfo.Tag = fdc.GetGridTagString();
         }
 
+        #region 显示全局提示信息事件
+        private void ShowGlobalMsg_Click(object sender, string msg)
+        {
+            ShowDestopTipMsg(msg);
+        }
+        #endregion
         private void DBConnNameSelectedIndexChanged(object sender, EventArgs e)
         {
             btnLinkServer.PerformClick();
@@ -206,8 +218,14 @@ namespace Breezee.WorkHelper.DBTool.UI
                 {
                     Directory.CreateDirectory(sFilePath);
                 }
+                //确定文件后缀名
+                string sFileSuffix = txbModuleFileSuffix.Text.trim();
+                if (!sFileSuffix.startsWith("."))
+                {
+                    sFileSuffix = "." + sFileSuffix;
+                }
                 //最终文件路径：包含文件
-                sFilePath = Path.Combine(sFilePath, _dicString[AutoImportModuleString.AutoFileSysParam.EntNameClass] + ".cs");
+                sFilePath = Path.Combine(sFilePath, _dicString[AutoImportModuleString.AutoFileSysParam.EntNameClass] + sFileSuffix);
                 foreach (string sKey in _dicString.Keys)
                 {
                     sFileContent = sFileContent.Replace(sKey, _dicString[sKey]);
@@ -288,11 +306,11 @@ namespace Breezee.WorkHelper.DBTool.UI
         }
 
         #region 测试连接按钮事件
-        private void btnLinkServer_Click(object sender, EventArgs e)
+        private async void btnLinkServer_Click(object sender, EventArgs e)
         {
             try
             {
-                _dbServer = uC_DbConnection1.GetDbServerInfo();
+                _dbServer = await uC_DbConnection1.GetDbServerInfo();
                 if (_dbServer == null)
                 {
                     return;
@@ -330,7 +348,6 @@ namespace Breezee.WorkHelper.DBTool.UI
             }
         } 
         #endregion
-
 
         #region 加载树方法
         private void LoadTreeView(DbServerInfo server)
@@ -533,9 +550,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             }
         }
         #endregion
-
-        
-
+       
         /// <summary>
         /// 模板下拉框变化
         /// </summary>
@@ -550,7 +565,8 @@ namespace Breezee.WorkHelper.DBTool.UI
                 if(drArr.Length> 0)
                 {
                     rtbEntityTemplate.Clear();
-                    rtbEntityTemplate.AppendText(drArr[0][AutoImportModuleString.ColumnNameModule.ModuleContent].ToString());
+                    rtbEntityTemplate.AppendText(drArr[0][AutoImportModuleString.ColumnNameModule.ModuleContent].ToString()); //模板内容
+                    txbModuleFileSuffix.Text = drArr[0][AutoImportModuleString.ColumnNameModule.ModuleFileSuffix].ToString(); //后缀
                 }
             }
         }

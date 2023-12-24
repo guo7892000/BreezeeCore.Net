@@ -71,6 +71,7 @@ namespace Breezee.Framework.Mini.StartUp
             }
 
             MessageBox.Show(str, "ÏµÍ³´íÎó£¡", MessageBoxButtons.OK);
+            Clipboard.SetText(str);
         }
         #endregion
 

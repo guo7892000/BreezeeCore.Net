@@ -42,6 +42,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             uC_DbConnection1.SetDbConnComboBoxSource(dtConn);
             uC_DbConnection1.IsDbNameNotNull = true;
             //uC_DbConnection1.DBType_SelectedIndexChanged += cbbDatabaseType_SelectedIndexChanged;//数据库类型下拉框变化事件
+            uC_DbConnection1.ShowGlobalMsg += ShowGlobalMsg_Click;
             #endregion
 
             _dicString.Add("String", "String");
@@ -64,6 +65,11 @@ namespace Breezee.WorkHelper.DBTool.UI
             cbbExampleType.BindTypeValueDropDownList(_dicString.GetTextValueTable(false), true, true);
             SetTag();
 
+            _dicString.Clear();
+            _dicString.Add("1", "命名参数");
+            _dicString.Add("2", "位置参数");
+            _dicString.Add("3", "值替换");
+            cbbParamType.BindTypeValueDropDownList(_dicString.GetTextValueTable(false), false, true);
             //加载用户偏好值
             rtbSqlInput.Text = WinFormContext.UserLoveSettings.Get(DBTUserLoveConfig.SQLAutoParamVerify_BeforeSql, "").Value;
             lblBefore.Text = "条件格式：#键名:M:R:LS:D-now()-r-n:N#，其中M表示非空，R表示值替换，LS表示字符列表，LI为整型列表，即IN括号里的部分字符。N不加引号；D默认值配置，其第二个参数为默认值。";
@@ -71,9 +77,16 @@ namespace Breezee.WorkHelper.DBTool.UI
             rtbSqlOutput.ReadOnly= true;
         }
 
+        #region 显示全局提示信息事件
+        private void ShowGlobalMsg_Click(object sender, string msg)
+        {
+            ShowDestopTipMsg(msg);
+        }
+        #endregion
+
         private void SetTag()
         {
-            //通用列网格跟所有列网格结构一样
+            //条件网格
             FlexGridColumnDefinition fdc = new FlexGridColumnDefinition();
             fdc.AddColumn(
                 FlexGridColumn.NewRowNoCol(),
@@ -83,7 +96,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             );
             dgvConditionInput.Tag = fdc.GetGridTagString();
             dgvConditionInput.BindDataGridView(fdc.GetNullTable()); 
-            //仓库名称
+            //网格中的条件类型下拉框：隐藏，没使用。因为SQL配置可以指定，加引号就是是字符，不加就是整型。
             DataGridViewComboBoxColumn cmbWarehouse = dgvConditionInput.Columns["IN_TYPE"] as DataGridViewComboBoxColumn;
             cmbWarehouse.Name = IDictionaryExtension.Dictionary_Key;
             cmbWarehouse.HeaderText = "类型";
@@ -108,7 +121,7 @@ namespace Breezee.WorkHelper.DBTool.UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnGetCondition_Click(object sender, EventArgs e)
+        private async void btnGetCondition_Click(object sender, EventArgs e)
         {
             string sSqlBefore = rtbSqlInput.Text.Trim();
             if (string.IsNullOrEmpty(sSqlBefore))
@@ -116,7 +129,7 @@ namespace Breezee.WorkHelper.DBTool.UI
                 ShowErr("请输入要参数化的SQL！");
                 return;
             }
-            _dbServer = uC_DbConnection1.GetDbServerInfo();
+            _dbServer = await uC_DbConnection1.GetDbServerInfo();
             if (_dbServer == null)
             {
                 ShowErr("请选择一个连接！");
@@ -136,13 +149,14 @@ namespace Breezee.WorkHelper.DBTool.UI
                 drNew["IN_VALUE"] = dicPreCondition[item].KeyValue;
                 dt.Rows.Add(drNew);
             }
+            dgvConditionInput.ShowRowNum(true);
         }
         private void tsbImport_Click(object sender, EventArgs e)
         {
             btnGetCondition.PerformClick();
         }
 
-        private void tsbConvert_Click(object sender, EventArgs e)
+        private async void tsbConvert_Click(object sender, EventArgs e)
         {
             string sSql = rtbSqlInput.Text.Trim();
             if (string.IsNullOrEmpty(sSql))
@@ -151,7 +165,7 @@ namespace Breezee.WorkHelper.DBTool.UI
                 return;
             }
 
-            _dbServer = uC_DbConnection1.GetDbServerInfo();
+            _dbServer = await uC_DbConnection1.GetDbServerInfo();
             if (_dbServer == null)
             {
                 ShowErr("请选择一个连接！");
@@ -211,20 +225,53 @@ namespace Breezee.WorkHelper.DBTool.UI
                     }
                 }
             }
-            //
-            ParserResult result = _dataAccess.SqlParsers.parse(sSql, data);
+            TargetSqlParamTypeEnum sqlParamTypeEnum = TargetSqlParamTypeEnum.NameParam;
+            string sParamType = cbbParamType.SelectedValue.ToString();
+            if("2".Equals(sParamType, StringComparison.OrdinalIgnoreCase))
+            {
+                sqlParamTypeEnum = TargetSqlParamTypeEnum.PositionParam;
+            }
+            else if ("3".Equals(sParamType, StringComparison.OrdinalIgnoreCase))
+            {
+                sqlParamTypeEnum = TargetSqlParamTypeEnum.DIRECT_RUN;
+            }
+            //参数化转化
+            ParserResult result = _dataAccess.SqlParsers.parse(sSql, data, sqlParamTypeEnum);
             if ("0".equals(result.Code))
             {
                 rtbSqlOutput.Text = result.Sql;
                 dt = dgvConditionOutput.GetBindingTable();
                 dt.Clear();
-                foreach (var item in result.entityQuery)
+                if (sqlParamTypeEnum == TargetSqlParamTypeEnum.NameParam)
                 {
-                    DataRow drNew = dt.NewRow();
-                    drNew["OUT_KEY"] = item.Key;
-                    drNew["OUT_VALUE"] = item.Value.KeyValue;
-                    dt.Rows.Add(drNew);
+                    // 命名参数
+                    foreach (var item in result.entityQuery)
+                    {
+                        DataRow drNew = dt.NewRow();
+                        drNew["OUT_KEY"] = item.Key;
+                        drNew["OUT_VALUE"] = item.Value.KeyValue;
+                        dt.Rows.Add(drNew);
+                    }
+                    dgvConditionOutput.Columns["OUT_KEY"].Visible = true;
                 }
+                else if (sqlParamTypeEnum == TargetSqlParamTypeEnum.PositionParam)
+                {
+                    // 位置参数
+                    foreach (var item in result.PositionCondition)
+                    {
+                        DataRow drNew = dt.NewRow();
+                        drNew["OUT_VALUE"] = item.ToString();
+                        dt.Rows.Add(drNew);
+                    }
+                    dgvConditionOutput.Columns["OUT_KEY"].Visible= false;
+                }
+                else
+                {
+                    // 值替换
+
+                }
+
+                dgvConditionOutput.ShowRowNum(true); //显示行号
                 _dicObject = result.ObjectQuery;
                 //tabControl1.SelectedTab = tpAutoAfter;
                 //保存用户偏好值
@@ -274,6 +321,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             {
                 DataTable dtResult = _dataAccess.QueryHadParamSqlData(sSqlOut, _dicObject);
                 dgvQuery.BindAutoColumn(dtResult);
+                dgvQuery.ShowRowNum(true); //显示行号
             }
             catch(Exception ex) 
             { 

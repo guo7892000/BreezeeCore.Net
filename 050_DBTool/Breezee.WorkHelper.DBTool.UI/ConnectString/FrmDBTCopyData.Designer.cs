@@ -41,10 +41,11 @@ namespace Breezee.WorkHelper.DBTool.UI
             this.cbbDbType = new System.Windows.Forms.ComboBox();
             this.lblDbType = new System.Windows.Forms.Label();
             this.cbbSqlType = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblWordConvert = new System.Windows.Forms.Label();
             this.cbbWordConvert = new System.Windows.Forms.ComboBox();
             this.ckbAutoColumnName = new System.Windows.Forms.CheckBox();
             this.ckbTrim = new System.Windows.Forms.CheckBox();
+            this.ckbResultNewLine = new System.Windows.Forms.CheckBox();
             this.grbConSting = new System.Windows.Forms.GroupBox();
             this.label21 = new System.Windows.Forms.Label();
             this.rtbConString = new System.Windows.Forms.RichTextBox();
@@ -58,6 +59,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             this.lblTableData = new System.Windows.Forms.Label();
             this.tpAutoSQL = new System.Windows.Forms.TabPage();
             this.rtbResult = new System.Windows.Forms.RichTextBox();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -68,6 +70,10 @@ namespace Breezee.WorkHelper.DBTool.UI
             ((System.ComponentModel.ISupportInitialize)(this.dgvTableList)).BeginInit();
             this.cmsGird.SuspendLayout();
             this.tpAutoSQL.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -113,7 +119,8 @@ namespace Breezee.WorkHelper.DBTool.UI
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 9;
+            this.tableLayoutPanel1.ColumnCount = 10;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -127,10 +134,11 @@ namespace Breezee.WorkHelper.DBTool.UI
             this.tableLayoutPanel1.Controls.Add(this.cbbDbType, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblDbType, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.cbbSqlType, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblWordConvert, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.cbbWordConvert, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.ckbAutoColumnName, 6, 0);
             this.tableLayoutPanel1.Controls.Add(this.ckbTrim, 7, 0);
+            this.tableLayoutPanel1.Controls.Add(this.ckbResultNewLine, 8, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 17);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
@@ -182,16 +190,16 @@ namespace Breezee.WorkHelper.DBTool.UI
             this.cbbSqlType.TabIndex = 2;
             this.cbbSqlType.SelectedIndexChanged += new System.EventHandler(this.cbbSqlType_SelectedIndexChanged);
             // 
-            // label2
+            // lblWordConvert
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(453, 7);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 12);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "字符转换：";
+            this.lblWordConvert.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblWordConvert.AutoSize = true;
+            this.lblWordConvert.ForeColor = System.Drawing.Color.Red;
+            this.lblWordConvert.Location = new System.Drawing.Point(453, 7);
+            this.lblWordConvert.Name = "lblWordConvert";
+            this.lblWordConvert.Size = new System.Drawing.Size(65, 12);
+            this.lblWordConvert.TabIndex = 3;
+            this.lblWordConvert.Text = "字符转换：";
             // 
             // cbbWordConvert
             // 
@@ -199,7 +207,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             this.cbbWordConvert.FormattingEnabled = true;
             this.cbbWordConvert.Location = new System.Drawing.Point(524, 3);
             this.cbbWordConvert.Name = "cbbWordConvert";
-            this.cbbWordConvert.Size = new System.Drawing.Size(142, 20);
+            this.cbbWordConvert.Size = new System.Drawing.Size(106, 20);
             this.cbbWordConvert.TabIndex = 2;
             this.cbbWordConvert.SelectedIndexChanged += new System.EventHandler(this.cbbSqlType_SelectedIndexChanged);
             // 
@@ -207,7 +215,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             // 
             this.ckbAutoColumnName.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ckbAutoColumnName.AutoSize = true;
-            this.ckbAutoColumnName.Location = new System.Drawing.Point(671, 5);
+            this.ckbAutoColumnName.Location = new System.Drawing.Point(635, 5);
             this.ckbAutoColumnName.Margin = new System.Windows.Forms.Padding(2);
             this.ckbAutoColumnName.Name = "ckbAutoColumnName";
             this.ckbAutoColumnName.Size = new System.Drawing.Size(96, 16);
@@ -221,7 +229,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             this.ckbTrim.AutoSize = true;
             this.ckbTrim.Checked = true;
             this.ckbTrim.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbTrim.Location = new System.Drawing.Point(771, 5);
+            this.ckbTrim.Location = new System.Drawing.Point(735, 5);
             this.ckbTrim.Margin = new System.Windows.Forms.Padding(2);
             this.ckbTrim.Name = "ckbTrim";
             this.ckbTrim.Size = new System.Drawing.Size(96, 16);
@@ -229,15 +237,28 @@ namespace Breezee.WorkHelper.DBTool.UI
             this.ckbTrim.Text = "去掉前后空格";
             this.ckbTrim.UseVisualStyleBackColor = true;
             // 
+            // ckbResultNewLine
+            // 
+            this.ckbResultNewLine.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ckbResultNewLine.AutoSize = true;
+            this.ckbResultNewLine.Checked = true;
+            this.ckbResultNewLine.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckbResultNewLine.Location = new System.Drawing.Point(836, 5);
+            this.ckbResultNewLine.Name = "ckbResultNewLine";
+            this.ckbResultNewLine.Size = new System.Drawing.Size(72, 16);
+            this.ckbResultNewLine.TabIndex = 5;
+            this.ckbResultNewLine.Text = "结果换行";
+            this.ckbResultNewLine.UseVisualStyleBackColor = true;
+            // 
             // grbConSting
             // 
             this.grbConSting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(226)))), ((int)(((byte)(243)))));
             this.grbConSting.Controls.Add(this.label21);
             this.grbConSting.Controls.Add(this.rtbConString);
-            this.grbConSting.Dock = System.Windows.Forms.DockStyle.Top;
-            this.grbConSting.Location = new System.Drawing.Point(0, 79);
+            this.grbConSting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grbConSting.Location = new System.Drawing.Point(0, 0);
             this.grbConSting.Name = "grbConSting";
-            this.grbConSting.Size = new System.Drawing.Size(926, 130);
+            this.grbConSting.Size = new System.Drawing.Size(926, 93);
             this.grbConSting.TabIndex = 26;
             this.grbConSting.TabStop = false;
             this.grbConSting.Text = "拼接字符";
@@ -260,7 +281,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             this.rtbConString.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtbConString.Location = new System.Drawing.Point(3, 17);
             this.rtbConString.Name = "rtbConString";
-            this.rtbConString.Size = new System.Drawing.Size(920, 110);
+            this.rtbConString.Size = new System.Drawing.Size(920, 73);
             this.rtbConString.TabIndex = 5;
             this.rtbConString.Text = "";
             // 
@@ -269,10 +290,10 @@ namespace Breezee.WorkHelper.DBTool.UI
             this.tabControl1.Controls.Add(this.tpImport);
             this.tabControl1.Controls.Add(this.tpAutoSQL);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 209);
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(926, 314);
+            this.tabControl1.Size = new System.Drawing.Size(926, 347);
             this.tabControl1.TabIndex = 27;
             // 
             // tpImport
@@ -282,7 +303,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             this.tpImport.Location = new System.Drawing.Point(4, 22);
             this.tpImport.Name = "tpImport";
             this.tpImport.Padding = new System.Windows.Forms.Padding(3);
-            this.tpImport.Size = new System.Drawing.Size(918, 288);
+            this.tpImport.Size = new System.Drawing.Size(918, 321);
             this.tpImport.TabIndex = 0;
             this.tpImport.Text = "导入清单";
             // 
@@ -294,7 +315,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             this.grbTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grbTable.Location = new System.Drawing.Point(3, 3);
             this.grbTable.Name = "grbTable";
-            this.grbTable.Size = new System.Drawing.Size(912, 282);
+            this.grbTable.Size = new System.Drawing.Size(912, 315);
             this.grbTable.TabIndex = 1;
             this.grbTable.TabStop = false;
             this.grbTable.Text = "粘贴的数据列表";
@@ -308,7 +329,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             this.dgvTableList.Location = new System.Drawing.Point(3, 17);
             this.dgvTableList.Name = "dgvTableList";
             this.dgvTableList.RowTemplate.Height = 23;
-            this.dgvTableList.Size = new System.Drawing.Size(906, 262);
+            this.dgvTableList.Size = new System.Drawing.Size(906, 295);
             this.dgvTableList.TabIndex = 0;
             this.dgvTableList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvTableList_KeyDown);
             // 
@@ -355,7 +376,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             this.tpAutoSQL.Location = new System.Drawing.Point(4, 22);
             this.tpAutoSQL.Name = "tpAutoSQL";
             this.tpAutoSQL.Padding = new System.Windows.Forms.Padding(3);
-            this.tpAutoSQL.Size = new System.Drawing.Size(918, 288);
+            this.tpAutoSQL.Size = new System.Drawing.Size(918, 321);
             this.tpAutoSQL.TabIndex = 1;
             this.tpAutoSQL.Text = "生成结果";
             // 
@@ -364,17 +385,34 @@ namespace Breezee.WorkHelper.DBTool.UI
             this.rtbResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtbResult.Location = new System.Drawing.Point(3, 3);
             this.rtbResult.Name = "rtbResult";
-            this.rtbResult.Size = new System.Drawing.Size(912, 282);
+            this.rtbResult.Size = new System.Drawing.Size(912, 315);
             this.rtbResult.TabIndex = 3;
             this.rtbResult.Text = "";
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 79);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.grbConSting);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
+            this.splitContainer1.Size = new System.Drawing.Size(926, 444);
+            this.splitContainer1.SplitterDistance = 93;
+            this.splitContainer1.TabIndex = 28;
             // 
             // FrmDBTCopyData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(926, 523);
-            this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.grbConSting);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
             this.DoubleBuffered = true;
@@ -396,6 +434,10 @@ namespace Breezee.WorkHelper.DBTool.UI
             ((System.ComponentModel.ISupportInitialize)(this.dgvTableList)).EndInit();
             this.cmsGird.ResumeLayout(false);
             this.tpAutoSQL.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -426,8 +468,10 @@ namespace Breezee.WorkHelper.DBTool.UI
         private System.Windows.Forms.ContextMenuStrip cmsGird;
         private System.Windows.Forms.ToolStripMenuItem tsmiInsert;
         private System.Windows.Forms.CheckBox ckbTrim;
-        private Label label2;
+        private Label lblWordConvert;
         private ComboBox cbbWordConvert;
         private ToolStripMenuItem tsmiClear;
+        private SplitContainer splitContainer1;
+        private CheckBox ckbResultNewLine;
     }
 }

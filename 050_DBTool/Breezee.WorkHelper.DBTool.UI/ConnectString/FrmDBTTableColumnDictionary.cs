@@ -75,6 +75,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             uC_DbConnection1.IsDbNameNotNull = true;
             uC_DbConnection1.DBType_SelectedIndexChanged += cbbDatabaseType_SelectedIndexChanged;//数据库类型下拉框变化事件
             uC_DbConnection1.DBConnName_SelectedIndexChanged += cbbConnName_SelectedIndexChanged;
+            uC_DbConnection1.ShowGlobalMsg += ShowGlobalMsg_Click;
             #endregion
 
             SetColTag();
@@ -105,6 +106,13 @@ namespace Breezee.WorkHelper.DBTool.UI
             //加载用户偏好值
             cbbInputType.SelectedValue = WinFormContext.UserLoveSettings.Get(DBTUserLoveConfig.ColumnDicConfirmColumnType, "2").Value;
         }
+
+        #region 显示全局提示信息事件
+        private void ShowGlobalMsg_Click(object sender, string msg)
+        {
+            ShowDestopTipMsg(msg);
+        }
+        #endregion
 
         /// <summary>
         /// 加载通用列数据
@@ -193,9 +201,9 @@ namespace Breezee.WorkHelper.DBTool.UI
         #endregion
 
         #region 连接数据库事件
-        private void tsbImport_Click(object sender, EventArgs e)
+        private async void tsbImport_Click(object sender, EventArgs e)
         {
-            _dbServer = uC_DbConnection1.GetDbServerInfo();
+            _dbServer = await uC_DbConnection1.GetDbServerInfo();
             if (_dbServer == null) return;
             _dataAccess = AutoSQLExecutors.Connect(_dbServer);
             DataTable dtTable = uC_DbConnection1.UserTableList;
@@ -220,6 +228,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             );
             dgvTableList.Tag = fdc.GetGridTagString();
             dgvTableList.BindDataGridView(dtTable, true);
+            dgvTableList.ShowRowNum();
             tabControl2.SelectedTab = tpTable;//选中表页签
 
             //是否清除数据
@@ -307,7 +316,7 @@ namespace Breezee.WorkHelper.DBTool.UI
                 }
                 isChangeTap = AddAllColumns(dtAllCol, list);
             }
-
+            dgvColList.ShowRowNum(true); //显示序号
             if (isChangeTap)
             {
                 tabControl2.SelectedTab = tpSelectColumn;
@@ -544,6 +553,7 @@ namespace Breezee.WorkHelper.DBTool.UI
                     dtSelect.Rows.Add(drNew);
                 }
             }
+            dgvSelect.ShowRowNum(true); //显示行号
         }
 
         #region 设置Tag方法
@@ -580,7 +590,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             );
 
             dgvColList.Tag = fdc.GetGridTagString();
-            dgvColList.BindDataGridView(dtColsAll, true);
+            dgvColList.BindDataGridView(dtColsAll, true);         
             //已选择列网格跟通用列网格结构一样
             fdc = new FlexGridColumnDefinition();
             fdc.AddColumn(
@@ -1058,6 +1068,7 @@ namespace Breezee.WorkHelper.DBTool.UI
                             iGoodDataNum++;
                         }
                     }
+                    dgvInput.ShowRowNum(true);
                 }
             }
             catch (Exception ex)
@@ -1099,6 +1110,7 @@ namespace Breezee.WorkHelper.DBTool.UI
         {
             DataTable dt = dgvCommonCol.GetBindingTable();
             DataRow dataRow = dgvCommonCol.GetCurrentRow();
+            if (dataRow == null || dataRow.RowState == DataRowState.Detached) return;
             dt.Rows.Remove(dataRow);
         }
 
@@ -1118,6 +1130,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             DataGridView dgvSelect = ((sender as ToolStripMenuItem).Owner as ContextMenuStrip).SourceControl as DataGridView;
             DataTable dt = dgvSelect.GetBindingTable();
             DataRow dataRow = dgvSelect.GetCurrentRow();
+            if (dataRow == null || dataRow.RowState == DataRowState.Detached) return;
             dt.Rows.Remove(dataRow);
         }
 
@@ -1253,10 +1266,6 @@ private String #{1}#;
         {
             SelectAllOrCancel(dgvCommonCol, ref _allSelectCommon, e);
         }
-
-
-
-
         #endregion
 
         private void btnGenerate_Click(object sender, EventArgs e)
