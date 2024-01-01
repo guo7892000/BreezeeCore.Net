@@ -42,6 +42,6 @@ namespace Breezee.Core.Interface
         /// <summary>
         /// 目录名_DBTool
         /// </summary>
-        public static string DBTool = "DBTool"; 
+        public static string DBTool = "DBTool";
     }
 }
