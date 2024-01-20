@@ -49,9 +49,8 @@
             this.arrangeIconsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiUserManual = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiOpenLatestDownURL = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbCheckUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tstbMenuSearch = new System.Windows.Forms.ToolStripTextBox();
@@ -83,7 +82,6 @@
             this.tsbCloseAll = new System.Windows.Forms.ToolStripMenuItem();
             this.tpgDesktop = new System.Windows.Forms.TabPage();
             this.pnlDestop = new System.Windows.Forms.Panel();
-            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -246,7 +244,6 @@
             // 
             this.helpMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiUserManual,
-            this.tsmiOpenLatestDownURL,
             this.tsbCheckUpdate,
             this.aboutToolStripMenuItem});
             this.helpMenu.Name = "helpMenu";
@@ -256,31 +253,24 @@
             // tsmiUserManual
             // 
             this.tsmiUserManual.Name = "tsmiUserManual";
-            this.tsmiUserManual.Size = new System.Drawing.Size(180, 22);
+            this.tsmiUserManual.Size = new System.Drawing.Size(124, 22);
             this.tsmiUserManual.Text = "用户手册";
             this.tsmiUserManual.Click += new System.EventHandler(this.tsmiUserManual_Click);
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.aboutToolStripMenuItem.Text = "关于我们";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // tsmiOpenLatestDownURL
-            // 
-            this.tsmiOpenLatestDownURL.Name = "tsmiOpenLatestDownURL";
-            this.tsmiOpenLatestDownURL.Size = new System.Drawing.Size(180, 22);
-            this.tsmiOpenLatestDownURL.Text = "复制下载地址";
-            this.tsmiOpenLatestDownURL.Click += new System.EventHandler(this.tsmiOpenLatestDownURL_Click);
             // 
             // tsbCheckUpdate
             // 
             this.tsbCheckUpdate.Name = "tsbCheckUpdate";
-            this.tsbCheckUpdate.Size = new System.Drawing.Size(180, 22);
+            this.tsbCheckUpdate.Size = new System.Drawing.Size(124, 22);
             this.tsbCheckUpdate.Text = "检查更新";
             this.tsbCheckUpdate.ToolTipText = "检测是否有新版本";
             this.tsbCheckUpdate.Click += new System.EventHandler(this.tsbCheckUpdate_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.aboutToolStripMenuItem.Text = "关于我们";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // toolStrip
             // 
@@ -660,7 +650,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnHideTree;
         private System.Windows.Forms.ToolStripMenuItem tsmiUserManual;
-        private System.Windows.Forms.HelpProvider helpProvider1;
         private System.Windows.Forms.ToolStripMenuItem tsbRestartMenu;
         private System.Windows.Forms.ToolStripMenuItem tsmiChangePassword;
         private System.Windows.Forms.ToolStripMenuItem tsmiLock;
@@ -671,7 +660,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiMenuSheetTop;
         private System.Windows.Forms.ToolStripMenuItem tsmiMenuSheetBottom;
         private System.Windows.Forms.ToolStripMenuItem tsmiCloseMenu;
-        private System.Windows.Forms.ToolStripMenuItem tsmiOpenLatestDownURL;
         private System.Windows.Forms.ContextMenuStrip cmsOpenTreeMenu;
         private System.Windows.Forms.ToolStripMenuItem tsmiOpenNewForm;
         private System.Windows.Forms.ToolStripMenuItem tsbCloseAll;
