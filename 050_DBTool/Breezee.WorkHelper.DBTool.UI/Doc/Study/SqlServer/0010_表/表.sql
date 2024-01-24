@@ -22,6 +22,7 @@ CREATE TABLE [dbo].[OP_PLAN_Audit] (
 [NETCODE]  [VARCHAR ](10) NULL,
 CONSTRAINT [ OP_Audit_ID] PRIMARY KEY CLUSTERED  ( [ID] ASC ))  
 GO
+
 ---创建统计用到的表PA_TEMP_IN_OUT_TOTAL，如存在，则删除后重建
   IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PA_TEMP_IN_OUT_TOTAL]') AND type in (N'U'))
     TRUNCATE TABLE PA_TEMP_IN_OUT_TOTAL;
