@@ -55,6 +55,9 @@
     <Compile Update="ConnectString\FrmDBTTableColumnDictionary.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ConnectString\FrmDBTTableColumnDiff.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="ConnectString\FrmDBTTableColumnString.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -479,7 +479,7 @@ namespace Breezee.Framework.Mini.StartUp
 
             if (this.GetChildCount() > WinFormContext.Instance.MaxOpenFormNum - 1)
             {
-                MessageBox.Show(string.Format("您打开的窗口超过了最大配置数{0}，不能再打开更多窗体。你可以在【开始】->【环境设置】中修改！",WinFormContext.Instance.MaxOpenFormNum),"温馨提示");
+                MessageBox.Show(string.Format("您打开的窗口超过了最大配置数{0}，不能再打开更多窗体。你可以在【开始】->【环境设置】中修改！",WinFormContext.Instance.MaxOpenFormNum), "温馨提示");
                 return;
             }
 
@@ -966,8 +966,15 @@ namespace Breezee.Framework.Mini.StartUp
                 {
                     if (sNowArr.Length > i)
                     {
-                        hasNewVerion = int.Parse(sServerArr[i]) > int.Parse(sNowArr[i]); //服务器版本大于本地版本
-                        if (hasNewVerion) break;
+                        if(int.Parse(sServerArr[i]) > int.Parse(sNowArr[i]))
+                        {
+                            hasNewVerion = true;//服务器版本大于本地版本
+                            break;
+                        }
+                        else if (int.Parse(sServerArr[i]) < int.Parse(sNowArr[i]))
+                        {
+                            break;//服务器版本小于本地版本
+                        }
                     }
                 }
                 if (hasNewVerion)
