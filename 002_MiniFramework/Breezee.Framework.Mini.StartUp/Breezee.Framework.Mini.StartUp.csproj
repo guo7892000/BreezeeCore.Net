@@ -86,6 +86,12 @@
     <None Update="Help\Html\Mini\Images\Mini.Env.002.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Help\Html\Mini\Images\Mini.Env.003.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\Mini\Images\Mini.Env.004.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Help\Html\Mini\Images\Mini.Help.001.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -110,7 +116,19 @@
     <None Update="Help\Html\Mini\Images\Mini.ModifyPassword.001.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Help\Html\Mini\Images\Mini.RepeateWindow.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\Mini\Images\SystemSet.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\Mini\Images\SystemSet.002.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Help\Html\Mini\MenuManage.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\Mini\SystemSet.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Help\Html\Mini\WorkHelper.html">

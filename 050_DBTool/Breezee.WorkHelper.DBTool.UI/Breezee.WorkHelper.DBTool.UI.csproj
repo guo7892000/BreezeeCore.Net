@@ -379,6 +379,9 @@
     <None Update="Help\Html\DBTool\DB\AutoFile.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Help\Html\DBTool\DB\AutoParamVerify.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Help\Html\DBTool\DB\DataSqlDBQuery.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -394,13 +397,25 @@
     <None Update="Help\Html\DBTool\DB\DBColumnDictionary.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Help\Html\DBTool\DB\DBColumnDifferentCompare.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Help\Html\DBTool\DB\DBColumnStringConn.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Help\Html\DBTool\DB\DBConnectSet.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Help\Html\DBTool\DB\DBTSystemSet.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Help\Html\DBTool\DB\DefaultValueSet.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\ExcelFormulateGenerate.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\GetUpdateFile.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Help\Html\DBTool\DB\Images\AutoEntity.001.jpg">
@@ -448,6 +463,12 @@
     <None Update="Help\Html\DBTool\DB\Images\AutoFile.007.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Help\Html\DBTool\DB\Images\AutoParamVerify01.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\AutoParamVerify02.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Help\Html\DBTool\DB\Images\CommonMergeScript.001.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -481,6 +502,24 @@
     <None Update="Help\Html\DBTool\DB\Images\DBColumnDictionary.002.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Help\Html\DBTool\DB\Images\DBColumnDictionary.003.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\DBColumnDictionary.004.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\DBColumnDictionary.005.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\DBColumnDifferentCompare.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\DBColumnDifferentCompare.002.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\DBColumnDifferentCompare.003.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Help\Html\DBTool\DB\Images\DBColumnStringConn.001.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -490,10 +529,28 @@
     <None Update="Help\Html\DBTool\DB\Images\DBConnectSet.002.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Help\Html\DBTool\DB\Images\DBTSystemSet.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\DBTSystemSet.002.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Help\Html\DBTool\DB\Images\DefaultValue.001.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Help\Html\DBTool\DB\Images\ExcelFormulateGenerate01.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\ExcelFormulateGenerate02.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\getUpdateFile01.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Help\Html\DBTool\DB\Images\SqlDBQuery.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\SqlQueryExecute01.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Help\Html\DBTool\DB\Images\TableSqlExcelImport.001.jpg">
@@ -523,6 +580,9 @@
     <None Update="Help\Html\DBTool\DB\Images\TableSqlExcelImport.008.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Help\Html\DBTool\DB\Images\TableSqlReadDb.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Help\Html\DBTool\DB\Images\TableSqlRemark.001.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -535,10 +595,85 @@
     <None Update="Help\Html\DBTool\DB\SqlDBQuery.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Help\Html\DBTool\DB\SqlQueryExecute.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Help\Html\DBTool\DB\SqlTableColumnRemark.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Help\Html\DBTool\DB\SqlTableConstuct.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\CommonCopyString.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\ExcelColumn2Row.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\ExcelCopyConn.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\Images\CommonClickCopy.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\Images\CommonClickCopy.002.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\Images\CommonClickCopy.003.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\Images\ExcelCol2Row.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\Images\ExcelCopyConn.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\Images\StringDirectoryList.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\Images\StringExchangeConn.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\Images\StringSplitConn.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\Images\TextFileReplaceString.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\Images\TextFileReplaceString.002.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\Images\TextFileReplaceString.003.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\Images\TextFileReplaceStringUC.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\Images\TextFileReplaceStringUC.002.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\Images\TextFileReplaceStringUC.003.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\Images\TowExcelMerge.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\StringConnChange.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\StringConnDirectory.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\StringConnSplit.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\TextFileStringReplace.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\TextFileStringReplaceUC.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\TowExcelMerge.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Properties\Settings.settings">
