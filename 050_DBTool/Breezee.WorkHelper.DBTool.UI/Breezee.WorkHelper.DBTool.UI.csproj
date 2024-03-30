@@ -133,6 +133,45 @@
     <None Update="DataTemplate\DBTool\AutoFile\模板_生成代码文件.xlsx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="DataTemplate\DBTool\ConnectString\MyBatisDynamicCondition\Date.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataTemplate\DBTool\ConnectString\MyBatisDynamicCondition\If.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataTemplate\DBTool\ConnectString\MyBatisDynamicCondition\In.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataTemplate\DBTool\ConnectString\StringTemplate\CommonEntity.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataTemplate\DBTool\ConnectString\StringTemplate\MyBatisDynamicConditon.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataTemplate\DBTool\ConnectString\StringTemplate\MyBatisTableEntity.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataTemplate\DBTool\ConnectString\StringTemplate\YapiColumnDesc.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataTemplate\DBTool\ConnectString\YAPI\ConditionNoPage.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataTemplate\DBTool\ConnectString\YAPI\ConditionPage.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataTemplate\DBTool\ConnectString\YAPI\ResultArrayNoPage.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataTemplate\DBTool\ConnectString\YAPI\ResultArrayPage.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataTemplate\DBTool\ConnectString\YAPI\ResultNoPage.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataTemplate\DBTool\ConnectString\YAPI\ResultPage.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Doc\Study\MySql\0001_基础\基础.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

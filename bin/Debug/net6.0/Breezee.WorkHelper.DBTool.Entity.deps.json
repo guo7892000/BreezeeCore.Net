@@ -11,7 +11,8 @@
           "Breezee.AutoSQLExecutor.Core": "1.0.0",
           "Breezee.Core": "1.0.0",
           "Breezee.Core.IOC": "1.0.0",
-          "Breezee.Core.Interface": "1.0.0"
+          "Breezee.Core.Interface": "1.0.0",
+          "org.breezee.MyPeachNet.Reference": "1.0.0.0"
         },
         "runtime": {
           "Breezee.WorkHelper.DBTool.Entity.dll": {}
@@ -947,6 +948,14 @@
         "runtime": {
           "org.breezee.MyPeachNet.dll": {}
         }
+      },
+      "org.breezee.MyPeachNet.Reference/1.0.0.0": {
+        "runtime": {
+          "org.breezee.MyPeachNet.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.2.3.0"
+          }
+        }
       }
     }
   },
@@ -1629,6 +1638,11 @@
     },
     "org.breezee.MyPeachNet/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "org.breezee.MyPeachNet.Reference/1.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

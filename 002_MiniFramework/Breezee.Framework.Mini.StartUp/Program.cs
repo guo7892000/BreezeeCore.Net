@@ -38,6 +38,11 @@ namespace Breezee.Framework.Mini.StartUp
                     {
                         Directory.Delete(sPrePath, true);
                     }
+                    else
+                    {
+                        winConfig.Set(GlobalKey.Upgrade_PreVersionPath, "", "清空上个版本文件夹");
+                        winConfig.Save();
+                    }
                 }
                 else
                 {
