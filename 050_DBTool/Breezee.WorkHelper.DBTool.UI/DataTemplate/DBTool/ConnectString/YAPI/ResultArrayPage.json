@@ -28,10 +28,10 @@
       "items": {
         "type": "object",
         "properties": {
-          "#COLUMN_DESC#"
+          #COLUMN_DESC#
         },
         "required": [
-          "#COLUMN_MUST#"
+          #COLUMN_MUST#
         ]
       }
     }

@@ -14,10 +14,10 @@
       "type": "object",
       "description": "结果集",
       "properties": {
-        "#COLUMN_DESC#"
+        #COLUMN_DESC#
       },
       "required": [
-        "#COLUMN_MUST#"
+        #COLUMN_MUST#
       ]
     }
   },
