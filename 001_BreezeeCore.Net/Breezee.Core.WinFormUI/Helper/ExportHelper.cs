@@ -475,12 +475,12 @@ namespace Breezee.Core.WinFormUI
                 FileStream stream = new FileStream(name, FileMode.Create);
                 workbook.Write(stream);
 
-                MessageBox.Show("导出成功！保存的文件路径为：" + name);
+                MessageBox.Show("导出成功！保存的文件路径为：" + name,"温馨提示");
                 return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("导出失败！" + ex.Message);
+                MessageBox.Show("导出失败！" + ex.Message, "错误信息");
                 return false;
             }
         }
@@ -635,7 +635,6 @@ namespace Breezee.Core.WinFormUI
 
             for (int i = headerRow.FirstCellNum; i < cellCount; i++)
             {
-                //DataColumn column = new DataColumn(headerRow.GetCell(i).StringCellValue); //列为数值1,2,3等，此段代码报错 2014-6-20 廖凌峰
                 DataColumn column = new DataColumn(headerRow.GetCell(i).ToString().ToUpper());
                 dt.Columns.Add(column);
             }
@@ -744,7 +743,7 @@ namespace Breezee.Core.WinFormUI
             ExcelFileInfo excelFileInfo = new ExcelFileInfo();
 
             OpenFileDialog opd = new OpenFileDialog();
-            opd.Filter = "Excel文件(*.xls,*.xlsx)|*.xls;*.xlsx";  //支持2003、2007以上格式的Excel
+            opd.Filter = "Excel文件(*.xls,*.xlsx,*.xlsm)|*.xls;*.xlsx;*.xlsm";  //支持2003、2007以上格式的Excel
             //opd.Filter = "Excel文件(*.xlsx)|*.xlsx"; //只支持2007以上格式的Excel
             opd.FilterIndex = 0;
             opd.Title = "选择对应类型的导入模板Excel文件";
@@ -764,7 +763,7 @@ namespace Breezee.Core.WinFormUI
                 excelFileInfo.suffix = ExcelSuffixType.xls;
                 excelFileInfo.OleDbConnection = @"Provider=Microsoft.jet.OleDb.4.0;Data Source=" + excelFileInfo.FileName + ";Extended Properties='Excel 8.0;IMEX=1'";
             }
-            else if (strFileFormart == "xlsx")
+            else if (strFileFormart == "xlsx" || strFileFormart == "xlsm")
             {
                 excelFileInfo.suffix = ExcelSuffixType.xlsx;
                 excelFileInfo.OleDbConnection = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + excelFileInfo.FileName + "; Extended Properties='Excel 12.0 Xml;IMEX=1'";

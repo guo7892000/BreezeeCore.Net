@@ -1,3 +1,4 @@
+using Breezee.AutoSQLExecutor.Core;
 using Breezee.Core;
 using Breezee.Core.Interface;
 using Breezee.Core.WinFormUI;
@@ -49,6 +50,8 @@ namespace Breezee.Framework.Mini.StartUp
                     Directory.Delete(sPrePath, true);
                 }
             }
+            //SQL日志配置取值
+            LoadSqlLogConfig();
             //创建主窗体
             FrmMiniMainMDI frmMain = new FrmMiniMainMDI();
             WinFormContext.Instance.SetMdiParent(frmMain);
@@ -60,7 +63,25 @@ namespace Breezee.Framework.Mini.StartUp
             app.Init();
             //运行应用
             Application.Run(frmMain);
-        }  
+        }
+
+        /// <summary>
+        /// SQL日志配置静态类的变量赋值
+        /// </summary>
+        private static void LoadSqlLogConfig()
+        {
+            var _WinFormConfig = WinFormContext.Instance.WinFormConfig;
+            //正常日志
+            SqlLogConfig.IsEnableRigthSqlLog = _WinFormConfig.Get(GlobalKey.OkSqlLog_IsEnableLog, "0").Equals("1") ? true : false;
+            SqlLogConfig.RigthSqlLogPath = _WinFormConfig.Get(GlobalKey.OkSqlLog_LogPath, @"\SqlLog\ok");
+            SqlLogConfig.RightSqlLogKeepDays = int.Parse(_WinFormConfig.Get(GlobalKey.OkSqlLog_KeepDays, "0"));
+            SqlLogConfig.RightSqlLogAddType = "1".Equals(_WinFormConfig.Get(GlobalKey.OkSqlLog_AppendType, "1")) ? SqlLogAddType.InsertBegin : SqlLogAddType.AppendEnd;
+            //异常日志
+            SqlLogConfig.IsEnableErrorSqlLog = _WinFormConfig.Get(GlobalKey.ErrSqlLog_IsEnableLog, "0").Equals("1") ? true : false;
+            SqlLogConfig.ErrorSqlLogPath = _WinFormConfig.Get(GlobalKey.ErrSqlLog_LogPath, @"\SqlLog\err");
+            SqlLogConfig.ErrorSqlLogKeepDays = int.Parse(_WinFormConfig.Get(GlobalKey.ErrSqlLog_KeepDays, "0"));
+            SqlLogConfig.ErrorSqlLogAddType = "1".Equals(_WinFormConfig.Get(GlobalKey.ErrSqlLog_AppendType, "1")) ? SqlLogAddType.InsertBegin : SqlLogAddType.AppendEnd;
+        }
         #endregion
 
         #region 应用程序错误异常

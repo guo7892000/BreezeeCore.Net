@@ -1750,6 +1750,7 @@
       "Breezee.AutoSQLExecutor.Core/1.0.0": {
         "dependencies": {
           "Breezee.Core.Interface": "1.0.0",
+          "System.Configuration.ConfigurationManager": "6.0.1",
           "org.breezee.MyPeachNet": "1.0.0"
         },
         "runtime": {
