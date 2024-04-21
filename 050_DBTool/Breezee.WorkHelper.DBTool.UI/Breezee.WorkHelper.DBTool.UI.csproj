@@ -619,7 +619,22 @@
     <None Update="Help\Html\DBTool\DB\Images\TableSqlExcelImport.008.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Help\Html\DBTool\DB\Images\TableSqlExcelImportLY.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\TableSqlExcelImportLY.002.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Help\Html\DBTool\DB\Images\TableSqlReadDb.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\TableSqlReadDb.002.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\TableSqlReadDb.003.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\TableSqlReadDb.004.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Help\Html\DBTool\DB\Images\TableSqlRemark.001.jpg">
@@ -695,6 +710,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Help\Html\DBTool\String\Images\TowExcelMerge.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\Images\TowExcelMerge_002.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Help\Html\DBTool\String\StringConnChange.html">
