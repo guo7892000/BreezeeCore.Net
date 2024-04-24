@@ -28,28 +28,8 @@ namespace Breezee.Framework.Mini.StartUp
             //打开登录界面
             FrmMiniLogin frmLogin = new FrmMiniLogin();
             if (frmLogin.ShowDialog() != DialogResult.OK) return;
-            //删除旧版本逻辑：有上次更新路径，且是要删除旧版本
-            WinFormConfig winConfig = WinFormContext.Instance.WinFormConfig;
-            string sPrePath = winConfig.Get(GlobalKey.Upgrade_PreVersionPath, "");
-            if (!string.IsNullOrEmpty(sPrePath) && "1".Equals(winConfig.Get(GlobalKey.Upgrade_IsDeleteOldVersion, "0")))
-            {
-                if ("1".Equals(winConfig.Get(GlobalKey.Upgrade_IsDeleteOldVersionNeedConfirm, "1")))
-                {
-                    if (MessageBox.Show("旧版本路径：" + sPrePath + "，确认删除？", "删除旧版本提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
-                    {
-                        Directory.Delete(sPrePath, true);
-                    }
-                    else
-                    {
-                        winConfig.Set(GlobalKey.Upgrade_PreVersionPath, "", "清空上个版本文件夹");
-                        winConfig.Save();
-                    }
-                }
-                else
-                {
-                    Directory.Delete(sPrePath, true);
-                }
-            }
+            //删除旧版本文件
+            DeleteOldVersionFile();
             //SQL日志配置取值
             LoadSqlLogConfig();
             //创建主窗体
@@ -65,6 +45,62 @@ namespace Breezee.Framework.Mini.StartUp
             Application.Run(frmMain);
         }
 
+        #region 删除旧版本文件
+        private static void DeleteOldVersionFile()
+        {
+            //删除旧版本逻辑：有上次更新路径，且是要删除旧版本
+            WinFormConfig winConfig = WinFormContext.Instance.WinFormConfig;
+            try
+            {
+                string sPrePath = winConfig.Get(GlobalKey.Upgrade_PreVersionPath, "");
+                string sExePath = Path.GetFullPath(GlobalContext.AppEntryAssemblyPath);
+                if (!string.IsNullOrEmpty(sPrePath) && "1".Equals(winConfig.Get(GlobalKey.Upgrade_IsDeleteOldVersion, "1")))
+                {
+                    string sPreVersionPath = Path.GetFullPath(sPrePath);
+                    bool isSaveDir = sExePath.Equals(sPreVersionPath, StringComparison.OrdinalIgnoreCase);
+
+                    if ("1".Equals(winConfig.Get(GlobalKey.Upgrade_IsDeleteOldVersionNeedConfirm, "1")))
+                    {
+                        if (Directory.Exists(sPrePath) && !isSaveDir)
+                        {
+                            if (MsgHelper.ShowOkCancel("旧版本路径：" + sPrePath + "，确认删除？") == DialogResult.OK)
+                            {
+                                Directory.Delete(sPrePath, true);
+                                winConfig.Set(GlobalKey.Upgrade_PreVersionPath, "", "清空上个版本文件夹");
+                                winConfig.Save();
+                            }
+                            else
+                            {
+                                winConfig.Set(GlobalKey.Upgrade_PreVersionPath, "", "清空上个版本文件夹");
+                                winConfig.Save();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (Directory.Exists(sPrePath) && !isSaveDir)
+                        {
+                            Directory.Delete(sPrePath, true);
+                            winConfig.Set(GlobalKey.Upgrade_PreVersionPath, "", "清空上个版本文件夹");
+                            winConfig.Save();
+                        }
+                    }
+                }
+                //更新桌面的快捷方式
+                string sNewPath = winConfig.Get(GlobalKey.Upgrade_LatestVersionRootDir, sExePath);
+                if ("0".Equals(winConfig.Get(GlobalKey.Upgrade_IsUpdateQuickLink, "0")))
+                {
+                    StartUpHelper.ReplaceDesktopQuickLink(sPrePath);
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+                winConfig.Set(GlobalKey.Upgrade_PreVersionPath, "", "清空上个版本文件夹");
+                winConfig.Save();
+            }
+        }
+        #endregion
         /// <summary>
         /// SQL日志配置静态类的变量赋值
         /// </summary>
