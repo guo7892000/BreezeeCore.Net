@@ -54,7 +54,7 @@ namespace Breezee.Core.Interface
             else
             {
                 //NetCore 6以后，System.Text命名空间中不再包含 “gb2312”字符编码。这时需要手动引入“System.Text.Encoding.CodePages”扩展包，并且给Encoding注册字符编码
-                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);//注册简体中文的支持：注NET 4不需要，NetCore 6才需要
+                //Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);//注册简体中文的支持：注NET 4不需要，NetCore 6才需要
                 encoding = Encoding.GetEncoding(sEncodingKey);
             }
 
