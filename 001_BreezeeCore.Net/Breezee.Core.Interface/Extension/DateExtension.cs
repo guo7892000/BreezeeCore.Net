@@ -7,6 +7,8 @@
  * 修改历史：
  *      V1.0 新建 hgh 2014-7-25
  * ************************************/
+using System;
+
 namespace Breezee.Core.Interface
 {
     /// <summary>

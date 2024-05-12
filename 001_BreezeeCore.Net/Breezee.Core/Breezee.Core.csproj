@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\003_AutoSQLExecutor.Net\Breezee.AutoSQLExecutor.Core\Breezee.AutoSQLExecutor.Core.csproj" />
+    <ProjectReference Include="..\Breezee.Core.Entity\Breezee.Core.Entity.csproj" />
     <ProjectReference Include="..\Breezee.Core.Interface\Breezee.Core.Interface.csproj" />
   </ItemGroup>
 

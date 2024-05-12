@@ -1041,6 +1041,7 @@
       "Breezee.Core/1.0.0": {
         "dependencies": {
           "Breezee.AutoSQLExecutor.Core": "1.0.0",
+          "Breezee.Core.Entity": "1.0.0",
           "Breezee.Core.Interface": "1.0.0"
         },
         "runtime": {

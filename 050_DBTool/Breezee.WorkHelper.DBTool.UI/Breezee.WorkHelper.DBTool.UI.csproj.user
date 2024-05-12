@@ -112,5 +112,8 @@
     <Compile Update="TableSql\FrmDBTTableExtendProperty.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="TableSql\FrmSqlStringConvert.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

@@ -9,6 +9,7 @@
       "Breezee.Core/1.0.0": {
         "dependencies": {
           "Breezee.AutoSQLExecutor.Core": "1.0.0",
+          "Breezee.Core.Entity": "1.0.0",
           "Breezee.Core.Interface": "1.0.0",
           "org.breezee.MyPeachNet.Reference": "1.0.0.0"
         },
@@ -155,6 +156,14 @@
           "Breezee.AutoSQLExecutor.Core.dll": {}
         }
       },
+      "Breezee.Core.Entity/1.0.0": {
+        "dependencies": {
+          "Breezee.Core.Interface": "1.0.0"
+        },
+        "runtime": {
+          "Breezee.Core.Entity.dll": {}
+        }
+      },
       "Breezee.Core.Interface/1.0.0": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
@@ -256,6 +265,11 @@
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
     },
     "Breezee.AutoSQLExecutor.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Breezee.Core.Entity/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
