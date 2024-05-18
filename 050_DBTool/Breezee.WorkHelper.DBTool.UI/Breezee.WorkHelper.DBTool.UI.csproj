@@ -172,6 +172,9 @@
     <None Update="DataTemplate\DBTool\ConnectString\YAPI\ResultPage.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="DataTemplate\DBTool\QuerySQL\SqlConvertRemark.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Doc\Study\MySql\0001_基础\基础.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
