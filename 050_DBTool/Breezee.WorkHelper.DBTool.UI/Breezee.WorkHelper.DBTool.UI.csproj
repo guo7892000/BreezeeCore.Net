@@ -40,6 +40,7 @@
     <None Remove="DataTemplate\DBTool\TableSQL\Html.txt" />
     <None Remove="DataTemplate\DBTool\TableSQL\LY\Columns.txt" />
     <None Remove="DataTemplate\DBTool\TableSQL\LY\Table.txt" />
+    <None Remove="DataTemplate\DBTool\TableSQL\LY\TableMerge.txt" />
     <None Remove="DataTemplate\DBTool\TableSQL\Table.txt" />
   </ItemGroup>
 
@@ -48,6 +49,7 @@
     <EmbeddedResource Include="DataTemplate\DBTool\TableSQL\Html.txt" />
     <EmbeddedResource Include="DataTemplate\DBTool\TableSQL\LY\Columns.txt" />
     <EmbeddedResource Include="DataTemplate\DBTool\TableSQL\LY\Table.txt" />
+    <EmbeddedResource Include="DataTemplate\DBTool\TableSQL\LY\TableMerge.txt" />
     <EmbeddedResource Include="DataTemplate\DBTool\TableSQL\Table.txt" />
   </ItemGroup>
 
