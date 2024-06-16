@@ -9,11 +9,8 @@
 
   <ItemGroup>
     <Compile Remove="Entity\**" />
-    <Compile Remove="Global\**" />
     <EmbeddedResource Remove="Entity\**" />
-    <EmbeddedResource Remove="Global\**" />
     <None Remove="Entity\**" />
-    <None Remove="Global\**" />
   </ItemGroup>
 
   <ItemGroup>
