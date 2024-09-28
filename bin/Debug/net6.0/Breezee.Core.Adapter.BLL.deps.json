@@ -1036,7 +1036,10 @@
       },
       "Breezee.Core.Adapter.IBLL/1.0.0": {
         "runtime": {
-          "Breezee.Core.Adapter.IBLL.dll": {}
+          "Breezee.Core.Adapter.IBLL.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

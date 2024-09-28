@@ -1822,7 +1822,10 @@
           "Castle.Windsor": "5.1.2"
         },
         "runtime": {
-          "Breezee.AutoSQLExecutor.Common.dll": {}
+          "Breezee.AutoSQLExecutor.Common.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Breezee.AutoSQLExecutor.Core/1.0.0": {
@@ -1832,7 +1835,10 @@
           "org.breezee.MyPeachNet": "1.0.0"
         },
         "runtime": {
-          "Breezee.AutoSQLExecutor.Core.dll": {}
+          "Breezee.AutoSQLExecutor.Core.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Breezee.AutoSQLExecutor.MySql/1.0.0": {
@@ -1841,7 +1847,10 @@
           "MySql.Data": "8.0.29"
         },
         "runtime": {
-          "Breezee.AutoSQLExecutor.MySql.dll": {}
+          "Breezee.AutoSQLExecutor.MySql.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Breezee.AutoSQLExecutor.Oracle/1.0.0": {
@@ -1850,7 +1859,10 @@
           "Oracle.ManagedDataAccess.Core": "3.21.61"
         },
         "runtime": {
-          "Breezee.AutoSQLExecutor.Oracle.dll": {}
+          "Breezee.AutoSQLExecutor.Oracle.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Breezee.AutoSQLExecutor.PostgreSQL/1.0.0": {
@@ -1859,7 +1871,10 @@
           "Npgsql": "6.0.5"
         },
         "runtime": {
-          "Breezee.AutoSQLExecutor.PostgreSQL.dll": {}
+          "Breezee.AutoSQLExecutor.PostgreSQL.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Breezee.AutoSQLExecutor.SQLite/1.0.0": {
@@ -1868,7 +1883,10 @@
           "System.Data.SQLite": "1.0.116"
         },
         "runtime": {
-          "Breezee.AutoSQLExecutor.SQLite.dll": {}
+          "Breezee.AutoSQLExecutor.SQLite.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Breezee.AutoSQLExecutor.SqlServer/1.0.0": {
@@ -1877,7 +1895,10 @@
           "Microsoft.Data.SqlClient": "5.1.0"
         },
         "runtime": {
-          "Breezee.AutoSQLExecutor.SqlServer.dll": {}
+          "Breezee.AutoSQLExecutor.SqlServer.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Breezee.Core/1.0.0": {
@@ -1887,12 +1908,18 @@
           "Breezee.Core.Interface": "1.0.0"
         },
         "runtime": {
-          "Breezee.Core.dll": {}
+          "Breezee.Core.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Breezee.Core.Adapter.IBLL/1.0.0": {
         "runtime": {
-          "Breezee.Core.Adapter.IBLL.dll": {}
+          "Breezee.Core.Adapter.IBLL.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Breezee.Core.Entity/1.0.0": {
@@ -1900,7 +1927,10 @@
           "Breezee.Core.Interface": "1.0.0"
         },
         "runtime": {
-          "Breezee.Core.Entity.dll": {}
+          "Breezee.Core.Entity.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Breezee.Core.Interface/1.0.0": {
@@ -1909,7 +1939,10 @@
           "System.Text.Encoding.CodePages": "8.0.0"
         },
         "runtime": {
-          "Breezee.Core.Interface.dll": {}
+          "Breezee.Core.Interface.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Breezee.Core.IOC/1.0.0": {
@@ -1918,7 +1951,10 @@
           "Castle.Windsor": "5.1.2"
         },
         "runtime": {
-          "Breezee.Core.IOC.dll": {}
+          "Breezee.Core.IOC.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Breezee.Core.Tool/1.0.0": {
@@ -1929,7 +1965,10 @@
           "SharpCompress": "0.33.0"
         },
         "runtime": {
-          "Breezee.Core.Tool.dll": {}
+          "Breezee.Core.Tool.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Breezee.Core.WinFormUI/1.0.0": {
@@ -1944,7 +1983,10 @@
           "ZXing.Net": "0.16.8"
         },
         "runtime": {
-          "Breezee.Core.WinFormUI.dll": {}
+          "Breezee.Core.WinFormUI.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Breezee.Framework.Mini.Entity/1.0.0": {
@@ -1955,7 +1997,10 @@
           "Breezee.Core.Tool": "1.0.0"
         },
         "runtime": {
-          "Breezee.Framework.Mini.Entity.dll": {}
+          "Breezee.Framework.Mini.Entity.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Breezee.WorkHelper.DBTool.Entity/1.0.0": {
@@ -1966,7 +2011,10 @@
           "Breezee.Core.Interface": "1.0.0"
         },
         "runtime": {
-          "Breezee.WorkHelper.DBTool.Entity.dll": {}
+          "Breezee.WorkHelper.DBTool.Entity.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Breezee.WorkHelper.DBTool.IBLL/1.0.0": {
@@ -1974,12 +2022,18 @@
           "Breezee.WorkHelper.DBTool.Entity": "1.0.0"
         },
         "runtime": {
-          "Breezee.WorkHelper.DBTool.IBLL.dll": {}
+          "Breezee.WorkHelper.DBTool.IBLL.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "org.breezee.MyPeachNet/1.0.0": {
         "runtime": {
-          "org.breezee.MyPeachNet.dll": {}
+          "org.breezee.MyPeachNet.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": ""
+          }
         }
       },
       "org.breezee.MyPeachNet.Reference/1.0.0.0": {

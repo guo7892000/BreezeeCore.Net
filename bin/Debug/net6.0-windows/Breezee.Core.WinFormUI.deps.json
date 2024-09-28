@@ -336,7 +336,10 @@
           "org.breezee.MyPeachNet": "1.0.0"
         },
         "runtime": {
-          "Breezee.AutoSQLExecutor.Core.dll": {}
+          "Breezee.AutoSQLExecutor.Core.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Breezee.Core/1.0.0": {
@@ -346,12 +349,18 @@
           "Breezee.Core.Interface": "1.0.0"
         },
         "runtime": {
-          "Breezee.Core.dll": {}
+          "Breezee.Core.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Breezee.Core.Adapter.IBLL/1.0.0": {
         "runtime": {
-          "Breezee.Core.Adapter.IBLL.dll": {}
+          "Breezee.Core.Adapter.IBLL.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Breezee.Core.Entity/1.0.0": {
@@ -359,7 +368,10 @@
           "Breezee.Core.Interface": "1.0.0"
         },
         "runtime": {
-          "Breezee.Core.Entity.dll": {}
+          "Breezee.Core.Entity.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Breezee.Core.Interface/1.0.0": {
@@ -368,7 +380,10 @@
           "System.Text.Encoding.CodePages": "8.0.0"
         },
         "runtime": {
-          "Breezee.Core.Interface.dll": {}
+          "Breezee.Core.Interface.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Breezee.Core.Tool/1.0.0": {
@@ -379,12 +394,18 @@
           "SharpCompress": "0.33.0"
         },
         "runtime": {
-          "Breezee.Core.Tool.dll": {}
+          "Breezee.Core.Tool.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "org.breezee.MyPeachNet/1.0.0": {
         "runtime": {
-          "org.breezee.MyPeachNet.dll": {}
+          "org.breezee.MyPeachNet.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": ""
+          }
         }
       },
       "org.breezee.MyPeachNet.Reference/1.0.0.0": {

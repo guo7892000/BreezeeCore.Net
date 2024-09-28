@@ -48,7 +48,10 @@
           "System.Text.Encoding.CodePages": "8.0.0"
         },
         "runtime": {
-          "Breezee.Core.Interface.dll": {}
+          "Breezee.Core.Interface.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
