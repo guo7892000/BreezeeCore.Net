@@ -121,19 +121,7 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="tsbImport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFwSURBVDhPrZIxa8JAGIb9Kf0J+QkZOzo7STen/oAscdEM
-        HS6bQ4ajS9y8URc5KEWhWA66SB2MuBQs9Lq5vb33GquQBBz6wQshufd5v/u+tP61vuw3Fi+vkGOFOBEY
-        9ofI8xz6eYHD5wHlsfra7vbeqJSCWRew1sIerXs2/n3mQJvNph7CZB5iEo6oyDqpqUaWZfWdsG0m1xm9
-        LFB8AGIkMZvNqgCms+1Gs5Nxn9XUYPAwqALiWPg7VwBlMkWANha9Xq8K4LQvAZfJv2YO00Iti3oAJ2yM
-        aTY7aQeQSvvVlrZzcfqcA80n46ltJtPM9vlvTCZ5FcDVZI+Z38SfsUylUTmJkULUjyCSLnbvqyqEP0nq
-        9iyE9K3yvpQca3DInL7RMexaQo0aIOyEe07T1A+rc9fxxii6h4wDFNMQtnAbc2qE1NVqOUe3HUAlZ0hh
-        BKToXgdgnSAyCaFEgHYYYL99ux7A8pDbG4RBgOXT3JlbrR83QAptHARORQAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="tsbAutoSQL.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="tsbConvertSQL.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACUSURBVDhPnY7LDYAgEEQpgCo4UrolePRqAV6swQpMkFk+
@@ -154,10 +142,4 @@
         eH/+eXCpt1fNjfzF5L+pab4A5+WHSaUiJOsAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>127, 17</value>
-  </metadata>
-  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>228, 17</value>
-  </metadata>
 </root>
