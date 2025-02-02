@@ -11,6 +11,10 @@ using Breezee.Core.Interface;
 
 namespace Breezee.Framework.Mini.StartUp
 {
+    /// <summary>
+    /// 快捷菜单
+    /// 保存路径：C:\Users\Administrator\AppData\Roaming\WorkHelper\Config
+    /// </summary>
     public partial class ShortCutList : UserControl
     {
         Dictionary<string, ShortCutItem> _ItemList = new Dictionary<string, ShortCutItem>();
@@ -66,5 +70,15 @@ namespace Breezee.Framework.Mini.StartUp
             }
         }
 
+    }
+
+    public enum ShortMenuEventEnum
+    {
+        New,
+        Cancel,
+        MoveFirst,
+        MoveLast,
+        MoveBefore,
+        MoveNext,
     }
 }

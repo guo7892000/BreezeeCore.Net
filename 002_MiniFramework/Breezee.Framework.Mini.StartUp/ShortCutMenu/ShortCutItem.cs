@@ -12,10 +12,17 @@ using Breezee.Core.Interface;
 
 namespace Breezee.Framework.Mini.StartUp
 {
+    /// <summary>
+    /// 快捷菜单项
+    /// </summary>
     public partial class ShortCutItem : UserControl
     {
         public EventHandler<ShortCutItemClickEventArgs> ShortCutItemClick;
         public EventHandler<ShortCutItemClickEventArgs> ShortCutItemCancel;
+        public EventHandler<ShortCutItemClickEventArgs> ShortCutItemoMoveFirst;
+        public EventHandler<ShortCutItemClickEventArgs> ShortCutItemoMoveLast;
+        public EventHandler<ShortCutItemClickEventArgs> ShortCutItemoMoveBefore;
+        public EventHandler<ShortCutItemClickEventArgs> ShortCutItemoMoveBack;
 
         string strRootPath = AppDomain.CurrentDomain.BaseDirectory;
         string strInFilePah;
@@ -40,7 +47,7 @@ namespace Breezee.Framework.Mini.StartUp
             strInFilePah = Path.Combine(strRootPath, "Image", "ShortCut_In.png");
             strOutFilePah = Path.Combine(strRootPath, "Image", "ShortCut_Out.png");
             this.BackgroundImage = Image.FromFile(strOutFilePah);
-            this.BackgroundImageLayout= ImageLayout.Zoom;
+            this.BackgroundImageLayout = ImageLayout.Zoom;
 
             this.Click += Item_Click;
             lblMenuName.Click += Item_Click;
@@ -74,6 +81,46 @@ namespace Breezee.Framework.Mini.StartUp
                 ShortCutItemClickEventArgs arg = new ShortCutItemClickEventArgs();
                 arg.Menu = _Menu;
                 ShortCutItemCancel(this, arg);
+            }
+        }
+
+        private void tsmiMoveFirst_Click(object sender, EventArgs e)
+        {
+            if (_Menu != null && ShortCutItemoMoveFirst != null)
+            {
+                ShortCutItemClickEventArgs arg = new ShortCutItemClickEventArgs();
+                arg.Menu = _Menu;
+                ShortCutItemoMoveFirst(this, arg);
+            }
+        }
+
+        private void tsmiMoveLast_Click(object sender, EventArgs e)
+        {
+            if (_Menu != null && ShortCutItemoMoveLast != null)
+            {
+                ShortCutItemClickEventArgs arg = new ShortCutItemClickEventArgs();
+                arg.Menu = _Menu;
+                ShortCutItemoMoveLast(this, arg);
+            }
+        }
+
+        private void tsmiMoveBefore_Click(object sender, EventArgs e)
+        {
+            if (_Menu != null && ShortCutItemoMoveBefore != null)
+            {
+                ShortCutItemClickEventArgs arg = new ShortCutItemClickEventArgs();
+                arg.Menu = _Menu;
+                ShortCutItemoMoveBefore(this, arg);
+            }
+        }
+
+        private void tsmiMoveBack_Click(object sender, EventArgs e)
+        {
+            if (_Menu != null && ShortCutItemoMoveBack != null)
+            {
+                ShortCutItemClickEventArgs arg = new ShortCutItemClickEventArgs();
+                arg.Menu = _Menu;
+                ShortCutItemoMoveBack(this, arg);
             }
         }
     }

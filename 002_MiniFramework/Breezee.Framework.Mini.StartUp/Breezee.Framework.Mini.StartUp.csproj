@@ -8,7 +8,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <BaseOutputPath>..\..\bin</BaseOutputPath>
     <AssemblyVersion>1.3.6.3</AssemblyVersion>
-    <FileVersion>1.3.5.0</FileVersion>
+    <FileVersion>1.3.6.3</FileVersion>
     <Title>Work Helper</Title>
     <Authors>BreezeeHui</Authors>
     <Company>BreezeeHui</Company>
