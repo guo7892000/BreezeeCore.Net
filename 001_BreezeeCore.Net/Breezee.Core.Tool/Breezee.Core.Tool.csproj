@@ -14,6 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Helper\AppUpgradeTool.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="NLog" Version="5.0.4" />
     <PackageReference Include="SharpCompress" Version="0.33.0" />
   </ItemGroup>
