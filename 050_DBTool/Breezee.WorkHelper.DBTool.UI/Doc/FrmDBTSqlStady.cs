@@ -2,8 +2,11 @@
 using Breezee.Core.Tool;
 using Breezee.Core.WinFormUI;
 using Breezee.WorkHelper.DBTool.Entity;
+using System;
 using System.Data;
+using System.IO;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Breezee.WorkHelper.DBTool.UI
 {

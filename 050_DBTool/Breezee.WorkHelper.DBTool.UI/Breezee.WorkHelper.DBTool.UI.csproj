@@ -204,6 +204,9 @@
     <None Update="Doc\Study\MySql\0032_函数\函数.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Doc\Study\MySql\0050_索引\索引.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Doc\Study\MySql\0060_视图\视图.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -309,10 +312,16 @@
     <None Update="Doc\Study\PostgreSQL\0020_查询\查询.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Doc\Study\PostgreSQL\0022_更新\更新.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Doc\Study\PostgreSQL\0030_存储过程\存储过程.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Doc\Study\PostgreSQL\0032_函数\函数.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Doc\Study\PostgreSQL\0050_索引\索引.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Doc\Study\PostgreSQL\0060_视图\视图.sql">
