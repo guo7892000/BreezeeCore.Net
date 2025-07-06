@@ -1,0 +1,1498 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\200_Gitee\\BreezeeCore.net\\050_DBTool\\Breezee.WorkHelper.DBTool.UI\\Breezee.WorkHelper.DBTool.UI.csproj": {}
+  },
+  "projects": {
+    "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Adapter.IBLL\\Breezee.Core.Adapter.IBLL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Adapter.IBLL\\Breezee.Core.Adapter.IBLL.csproj",
+        "projectName": "Breezee.Core.Adapter.IBLL",
+        "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Adapter.IBLL\\Breezee.Core.Adapter.IBLL.csproj",
+        "packagesPath": "C:\\Users\\guo78\\.nuget\\packages\\",
+        "outputPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Adapter.IBLL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\guo78\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Entity\\Breezee.Core.Entity.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Entity\\Breezee.Core.Entity.csproj",
+        "projectName": "Breezee.Core.Entity",
+        "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Entity\\Breezee.Core.Entity.csproj",
+        "packagesPath": "C:\\Users\\guo78\\.nuget\\packages\\",
+        "outputPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Entity\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\guo78\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Interface\\Breezee.Core.Interface.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Interface\\Breezee.Core.Interface.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Interface\\Breezee.Core.Interface.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Interface\\Breezee.Core.Interface.csproj",
+        "projectName": "Breezee.Core.Interface",
+        "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Interface\\Breezee.Core.Interface.csproj",
+        "packagesPath": "C:\\Users\\guo78\\.nuget\\packages\\",
+        "outputPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Interface\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\guo78\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "System.Text.Encoding.CodePages": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.IOC\\Breezee.Core.IOC.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.IOC\\Breezee.Core.IOC.csproj",
+        "projectName": "Breezee.Core.IOC",
+        "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.IOC\\Breezee.Core.IOC.csproj",
+        "packagesPath": "C:\\Users\\guo78\\.nuget\\packages\\",
+        "outputPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.IOC\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\guo78\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Autofac": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            },
+            "Castle.Windsor": {
+              "target": "Package",
+              "version": "[5.1.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Tool\\Breezee.Core.Tool.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Tool\\Breezee.Core.Tool.csproj",
+        "projectName": "Breezee.Core.Tool",
+        "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Tool\\Breezee.Core.Tool.csproj",
+        "packagesPath": "C:\\Users\\guo78\\.nuget\\packages\\",
+        "outputPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Tool\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\guo78\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Entity\\Breezee.Core.Entity.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Entity\\Breezee.Core.Entity.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Interface\\Breezee.Core.Interface.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Interface\\Breezee.Core.Interface.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "NLog": {
+              "target": "Package",
+              "version": "[5.0.4, )"
+            },
+            "SharpCompress": {
+              "target": "Package",
+              "version": "[0.33.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.WinFormUI\\Breezee.Core.WinFormUI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.WinFormUI\\Breezee.Core.WinFormUI.csproj",
+        "projectName": "Breezee.Core.WinFormUI",
+        "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.WinFormUI\\Breezee.Core.WinFormUI.csproj",
+        "packagesPath": "C:\\Users\\guo78\\.nuget\\packages\\",
+        "outputPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.WinFormUI\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\guo78\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0-windows7.0": {
+            "targetAlias": "net6.0-windows",
+            "projectReferences": {
+              "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Adapter.IBLL\\Breezee.Core.Adapter.IBLL.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Adapter.IBLL\\Breezee.Core.Adapter.IBLL.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Entity\\Breezee.Core.Entity.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Entity\\Breezee.Core.Entity.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Tool\\Breezee.Core.Tool.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Tool\\Breezee.Core.Tool.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core\\Breezee.Core.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core\\Breezee.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "Microsoft.ReportingServices.ReportViewerControl.Winforms": {
+              "target": "Package",
+              "version": "[150.1537.0, )"
+            },
+            "NPOI": {
+              "target": "Package",
+              "version": "[2.5.6, )"
+            },
+            "System.Data.OleDb": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "ZXing.Net": {
+              "target": "Package",
+              "version": "[0.16.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WindowsForms": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core\\Breezee.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core\\Breezee.Core.csproj",
+        "projectName": "Breezee.Core",
+        "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core\\Breezee.Core.csproj",
+        "packagesPath": "C:\\Users\\guo78\\.nuget\\packages\\",
+        "outputPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\guo78\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Entity\\Breezee.Core.Entity.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Entity\\Breezee.Core.Entity.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Interface\\Breezee.Core.Interface.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Interface\\Breezee.Core.Interface.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Core\\Breezee.AutoSQLExecutor.Core.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Core\\Breezee.AutoSQLExecutor.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\200_Gitee\\BreezeeCore.net\\002_MiniFramework\\Breezee.Framework.Mini.Entity\\Breezee.Framework.Mini.Entity.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\200_Gitee\\BreezeeCore.net\\002_MiniFramework\\Breezee.Framework.Mini.Entity\\Breezee.Framework.Mini.Entity.csproj",
+        "projectName": "Breezee.Framework.Mini.Entity",
+        "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\002_MiniFramework\\Breezee.Framework.Mini.Entity\\Breezee.Framework.Mini.Entity.csproj",
+        "packagesPath": "C:\\Users\\guo78\\.nuget\\packages\\",
+        "outputPath": "D:\\200_Gitee\\BreezeeCore.net\\002_MiniFramework\\Breezee.Framework.Mini.Entity\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\guo78\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Interface\\Breezee.Core.Interface.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Interface\\Breezee.Core.Interface.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.IOC\\Breezee.Core.IOC.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.IOC\\Breezee.Core.IOC.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Tool\\Breezee.Core.Tool.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Tool\\Breezee.Core.Tool.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core\\Breezee.Core.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core\\Breezee.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Common\\Breezee.AutoSQLExecutor.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Common\\Breezee.AutoSQLExecutor.Common.csproj",
+        "projectName": "Breezee.AutoSQLExecutor.Common",
+        "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Common\\Breezee.AutoSQLExecutor.Common.csproj",
+        "packagesPath": "C:\\Users\\guo78\\.nuget\\packages\\",
+        "outputPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\guo78\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Core\\Breezee.AutoSQLExecutor.Core.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Core\\Breezee.AutoSQLExecutor.Core.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.MySql\\Breezee.AutoSQLExecutor.MySql.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.MySql\\Breezee.AutoSQLExecutor.MySql.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Oracle\\Breezee.AutoSQLExecutor.Oracle.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Oracle\\Breezee.AutoSQLExecutor.Oracle.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.PostgreSQL\\Breezee.AutoSQLExecutor.PostgreSQL.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.PostgreSQL\\Breezee.AutoSQLExecutor.PostgreSQL.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.SQLite\\Breezee.AutoSQLExecutor.SQLite.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.SQLite\\Breezee.AutoSQLExecutor.SQLite.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.SqlServer\\Breezee.AutoSQLExecutor.SqlServer.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.SqlServer\\Breezee.AutoSQLExecutor.SqlServer.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Autofac": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            },
+            "Castle.Windsor": {
+              "target": "Package",
+              "version": "[5.1.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Core\\Breezee.AutoSQLExecutor.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Core\\Breezee.AutoSQLExecutor.Core.csproj",
+        "projectName": "Breezee.AutoSQLExecutor.Core",
+        "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Core\\Breezee.AutoSQLExecutor.Core.csproj",
+        "packagesPath": "C:\\Users\\guo78\\.nuget\\packages\\",
+        "outputPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\guo78\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Interface\\Breezee.Core.Interface.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Interface\\Breezee.Core.Interface.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\004_MyPeach.Net\\MyPeachNet\\MyPeachNet.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\004_MyPeach.Net\\MyPeachNet\\MyPeachNet.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.MySql\\Breezee.AutoSQLExecutor.MySql.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.MySql\\Breezee.AutoSQLExecutor.MySql.csproj",
+        "projectName": "Breezee.AutoSQLExecutor.MySql",
+        "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.MySql\\Breezee.AutoSQLExecutor.MySql.csproj",
+        "packagesPath": "C:\\Users\\guo78\\.nuget\\packages\\",
+        "outputPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.MySql\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\guo78\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Core\\Breezee.AutoSQLExecutor.Core.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Core\\Breezee.AutoSQLExecutor.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.29, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Oracle\\Breezee.AutoSQLExecutor.Oracle.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Oracle\\Breezee.AutoSQLExecutor.Oracle.csproj",
+        "projectName": "Breezee.AutoSQLExecutor.Oracle",
+        "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Oracle\\Breezee.AutoSQLExecutor.Oracle.csproj",
+        "packagesPath": "C:\\Users\\guo78\\.nuget\\packages\\",
+        "outputPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Oracle\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\guo78\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Core\\Breezee.AutoSQLExecutor.Core.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Core\\Breezee.AutoSQLExecutor.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Oracle.ManagedDataAccess.Core": {
+              "target": "Package",
+              "version": "[3.21.61, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.PostgreSQL\\Breezee.AutoSQLExecutor.PostgreSQL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.PostgreSQL\\Breezee.AutoSQLExecutor.PostgreSQL.csproj",
+        "projectName": "Breezee.AutoSQLExecutor.PostgreSQL",
+        "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.PostgreSQL\\Breezee.AutoSQLExecutor.PostgreSQL.csproj",
+        "packagesPath": "C:\\Users\\guo78\\.nuget\\packages\\",
+        "outputPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.PostgreSQL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\guo78\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Core\\Breezee.AutoSQLExecutor.Core.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Core\\Breezee.AutoSQLExecutor.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Npgsql": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.SQLite\\Breezee.AutoSQLExecutor.SQLite.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.SQLite\\Breezee.AutoSQLExecutor.SQLite.csproj",
+        "projectName": "Breezee.AutoSQLExecutor.SQLite",
+        "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.SQLite\\Breezee.AutoSQLExecutor.SQLite.csproj",
+        "packagesPath": "C:\\Users\\guo78\\.nuget\\packages\\",
+        "outputPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.SQLite\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\guo78\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Core\\Breezee.AutoSQLExecutor.Core.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Core\\Breezee.AutoSQLExecutor.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "System.Data.SQLite": {
+              "target": "Package",
+              "version": "[1.0.116, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.SqlServer\\Breezee.AutoSQLExecutor.SqlServer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.SqlServer\\Breezee.AutoSQLExecutor.SqlServer.csproj",
+        "projectName": "Breezee.AutoSQLExecutor.SqlServer",
+        "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.SqlServer\\Breezee.AutoSQLExecutor.SqlServer.csproj",
+        "packagesPath": "C:\\Users\\guo78\\.nuget\\packages\\",
+        "outputPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.SqlServer\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\guo78\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Core\\Breezee.AutoSQLExecutor.Core.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Core\\Breezee.AutoSQLExecutor.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[5.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\200_Gitee\\BreezeeCore.net\\004_MyPeach.Net\\MyPeachNet\\MyPeachNet.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\200_Gitee\\BreezeeCore.net\\004_MyPeach.Net\\MyPeachNet\\MyPeachNet.csproj",
+        "projectName": "org.breezee.MyPeachNet",
+        "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\004_MyPeach.Net\\MyPeachNet\\MyPeachNet.csproj",
+        "packagesPath": "C:\\Users\\guo78\\.nuget\\packages\\",
+        "outputPath": "D:\\200_Gitee\\BreezeeCore.net\\004_MyPeach.Net\\MyPeachNet\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\guo78\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\200_Gitee\\BreezeeCore.net\\050_DBTool\\Breezee.WorkHelper.DBTool.Entity\\Breezee.WorkHelper.DBTool.Entity.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\200_Gitee\\BreezeeCore.net\\050_DBTool\\Breezee.WorkHelper.DBTool.Entity\\Breezee.WorkHelper.DBTool.Entity.csproj",
+        "projectName": "Breezee.WorkHelper.DBTool.Entity",
+        "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\050_DBTool\\Breezee.WorkHelper.DBTool.Entity\\Breezee.WorkHelper.DBTool.Entity.csproj",
+        "packagesPath": "C:\\Users\\guo78\\.nuget\\packages\\",
+        "outputPath": "D:\\200_Gitee\\BreezeeCore.net\\050_DBTool\\Breezee.WorkHelper.DBTool.Entity\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\guo78\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Interface\\Breezee.Core.Interface.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Interface\\Breezee.Core.Interface.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.IOC\\Breezee.Core.IOC.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.IOC\\Breezee.Core.IOC.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core\\Breezee.Core.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core\\Breezee.Core.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Core\\Breezee.AutoSQLExecutor.Core.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Core\\Breezee.AutoSQLExecutor.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\200_Gitee\\BreezeeCore.net\\050_DBTool\\Breezee.WorkHelper.DBTool.IBLL\\Breezee.WorkHelper.DBTool.IBLL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\200_Gitee\\BreezeeCore.net\\050_DBTool\\Breezee.WorkHelper.DBTool.IBLL\\Breezee.WorkHelper.DBTool.IBLL.csproj",
+        "projectName": "Breezee.WorkHelper.DBTool.IBLL",
+        "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\050_DBTool\\Breezee.WorkHelper.DBTool.IBLL\\Breezee.WorkHelper.DBTool.IBLL.csproj",
+        "packagesPath": "C:\\Users\\guo78\\.nuget\\packages\\",
+        "outputPath": "D:\\200_Gitee\\BreezeeCore.net\\050_DBTool\\Breezee.WorkHelper.DBTool.IBLL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\guo78\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\200_Gitee\\BreezeeCore.net\\050_DBTool\\Breezee.WorkHelper.DBTool.Entity\\Breezee.WorkHelper.DBTool.Entity.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\050_DBTool\\Breezee.WorkHelper.DBTool.Entity\\Breezee.WorkHelper.DBTool.Entity.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\200_Gitee\\BreezeeCore.net\\050_DBTool\\Breezee.WorkHelper.DBTool.UI\\Breezee.WorkHelper.DBTool.UI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\200_Gitee\\BreezeeCore.net\\050_DBTool\\Breezee.WorkHelper.DBTool.UI\\Breezee.WorkHelper.DBTool.UI.csproj",
+        "projectName": "Breezee.WorkHelper.DBTool.UI",
+        "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\050_DBTool\\Breezee.WorkHelper.DBTool.UI\\Breezee.WorkHelper.DBTool.UI.csproj",
+        "packagesPath": "C:\\Users\\guo78\\.nuget\\packages\\",
+        "outputPath": "D:\\200_Gitee\\BreezeeCore.net\\050_DBTool\\Breezee.WorkHelper.DBTool.UI\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\guo78\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0-windows7.0": {
+            "targetAlias": "net6.0-windows",
+            "projectReferences": {
+              "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Entity\\Breezee.Core.Entity.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Entity\\Breezee.Core.Entity.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Interface\\Breezee.Core.Interface.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Interface\\Breezee.Core.Interface.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.IOC\\Breezee.Core.IOC.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.IOC\\Breezee.Core.IOC.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Tool\\Breezee.Core.Tool.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.Tool\\Breezee.Core.Tool.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.WinFormUI\\Breezee.Core.WinFormUI.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\001_BreezeeCore.Net\\Breezee.Core.WinFormUI\\Breezee.Core.WinFormUI.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\002_MiniFramework\\Breezee.Framework.Mini.Entity\\Breezee.Framework.Mini.Entity.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\002_MiniFramework\\Breezee.Framework.Mini.Entity\\Breezee.Framework.Mini.Entity.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Common\\Breezee.AutoSQLExecutor.Common.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Common\\Breezee.AutoSQLExecutor.Common.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Core\\Breezee.AutoSQLExecutor.Core.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\003_AutoSQLExecutor.Net\\Breezee.AutoSQLExecutor.Core\\Breezee.AutoSQLExecutor.Core.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\050_DBTool\\Breezee.WorkHelper.DBTool.Entity\\Breezee.WorkHelper.DBTool.Entity.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\050_DBTool\\Breezee.WorkHelper.DBTool.Entity\\Breezee.WorkHelper.DBTool.Entity.csproj"
+              },
+              "D:\\200_Gitee\\BreezeeCore.net\\050_DBTool\\Breezee.WorkHelper.DBTool.IBLL\\Breezee.WorkHelper.DBTool.IBLL.csproj": {
+                "projectPath": "D:\\200_Gitee\\BreezeeCore.net\\050_DBTool\\Breezee.WorkHelper.DBTool.IBLL\\Breezee.WorkHelper.DBTool.IBLL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "FluentFTP": {
+              "target": "Package",
+              "version": "[48.0.3, )"
+            },
+            "LibGit2Sharp": {
+              "target": "Package",
+              "version": "[0.27.2, )"
+            },
+            "SSH.NET": {
+              "target": "Package",
+              "version": "[2023.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WindowsForms": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
