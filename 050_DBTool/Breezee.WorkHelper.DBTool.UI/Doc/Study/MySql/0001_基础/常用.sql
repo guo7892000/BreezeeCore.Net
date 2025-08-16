@@ -1,4 +1,4 @@
-﻿
+﻿  
 select now(),
 	DATE_FORMAT(now(), '%Y-%m-%d'),
 	DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s'),
