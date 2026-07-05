@@ -32,6 +32,7 @@ namespace Breezee.Core.WinFormUI
         /// 是否显示删除按钮
         /// </summary>
         bool _isShowDelete = true;
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool IsShowDelete
         {
             get { return _isShowDelete; }
@@ -42,6 +43,7 @@ namespace Breezee.Core.WinFormUI
         /// 是否显示下载按钮
         /// </summary>
         bool _isShowDownload = true;
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool IsShowDownload
         {
             get { return _isShowDownload; }
@@ -53,6 +55,7 @@ namespace Breezee.Core.WinFormUI
         /// </summary>
         private string _UploadID;
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string UploadID
         {
             get { return _UploadID; }
@@ -64,6 +67,7 @@ namespace Breezee.Core.WinFormUI
         /// </summary>
         private string _fileName;
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string FileName
         {
             get { return _fileName; }
@@ -74,6 +78,7 @@ namespace Breezee.Core.WinFormUI
         /// </summary>
         private string _fileSize;
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string FileSize
         {
             get { return _fileSize; }
@@ -96,6 +101,7 @@ namespace Breezee.Core.WinFormUI
         /// </summary>
         private string _fileUploadPath;
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string FileUploadPath
         {
             get { return _fileUploadPath; }
@@ -107,6 +113,7 @@ namespace Breezee.Core.WinFormUI
         /// </summary>
         private string _ftpServerConfigName;
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string FtpServerConfigName
         {
             get { return _ftpServerConfigName; }
@@ -118,6 +125,7 @@ namespace Breezee.Core.WinFormUI
         /// </summary>
         private string _fileType;
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string FileType
         {
             get { return _fileType; }

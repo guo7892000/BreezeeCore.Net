@@ -49,6 +49,7 @@ namespace Breezee.Core.WinFormUI
         /// <summary>
         /// 每页显示记录数
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int PageSize
         {
             get { return _pageSize; }
@@ -63,6 +64,7 @@ namespace Breezee.Core.WinFormUI
         /// <summary>
         /// 总记录数
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int NMax
         {
             get { return _nMax; }
@@ -77,6 +79,7 @@ namespace Breezee.Core.WinFormUI
         /// <summary>
         /// 页数=总记录数/每页显示记录数
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int PageCount
         {
             get { return _pageCount; }
@@ -87,6 +90,7 @@ namespace Breezee.Core.WinFormUI
         /// <summary>
         /// 当前页号
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int PageCurrent
         {
             get { return _pageCurrent; }

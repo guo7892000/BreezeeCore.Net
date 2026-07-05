@@ -32,6 +32,7 @@ namespace Breezee.Core.WinFormUI
         //一行显示的附件数量
         int _PerRowNum = 3;
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int PerRowNum
         {
             get { return _PerRowNum; }
@@ -41,6 +42,7 @@ namespace Breezee.Core.WinFormUI
         //上传文件
         FtpServerHelper _FtpServer = new FtpServerHelper();
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public FtpServerHelper FtpServer
         {
             get { return _FtpServer; }
@@ -49,6 +51,7 @@ namespace Breezee.Core.WinFormUI
 
         SystemModelEnum _SystemModel = SystemModelEnum.NULL;
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public SystemModelEnum SystemModel
         {
             get { return _SystemModel; }

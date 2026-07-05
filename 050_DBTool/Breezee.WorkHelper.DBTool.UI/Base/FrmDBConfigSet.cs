@@ -10,6 +10,7 @@ using Breezee.Core.WinFormUI;
 using System.IO;
 using System.Reflection;
 using Breezee.Core.Interface;
+using System.ComponentModel;
 
 namespace Breezee.WorkHelper.DBTool.UI
 {
@@ -25,6 +26,7 @@ namespace Breezee.WorkHelper.DBTool.UI
         DataTable dtIsEnabel;
         DataTable dtDbType;
         bool _IsMoreSelected = false; //是否多选，默认为否
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool In_IsMoreSelected
         {
             get { return _IsMoreSelected; }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.ComponentModel;
 
 
 /*********************************************************************		
@@ -127,6 +128,7 @@ namespace Breezee.Core.WinFormUI
 
         // Implements the IDataGridViewEditingControl.EditingControlFormattedValue  
         // property.
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public object EditingControlFormattedValue
         {
             get
@@ -161,6 +163,7 @@ namespace Breezee.Core.WinFormUI
 
         // Implements the IDataGridViewEditingControl.EditingControlRowIndex  
         // property.
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int EditingControlRowIndex
         {
             get
@@ -213,6 +216,7 @@ namespace Breezee.Core.WinFormUI
 
         // Implements the IDataGridViewEditingControl
         // .EditingControlDataGridView property.
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public DataGridView EditingControlDataGridView
         {
             get
@@ -227,6 +231,7 @@ namespace Breezee.Core.WinFormUI
 
         // Implements the IDataGridViewEditingControl
         // .EditingControlValueChanged property.
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool EditingControlValueChanged
         {
             get

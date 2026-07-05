@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.ComponentModel;
 
 /*********************************************************************		
  * 对象名称：		
@@ -24,9 +25,11 @@ namespace Breezee.Core.WinFormUI
 
         public string Code => "GlobalForm";
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string Description { get => "GlobalForm"; set => throw new NotImplementedException(); }
 
         private IDictionary<string, object> globDic= new Dictionary<string, object>();
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public IDictionary<string, object> DicObjects { get => globDic; set => throw new NotImplementedException(); }
     }
 }

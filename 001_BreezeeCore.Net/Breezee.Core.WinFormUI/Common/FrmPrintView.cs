@@ -59,6 +59,7 @@ namespace Breezee.Core.WinFormUI
         /// <summary>
         /// 当前网点数据
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public DataTable CurrentOrgData
         {
             get
@@ -75,6 +76,7 @@ namespace Breezee.Core.WinFormUI
         /// <summary>
         /// 一级网点数据
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public DataTable ParentOrgData
         {
             get
