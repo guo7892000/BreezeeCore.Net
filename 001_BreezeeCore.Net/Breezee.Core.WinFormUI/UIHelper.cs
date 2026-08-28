@@ -1,4 +1,6 @@
-﻿namespace Breezee.Core.WinFormUI
+﻿using System.Windows.Forms;
+
+namespace Breezee.Core.WinFormUI
 {
     /// <summary>
     /// 类名称：UI公共库类

@@ -96,7 +96,7 @@ namespace Breezee.Core.WinFormUI
                 Attach.FileUploadPath = UpURL.Replace(_FtpServer.FtpServer.ftpURI,"");
             }
             
-            Attach.UploadID = StringHelper.GetGUID();
+            Attach.UploadID = Guid.NewGuid().ToString();
             Attach.FileName = name;
             //Attach.FileUploadFullPath = _FtpServer.FtpServer.ftpURI + name;
             

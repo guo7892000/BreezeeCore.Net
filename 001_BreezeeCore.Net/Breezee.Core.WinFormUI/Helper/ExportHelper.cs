@@ -401,7 +401,8 @@ namespace Breezee.Core.WinFormUI
                 IFont fontHeader = workbook.CreateFont();
                 fontHeader.FontHeightInPoints = 10;
                 fontHeader.FontName = "微软雅黑";
-                fontHeader.Boldweight = (short)NPOI.SS.UserModel.FontBoldWeight.Bold;
+                //fontHeader.Boldweight = (short)NPOI.SS.UserModel.FontBoldWeight.Bold;
+                fontHeader.IsBold = true;
 
                 ICellStyle headerStyle = workbook.CreateCellStyle();
                 headerStyle.Alignment = NPOI.SS.UserModel.HorizontalAlignment.Center;
@@ -568,10 +569,17 @@ namespace Breezee.Core.WinFormUI
             {
                 for (int i = 0; i < sheetNums; i++)
                 {
-                    ISheet sheet = workbook.GetSheetAt(i);
-                    DataTable dt = ReadFromSheet(sheet);
-                    dt.TableName = sheet.SheetName;
-                    ds.Tables.Add(dt);
+                    if (workbook.NumberOfSheets == 0)
+                    {
+                        //读取数据失败
+                    }
+                    else
+                    {
+                        ISheet sheet = workbook.GetSheetAt(i);
+                        DataTable dt = ReadFromSheet(sheet);
+                        dt.TableName = sheet.SheetName;
+                        ds.Tables.Add(dt);
+                    }
                 }
             }
             catch
@@ -643,10 +651,15 @@ namespace Breezee.Core.WinFormUI
             {
                 IRow row = sheet.GetRow(i);
                 DataRow dataRow = dt.NewRow();
+                if (row == null)
+                {
+                    continue;
+                }
+                int iFirstCellNum = row.FirstCellNum < 0 ? 0 : row.FirstCellNum;
 
                 if (row != null)
                 {
-                    for (int j = row.FirstCellNum; j < cellCount; j++)
+                    for (int j = iFirstCellNum; j < cellCount; j++)
                     {
                         if (row.GetCell(j) != null)
                         {
@@ -826,23 +839,65 @@ namespace Breezee.Core.WinFormUI
         public static DataSet ImportDataSet(string fileName, IDictionary<string, string> dicTableSheet = null, DataSet ds = null)
         {
             if (ds == null)
+            {
                 ds = new DataSet();
+            }
 
-            string tempname = "/" + Guid.NewGuid().ToString() + ".xls";
-            string tempPath = AppDomain.CurrentDomain.BaseDirectory + tempname;
+            string sDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Temp");
+            string tempname;
+            if (!Directory.Exists(sDir))
+            {
+                Directory.CreateDirectory(sDir);
+            }
+            if (fileName.LastIndexOf(".") > -1)
+            {
+                tempname = Path.Combine(sDir, Guid.NewGuid().ToString()+ fileName.Substring(fileName.LastIndexOf(".")));
+            }
+            else
+            {
+                tempname = Path.Combine(sDir, Guid.NewGuid().ToString() + ".xls");
+            }
+            string tempPath = tempname;
             File.Copy(fileName, tempPath, true);
 
             FileStream fs = File.OpenRead(tempPath);
             IWorkbook workbook = null;
+            bool isHasError = false;
             try
             {
-                //先尝试创建07以上格式
-                workbook = new XSSFWorkbook(fs);
+                // 通用处理方式（自动检测格式）
+                workbook = WorkbookFactory.Create(fs);
+                isHasError = false;
             }
             catch
             {
-                //创建03格式
-                workbook = new HSSFWorkbook(fs);
+                isHasError = true;
+            }
+            if (isHasError)
+            {
+                try
+                {
+                    //创建07以上格式
+                    workbook = new XSSFWorkbook(fs);
+                    isHasError = false;
+                }
+                catch
+                {
+                    isHasError = true;
+                }
+            }
+            if (isHasError)
+            {
+                try
+                {
+                    //创建03格式
+                    workbook = new HSSFWorkbook(fs);
+                    isHasError = false;
+                }
+                catch
+                {
+                    isHasError = true;
+                }
             }
 
             try

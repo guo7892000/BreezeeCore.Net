@@ -19,7 +19,7 @@ namespace Breezee.Core.Adapter.BLL
         {
             manager = CacheFactory.Build("getStartedCache", settings =>
                 {
-                    settings.WithSystemRuntimeCacheHandle("handleName")
+                    object value = settings.WithSystemRuntimeCacheHandle("handleName")
 
                     .And
                     .WithRedisConfiguration("redis", config =>
