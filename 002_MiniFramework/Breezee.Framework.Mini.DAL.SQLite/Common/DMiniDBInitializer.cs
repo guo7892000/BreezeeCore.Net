@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using Breezee.AutoSQLExecutor.Core;
 using Breezee.Framework.Mini.IDAL;
 
 namespace Breezee.Framework.Mini.DAL.SQLite

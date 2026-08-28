@@ -1,7 +1,4 @@
 ﻿using Autofac;
-using Breezee.AutoSQLExecutor.Core;
-using Breezee.Core;
-using Breezee.Core.Interface;
 using Breezee.Framework.Mini.Entity;
 using Breezee.Framework.Mini.IDAL;
 

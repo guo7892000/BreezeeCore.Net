@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
-using Breezee.Core.Tool;
 using System.Data.Common;
 using Breezee.Framework.Mini.IDAL;
 using Breezee.AutoSQLExecutor.Core;

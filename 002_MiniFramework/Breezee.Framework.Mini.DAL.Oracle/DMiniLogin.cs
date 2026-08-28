@@ -14,7 +14,7 @@ using System.Data.Common;
  * 修改历史：
  *      V1.0 新建 hgh 2014-9-4
  * ************************************/
-namespace Breezee.Framework.Mini.DAL.Oracle
+namespace Breezee.Framework.Mini.DAL.MySql
 {
     /// <summary>
     /// 登录类

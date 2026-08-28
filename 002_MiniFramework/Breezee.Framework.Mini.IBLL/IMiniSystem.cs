@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Breezee.Framework.Mini.Entity;
-using Breezee.Framework.Mini.IDAL;
+
 
 namespace Breezee.Framework.Mini.IBLL
 {

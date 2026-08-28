@@ -1,13 +1,10 @@
 ﻿using Breezee.Core.Tool;
-using Breezee.Core.Entity;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
-using Breezee.Core.IOC;
-using Breezee.Framework.Mini.IDAL;
 using Breezee.Framework.Mini.IBLL;
 
 namespace Breezee.Framework.Mini.BLL

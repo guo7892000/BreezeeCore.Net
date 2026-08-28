@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using Breezee.Framework.Mini.IDAL;
 
-namespace Breezee.Framework.Mini.DAL.Oracle
+namespace Breezee.Framework.Mini.DAL.MySql
 {
     public class DMiniDBInitializer : DAL.DMiniDBInitializer
     {

@@ -58,6 +58,25 @@ namespace Breezee.Framework.Mini.StartUp
             Application.Run(frmMain);
         }
 
+        /// <summary>
+        /// SQL日志配置静态类的变量赋值
+        /// </summary>
+        private static void LoadSqlLogConfig()
+        {
+            var _WinFormConfig = WinFormContext.Instance.WinFormConfig;
+            //正常日志
+            SqlLogConfig.IsEnableRigthSqlLog = _WinFormConfig.Get(GlobalKey.OkSqlLog_IsEnableLog, "0").Equals("1") ? true : false;
+            SqlLogConfig.RigthSqlLogPath = _WinFormConfig.Get(GlobalKey.OkSqlLog_LogPath, @"\SqlLog\ok");
+            SqlLogConfig.RightSqlLogKeepDays = int.Parse(_WinFormConfig.Get(GlobalKey.OkSqlLog_KeepDays, "0"));
+            SqlLogConfig.RightSqlLogAddType = "1".Equals(_WinFormConfig.Get(GlobalKey.OkSqlLog_AppendType, "1")) ? SqlLogAddType.InsertBegin : SqlLogAddType.AppendEnd;
+            //异常日志
+            SqlLogConfig.IsEnableErrorSqlLog = _WinFormConfig.Get(GlobalKey.ErrSqlLog_IsEnableLog, "0").Equals("1") ? true : false;
+            SqlLogConfig.ErrorSqlLogPath = _WinFormConfig.Get(GlobalKey.ErrSqlLog_LogPath, @"\SqlLog\err");
+            SqlLogConfig.ErrorSqlLogKeepDays = int.Parse(_WinFormConfig.Get(GlobalKey.ErrSqlLog_KeepDays, "0"));
+            SqlLogConfig.ErrorSqlLogAddType = "1".Equals(_WinFormConfig.Get(GlobalKey.ErrSqlLog_AppendType, "1")) ? SqlLogAddType.InsertBegin : SqlLogAddType.AppendEnd;
+        }
+        #endregion
+
         #region 删除旧版本文件
         private static void DeleteOldVersionFile()
         {
@@ -130,41 +149,22 @@ namespace Breezee.Framework.Mini.StartUp
                 winConfig.Set(GlobalKey.Upgrade_PreVersionPath, "", "清空上个版本文件夹：出错了");
                 winConfig.Save();
             }
-        }
-        #endregion
-
-        /// <summary>
-        /// SQL日志配置静态类的变量赋值
-        /// </summary>
-        private static void LoadSqlLogConfig()
-        {
-            var _WinFormConfig = WinFormContext.Instance.WinFormConfig;
-            //正常日志
-            SqlLogConfig.IsEnableRigthSqlLog = _WinFormConfig.Get(GlobalKey.OkSqlLog_IsEnableLog, "0").Equals("1") ? true : false;
-            SqlLogConfig.RigthSqlLogPath = _WinFormConfig.Get(GlobalKey.OkSqlLog_LogPath, @"\SqlLog\ok");
-            SqlLogConfig.RightSqlLogKeepDays = int.Parse(_WinFormConfig.Get(GlobalKey.OkSqlLog_KeepDays, "0"));
-            SqlLogConfig.RightSqlLogAddType = "1".Equals(_WinFormConfig.Get(GlobalKey.OkSqlLog_AppendType, "1")) ? SqlLogAddType.InsertBegin : SqlLogAddType.AppendEnd;
-            //异常日志
-            SqlLogConfig.IsEnableErrorSqlLog = _WinFormConfig.Get(GlobalKey.ErrSqlLog_IsEnableLog, "0").Equals("1") ? true : false;
-            SqlLogConfig.ErrorSqlLogPath = _WinFormConfig.Get(GlobalKey.ErrSqlLog_LogPath, @"\SqlLog\err");
-            SqlLogConfig.ErrorSqlLogKeepDays = int.Parse(_WinFormConfig.Get(GlobalKey.ErrSqlLog_KeepDays, "0"));
-            SqlLogConfig.ErrorSqlLogAddType = "1".Equals(_WinFormConfig.Get(GlobalKey.ErrSqlLog_AppendType, "1")) ? SqlLogAddType.InsertBegin : SqlLogAddType.AppendEnd;
-        }
+        } 
         #endregion
 
         #region 应用程序错误异常
         static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
             string str = GetExceptionMsg(e.Exception, e.ToString());
-            //Log.FatalError(str);
-
             //AP出现异常时提示
             if (e.Exception.StackTrace.Contains("SoapHttpClientProtocol"))
             {
                 str = "与远程服务器无法连接，请联系管理员！";
             }
-
             MessageBox.Show(str, "系统错误！", MessageBoxButtons.OK);
+            //写系统日志
+            WinFormContext.Instance.LogErr(str, "系统错误",false);
+            //错误复制到粘贴板
             Clipboard.SetText(str);
         }
         #endregion
