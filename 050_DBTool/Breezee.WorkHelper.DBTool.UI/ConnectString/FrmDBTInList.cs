@@ -59,7 +59,9 @@ namespace Breezee.WorkHelper.DBTool.UI
             {
                 { "1", "IN清单" },
                 { "2", "自定义前后缀" },
-                { "3", "驼峰式" }
+                { "3", "驼峰式" },
+                { "4", "生成Guid" },
+                { "5", "生成表" }
             };
             cbbSqlType.BindTypeValueDropDownList(dic_List.GetTextValueTable(false), false, true);
             cbbSqlType.SelectedValue = "1";
@@ -70,6 +72,9 @@ namespace Breezee.WorkHelper.DBTool.UI
             txbConcateString.Text = ",";
             grbInputString.Visible = false;
             lblRuleInfo.Text = "请在Excel中复制一列内容，然后点击网格后按ctrl + v粘贴即可。";
+
+            DataTable dtDbType = DBToolUIHelper.GetBaseDataTypeTable();
+            cbbDbType.BindTypeValueDropDownList(dtDbType, false, true);
         }
         #endregion
 
@@ -149,12 +154,38 @@ namespace Breezee.WorkHelper.DBTool.UI
         private void tsbAutoSQL_Click(object sender, EventArgs e)
         {
             //取得数据源
+            label1.Focus();
             DataTable dtMain = dgvTableList.GetBindingTable();
             string strSqlType = cbbSqlType.SelectedValue.ToString();
             string strPreStr = txbPreString.Text;
             string strEndStr = txbEndString.Text;
             string strConnStr = txbConcateString.Text;
             string strReturnStr = cbkIsNewLine.Checked ? "\n" : "";
+
+            if (strSqlType == "4")
+            {
+                // 4-生成Guid
+                int iRowNum;
+                if (!int.TryParse(txbNum.Text.Trim(),out iRowNum))
+                {
+                    ShowInfo("生成个数必须输入整数！");
+                    txbNum.Focus();
+                    return;
+                }
+                if (dtMain.Rows.Count > 0)
+                {
+                    dtMain.Clear();
+                }
+                for (int i = 0; i < iRowNum; i++)
+                {
+                    string sGuid = ckbNoLine.Checked ? Guid.NewGuid().ToString().Replace("-", "") : Guid.NewGuid().ToString();
+                    dtMain.Rows.Add(sGuid);
+                }
+                dgvTableList.ShowRowNum(true); //显示行号
+                tabControl1.SelectedTab = tpImport;
+                return;
+            }
+
             //得到变更后数据
             dtMain.AcceptChanges();
             if (dtMain.Rows.Count == 0)
@@ -176,7 +207,69 @@ namespace Breezee.WorkHelper.DBTool.UI
                 tabControl1.SelectedTab = tpImport;
                 return;
             }
-     
+            if (strSqlType == "5")
+            {
+                //生成表
+                string sDataType = txbNum.Text.Trim();
+                string sTableName = txbTable.Text.Trim();
+                if (string.IsNullOrEmpty(sDataType))
+                {
+                    ShowInfo("数据类型不能为空！");
+                    txbNum.Focus();
+                    return;
+                }
+                if (string.IsNullOrEmpty(sTableName))
+                {
+                    ShowInfo("表名不能为空！");
+                    txbNum.Focus();
+                    return;
+                }
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine(string.Format("CREATE TABLE {0}", sTableName));
+                sb.AppendLine("(");
+                for(int i=0;i<dtMain.Rows.Count;i++)
+                {
+                    string strData = dtMain.Rows[i][0].ToString().Trim();
+                    if (ckbNoLine.Checked)
+                    {
+                        int iDbType = int.Parse(cbbDbType.SelectedValue.ToString());
+                        DataBaseType selectDBType = (DataBaseType)iDbType;
+                        if (selectDBType == DataBaseType.SqlServer)
+                        {
+                            strData = string.Format("[{0}]", strData);
+                        }
+                        else if (selectDBType == DataBaseType.Oracle)
+                        {
+                            strData = string.Format("\"{0}\"", strData);
+                        }
+                        else if (selectDBType == DataBaseType.MySql)
+                        {
+                            strData = string.Format("`{0}`", strData);
+                        }
+                        else if (selectDBType == DataBaseType.PostgreSql)
+                        {
+                            strData = string.Format("\"{0}\"", strData);
+                        }
+                        else
+                        {
+                            strData = string.Format("{0}", strData);
+                        }
+                    }
+
+                    if (i== dtMain.Rows.Count - 1)
+                    {
+                        sb.AppendLine(string.Format("{0} {1}", strData, sDataType));
+                        continue;
+                    }
+                    sb.AppendLine(string.Format("{0} {1},", strData, sDataType));
+                }
+                
+                sb.AppendLine(")");
+                rtbResult.Text = sb.ToString();
+                tabControl1.SelectedTab = tpAutoSQL;
+                return;
+            }
+
             StringBuilder sbAllSql = new StringBuilder();
             string sbAllSqlEnd = "";
             if (strSqlType == "1")
@@ -212,23 +305,66 @@ namespace Breezee.WorkHelper.DBTool.UI
         #region 语句类型选择变化事件
         private void cbbSqlType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //1-IN清单,2-自定义前后缀,3-驼峰式
+            //1-IN清单,2-自定义前后缀,3-驼峰式,4-生成Guid,5-生成表
             string strSqlType = cbbSqlType.SelectedValue.ToString();
+
+            if (strSqlType == "4")
+            {
+                //生成Guid
+                grbInputString.Visible = false;
+                dgvTableList.Columns[_sColLower].Visible = false;
+                dgvTableList.Columns[_sColUpper].Visible = false;
+                lblNum.Visible = true;
+                lblNum.Text = "生成个数：";
+                txbNum.Visible = true;
+                txbNum.Text = "";
+                ckbNoLine.Visible = true;
+                ckbNoLine.Text = "无横杆";
+                ckbNoLine.Checked = true;
+                return;
+            }
+
+            lblNum.Visible = false;
+            txbNum.Visible = false;
+            ckbNoLine.Visible = false;
+            lblTable.Visible = false;
+            txbTable.Visible = false;
+            lblDbType.Visible = false;
+            cbbDbType.Visible = false;
             if (strSqlType == "1")
             {
+                //IN清单
                 dgvTableList.Columns[_sColLower].Visible = false;
                 dgvTableList.Columns[_sColUpper].Visible = false;
                 grbInputString.Visible = false;
             }
             else if (strSqlType == "2")
             {
+                //自定义前后缀
+                dgvTableList.Columns[_sColLower].Visible = false;
+                dgvTableList.Columns[_sColUpper].Visible = false;
                 grbInputString.Visible = true;
             }
-            else
+            else if (strSqlType == "3")
             {
+                //驼峰式
                 grbInputString.Visible= false;
                 dgvTableList.Columns[_sColLower].Visible = true;
                 dgvTableList.Columns[_sColUpper].Visible = true;
+            }
+            else
+            {
+                //生成表
+                lblNum.Visible = true;
+                lblNum.Text = "字段类型：";
+                txbNum.Visible = true;
+                txbNum.Text = "VARCHAR2(1000)";
+                lblTable.Visible = true;
+                txbTable.Visible = true;
+                lblDbType.Visible = true;
+                cbbDbType.Visible = true;
+                ckbNoLine.Visible = true;
+                ckbNoLine.Text = "含中文列名";
             }
         }
         #endregion

@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <TargetFramework>net10.0-windows7.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <UseWindowsForms>true</UseWindowsForms>
+    <UseWindowsForms>False</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <BaseOutputPath>..\..\bin</BaseOutputPath>
+    <BaseOutputPath>D:\200_Gitee\BreezeeCore.net\bin</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,11 +15,28 @@
     <Compile Remove="AutoEntity\FrmDBGenerateFile.cs" />
     <Compile Remove="AutoEntity\FrmDBGenerateFile.Designer.cs" />
     <Compile Remove="Common\MiniXmlCommon.cs" />
+    <Compile Remove="ConnectString\CopyDataStringTemplate.cs" />
+    <Compile Remove="ConnectString\FrmDBTMergeData.cs" />
+    <Compile Remove="ConnectString\FrmDBTMergeData.Designer.cs" />
+    <Compile Remove="ConnectString\TableColumnDicTemplate.cs" />
+    <Compile Remove="Form1.cs" />
+    <Compile Remove="Form1.Designer.cs" />
+    <Compile Remove="Program.cs" />
+    <Compile Remove="TableSql\DBSqlEntity.cs" />
+    <Compile Remove="TableSql\NewOldColumnXmlConfig.cs" />
+    <Compile Remove="TableSql\SqlReplaceColumnEntity.cs" />
+    <Compile Remove="TableSql\SqlTableEntity.cs" />
+    <Compile Remove="TableSql\StandardColumnClassXmlConfig.cs" />
+    <Compile Remove="TableSql\TableStructGenerator.cs" />
+    <Compile Remove="TableSql\TableStructGeneratorParamEntity.cs" />
+    <Compile Remove="TableSql\WordUpperType.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Remove="AutoEntity\FrmDBAutoEntityTemplate.resx" />
     <EmbeddedResource Remove="AutoEntity\FrmDBGenerateFile.resx" />
+    <EmbeddedResource Remove="ConnectString\FrmDBTMergeData.resx" />
+    <EmbeddedResource Remove="Form1.resx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,9 +71,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.105.1" />
     <PackageReference Include="FluentFTP" Version="48.0.3" />
     <PackageReference Include="LibGit2Sharp" Version="0.27.2" />
+    <PackageReference Include="Ookii.Dialogs.WinForms" Version="4.0.0" />
     <PackageReference Include="SSH.NET" Version="2023.0.0" />
+    <PackageReference Include="Ude.NetStandard" Version="1.2.0" />
   </ItemGroup>
 
   <ItemGroup>

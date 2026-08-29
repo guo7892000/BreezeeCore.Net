@@ -56,6 +56,14 @@ namespace Breezee.WorkHelper.DBTool.UI
                         return;
                     }
                 }
+                else if(createType == SQLCreateType.Drop_Create_Direct || createType == SQLCreateType.Drop_Direct)
+                {
+                    sbDelete.Insert(0, "DROP TABLE " + strTableCode + ";\n");
+                    if (createType == SQLCreateType.Drop_Direct)
+                    {
+                        return;
+                    }
+                }
 
                 sbSql.Append(AddRightBand("CREATE TABLE") + AddRightBand(strTableCode) + AddRightBand("\n(\n"));
                 //表说明SQL
@@ -156,16 +164,18 @@ namespace Breezee.WorkHelper.DBTool.UI
                 sbSql.Append("\t");
                 if (strKey == ColKeyType.PK)
                 {
+                    // 针对例如：PA.T_PA_TEST表，主键名要去掉PA.
+                    string sRemovePrefixTable = strTableCode.IndexOf(".") > 0 ? strTableCode.Substring(strTableCode.IndexOf(".") + 1) : strTableCode;
                     //主键处理
                     if (!string.IsNullOrEmpty(strColAddNum) && (strColDataType == "int" || strColDataType == "bigint"))
                     {
                         sbSql.Append(AddRightBand(strColCode) + AddRightBand(strColDataType) + AddRightBand("IDENTITY" + AddLeftRightKuoHao(strColAddNum)
-                            + " CONSTRAINT [PK_" + strTableCode + "] PRIMARY KEY(" + strColCode + ") "));
+                            + " CONSTRAINT [PK_" + sRemovePrefixTable + "] PRIMARY KEY(" + strColCode + ") "));
                     }
                     else
                     {
                         sbSql.Append(AddRightBand(strColCode) + AddRightBand(sDataType_Full)
-                            + " CONSTRAINT [PK_" + strTableCode + "] PRIMARY KEY(" + strColCode + ") ");
+                            + " CONSTRAINT [PK_" + sRemovePrefixTable + "] PRIMARY KEY(" + strColCode + ") ");
                     }
                     strPK = strColCode;
                 }
@@ -277,10 +287,22 @@ namespace Breezee.WorkHelper.DBTool.UI
                         return;//continue;
                     }
                 }
+                else if (createType == SQLCreateType.Drop_Direct || createType == SQLCreateType.Drop_Create_Direct)
+                {
+                    if (strColumnDealType == ColumnChangeType.Create || strColumnDealType == ColumnChangeType.Drop_Create)
+                    {
+                        sbDelete.Insert(0, "ALTER TABLE " + strTableCode + " DROP COLUMN " + strColCode + ";\n");
+                    }
+                    //对于删除，直接下一个字段
+                    if (createType == SQLCreateType.Drop)
+                    {
+                        return;//continue;
+                    }
+                }
                 #endregion
 
                 #region 非空的处理
-                if (drCol.commonCol.NotNull== YesNoType.Yes)
+                if (drCol.commonCol.NotNull == YesNoType.Yes)
                 {
                     strCanNull = AddRightBand(sNotNull);
                 }

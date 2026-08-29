@@ -1,5 +1,7 @@
 ﻿using Breezee.Core.Tool;
 using Breezee.WorkHelper.DBTool.IBLL;
+using System;
+using System.Collections.Generic;
 
 namespace Breezee.WorkHelper.DBTool.BLL
 {

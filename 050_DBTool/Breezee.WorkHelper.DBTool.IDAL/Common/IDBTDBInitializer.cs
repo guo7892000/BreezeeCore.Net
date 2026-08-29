@@ -1,5 +1,4 @@
-﻿using Breezee.Core.Interface;
-using Breezee.WorkHelper.DBTool.Entity;
+﻿using Breezee.WorkHelper.DBTool.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;

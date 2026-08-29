@@ -22,6 +22,7 @@ using Breezee.Core;
 using FluentFTP;
 using System.Reflection.Emit;
 using System.Drawing;
+using FluentFTP.Helpers;
 
 namespace Breezee.WorkHelper.DBTool.UI
 {
@@ -90,15 +91,25 @@ namespace Breezee.WorkHelper.DBTool.UI
             
             //创建方式
             _dicString.Add(((int)SQLCreateType.Create).ToString(), "不判断增加");
-            _dicString.Add(((int)SQLCreateType.Drop_Create).ToString(), "先删后增加");
-            _dicString.Add(((int)SQLCreateType.Drop).ToString(), "生成删除SQL");
+            _dicString.Add(((int)SQLCreateType.Drop_Create_Direct).ToString(), "先删后增加");
+            _dicString.Add(((int)SQLCreateType.Drop_Direct).ToString(), "生成删除SQL");
+            _dicString.Add(((int)SQLCreateType.Drop_Create).ToString(), "先删后增加(动态)");
+            _dicString.Add(((int)SQLCreateType.Drop).ToString(), "生成删除SQL(动态)");
             cbbCreateType.BindTypeValueDropDownList(_dicString.GetTextValueTable(false), false, true);
-            _dicString.Clear();
+
             //录入方式
+            _dicString.Clear();
             _dicString.Add(_ImportInput, "模板导入");
             _dicString.Add("2", "读取数据库");
             _dicString.Add(_ImportInputLY, "LY模板导入");
             cbbInputType.BindTypeValueDropDownList(_dicString.GetTextValueTable(false), false, true);
+            //主键类型
+            _dicString.Clear();
+            _dicString.Add("0", "检查主键");
+            _dicString.Add("1", "默认主键");
+            _dicString.Add("2", "无主键");
+            cbbPKType.BindTypeValueDropDownList(_dicString.GetTextValueTable(false), false, true);
+            
             //设置表、列的删除提示
             lblTableData.Text = strTipInfo;
             lblColumnInfo.Text = strTipInfo;
@@ -125,7 +136,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             ckbFullTypeDoc.Checked = "1".Equals(WinFormContext.UserLoveSettings.Get(DBTUserLoveConfig.GenerateTableSQL_IsFullType, "0").Value) ? true : false;
             ckbLYTemplate.Checked = "1".Equals(WinFormContext.UserLoveSettings.Get(DBTUserLoveConfig.GenerateTableSQL_IsLYTemplate, "0").Value) ? true : false;
             ckbOnlyRemark.Checked = "1".Equals(WinFormContext.UserLoveSettings.Get(DBTUserLoveConfig.GenerateTableSQL_IsOnlyRemark, "0").Value) ? true : false;
-            ckbDefaulePK.Checked = "1".Equals(WinFormContext.UserLoveSettings.Get(DBTUserLoveConfig.GenerateTableSQL_IsDefaultPK, "0").Value) ? true : false;
+            cbbPKType.SelectedValue = WinFormContext.UserLoveSettings.Get(DBTUserLoveConfig.GenerateTableSQL_IsDefaultPK, "1").Value;
             ckbDefaultColNameCn.Checked = "1".Equals(WinFormContext.UserLoveSettings.Get(DBTUserLoveConfig.GenerateTableSQL_IsDefaultColNameCN, "0").Value) ? true : false;
             ckbIsPkRemoveDefault.Checked = "1".Equals(WinFormContext.UserLoveSettings.Get(DBTUserLoveConfig.GenerateTableSQL_IsPkRemoveDefault, "1").Value) ? true : false;
             ckbIsColumnHeadMerge.Checked = "1".Equals(WinFormContext.UserLoveSettings.Get(DBTUserLoveConfig.GenerateTableSQL_IsColumnHeadMerge, "0").Value) ? true : false;
@@ -137,7 +148,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             lblClassInfo.Text = "当【分类选择】不为空时，生成时所有表都会加上该分类的所有标准列信息";
             toolTip1.SetToolTip(ckbQueryColumnRealTime, "当选中时，会实时准确的查询表和列信息，速度较慢。\n如原库表结构没有变化，就不建议选中！");
             toolTip1.SetToolTip(ckbOnlyRemark, "选中时，表示备注里已包含了表或列名称，将只使用备注作为表或列的注释；\n否则使用列名称+备注作为表或列的备注！");
-            toolTip1.SetToolTip(ckbDefaulePK, "当选中时，某些表没有主键时，则默认以第一行的列作为主键！");
+            toolTip1.SetToolTip(cbbPKType, "检查主键：当没有列作为主键时，会提示出来；\n默认主键：当某些表没有主键时，则默认以第一行的列作为主键；\n无主键：表可以没有主键，不提示。该方式不推荐。");
             toolTip1.SetToolTip(ckbDefaultColNameCn, "当选中时，某些表或列没有中文名称时，\n会以其后的名称作为名称 +“表”或“列”来生成SQL。\n后续请自行修改这些名称！");
             toolTip1.SetToolTip(ckbUpdateDefault, "该选项只针对Oracle。当选中时，会在查询完列信息后，异步查询和更新全局默认值信息。\n否则都是使用应用启动后，第一次查询所在库的默认值！");
             toolTip1.SetToolTip(ckbDoubleColName, "当选中时，多显示几列【列编码、列名称、表编码】。\n作用：当新字段名修改时，还有旧字段信息给数据迁移参考！");
@@ -149,6 +160,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             toolTip1.SetToolTip(ckbLYTemplate, "当选中时，生成的文档会以LY模板方式呈现，然后我们可以复制出来，\n并粘贴到数据库变更文档中做数据库变更申请！");
             toolTip1.SetToolTip(ckbFullTypeDoc, "当选中时，生成的文档中，列类型包括类型、长度或精度信息！");
             toolTip1.SetToolTip(cbbCreateType, "生成的SQL类型，如新增表、修改表、删除表等！");
+            lblTableColumnPKInfo.Text = "建议使用与业务无关的单列（如UUID）作为主键，不要使用多主键（以唯一索引代替）。目前数据库中表有多个主键时，加载出来列主键信息不正确，可在生成脚本前后进行调整。"; 
             tsbFitStandardCheck.ToolTipText = "只针对在标准范围内（跟标准列编码一致或以其结尾）的列做检查，没在标准范围内的都算符合！";
             //加载通用列数据
             LoadCommonColumnData();
@@ -693,7 +705,14 @@ namespace Breezee.WorkHelper.DBTool.UI
                 if (!uC_DbConnection1.userTableDic.ContainsKey(uC_DbConnection1.LatestDbServerInfo.DbConnKey) || uC_DbConnection1.userTableDic[uC_DbConnection1.LatestDbServerInfo.DbConnKey].Rows.Count == 0)
                 {
                     _dataAccess = AutoSQLExecutors.Connect(_dbServer);
-                    dtTable = _dataAccess.GetSchemaTables();
+                    if (ckbQueryColumnRealTime.Checked && !sTableName.IsNullOrEmpty())
+                    {
+                        dtTable = _dataAccess.GetSchemaTables(sTableName);
+                    }
+                    else
+                    {
+                        dtTable = _dataAccess.GetSchemaTables();
+                    }
                 }
                 else
                 {
@@ -771,7 +790,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             WinFormContext.UserLoveSettings.Set(DBTUserLoveConfig.GenerateTableSQL_IsLYTemplate, ckbLYTemplate.Checked ? "1" : "0", "【生成表SQL】是否LY模板");
             WinFormContext.UserLoveSettings.Set(DBTUserLoveConfig.GenerateTableSQL_IsOnlyRemark, ckbOnlyRemark.Checked ? "1" : "0", "【生成表SQL】是否仅使用备注作为表或列的说明");
 
-            WinFormContext.UserLoveSettings.Set(DBTUserLoveConfig.GenerateTableSQL_IsDefaultPK, ckbDefaulePK.Checked ? "1" : "0", "【生成表SQL】是否使用默认主键");
+            WinFormContext.UserLoveSettings.Set(DBTUserLoveConfig.GenerateTableSQL_IsDefaultPK, cbbPKType.SelectedValue.ToString(), "【生成表SQL】主键类型：0-检查主键，1-默认主键，2-无主键");
             WinFormContext.UserLoveSettings.Set(DBTUserLoveConfig.GenerateTableSQL_IsDefaultColNameCN, ckbDefaultColNameCn.Checked ? "1" : "0", "【生成表SQL】是否使用默认列中文名");
             WinFormContext.UserLoveSettings.Set(DBTUserLoveConfig.GenerateTableSQL_IsPkRemoveDefault, ckbIsPkRemoveDefault.Checked ? "1" : "0", "【生成表SQL】是否主键剔除默认值");
             WinFormContext.UserLoveSettings.Set(DBTUserLoveConfig.GenerateTableSQL_IsColumnHeadMerge, ckbIsColumnHeadMerge.Checked ? "1" : "0", "【生成表SQL】是否表头合并");
@@ -855,6 +874,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             //筛选选中的表
             List<string> listTable = new List<string>();
             List<string> listTableOld = new List<string>();
+            List<string> listTableRepeat = new List<string>(); //重复的表
             DataTable dtTalbeSelect = dtTable.Clone();
             DataTable dtNewTable = dgvNewTableInfo.GetBindingTable();//录入的新表
             if (ckbIsOnlyReplaceTable.Checked)
@@ -888,16 +908,38 @@ namespace Breezee.WorkHelper.DBTool.UI
                 //导入选中的
                 foreach (DataRow dr in dtTable.FilterSelected(_sGridTableSelect))
                 {
-                    if (listTable.Contains(dr[ExcelTable.Code]))
+                    string sTableCodeCur = dr[ExcelTable.Code].ToString();
+                    if (listTable.Contains(sTableCodeCur))
                     {
-                        ShowErr("表名存在重复，不能生成！");
-                        return;
+                        if (!listTableRepeat.Contains(sTableCodeCur))
+                        {
+                            listTableRepeat.Add(sTableCodeCur);//记录重复表名
+                        }
                     }
                     else
                     {
-                        listTable.Add(dr[ExcelTable.Code].ToString());
+                        listTable.Add(sTableCodeCur);
+                        dtTalbeSelect.ImportRow(dr);
+                    }                    
+                }
+
+                if (listTableRepeat.Count>0)
+                {
+                    string sRepeatTable  = listTableRepeat.ToArray().Join(",");
+                    if (ShowOkCancel(sRepeatTable + "表名存在重复，不能生成。是否取消选中重复项，并继续生成？") == DialogResult.OK)
+                    {
+                        foreach (DataRow dr in dtTable.FilterSelected(_sGridTableSelect))
+                        {
+                            if (listTableRepeat.Contains(dr[ExcelTable.Code].ToString()))
+                            {
+                                dr[_sGridTableSelect] = false;
+                            }
+                        }
                     }
-                    dtTalbeSelect.ImportRow(dr);
+                    else
+                    {
+                        return;
+                    }
                 }
                 //还要导入新表
                 //循环新表
@@ -1153,7 +1195,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             paramEntity.importDBType = importDBType;
             paramEntity.targetDBType = targetDBType;
             paramEntity.isAllConvert = _isAllConvert;
-            paramEntity.isDefaultPK = ckbDefaulePK.Checked;
+            paramEntity.isDefaultPK = cbbPKType.SelectedValue.ToString();
             paramEntity.isDefaultColNameCN = ckbDefaultColNameCn.Checked;
             paramEntity.defaultColNameCN = txbDefaultColNameCN.Text.Trim();
             paramEntity.isNeedColumnTypeConvert = isNeedColumnTypeConvert;//是否需要列类型转换
@@ -1452,18 +1494,16 @@ namespace Breezee.WorkHelper.DBTool.UI
         }
 
         #region 设置Tag方法
-        private void SetColTag(string sSchema, string sTableName, ColumnTemplateType templateType)
+        private async void SetColTag(string sSchema, string sTableName, ColumnTemplateType templateType)
         {
             DataTable dtCols;
             if (ckbQueryColumnRealTime.Checked)
             {
                 //实时查询列信息
                 dtCols = _dataAccess.GetSqlSchemaTableColumns(sTableName, sSchema);
-                
             }
             else
             {
-                
                 //通过之前的查询结果过滤：速度快
                 if (!string.IsNullOrEmpty(sTableName))
                 {
@@ -1540,7 +1580,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             //如果选中更新默认值，那么直接调用
             if (ckbUpdateDefault.Checked)
             {
-                uC_DbConnection1.QueryColumnsDefaultValue(uC_DbConnection1.LatestDbServerInfo);
+                await uC_DbConnection1.QueryColumnsDefaultValue(uC_DbConnection1.LatestDbServerInfo);
             }
 
             DataTable dtColsNew = EntCol.GetTable(templateType);
@@ -2226,8 +2266,9 @@ namespace Breezee.WorkHelper.DBTool.UI
                 string sExcelType = item[ColCommon.ExcelCol.DataType].ToString();
                 if (curImportDBType == DataBaseType.PostgreSql)
                 {
+                    #region PostgreSql
                     if ((sColType.Equals("varchar", StringComparison.OrdinalIgnoreCase) || sColType.Equals("character varying", StringComparison.OrdinalIgnoreCase))
-                        && sExcelType.Equals("varchar", StringComparison.OrdinalIgnoreCase) || sExcelType.Equals("character varying", StringComparison.OrdinalIgnoreCase))
+                                    && sExcelType.Equals("varchar", StringComparison.OrdinalIgnoreCase) || sExcelType.Equals("character varying", StringComparison.OrdinalIgnoreCase))
                     {
                         //针对varchar和character varying为相同类型的处理
                         if (!string.IsNullOrEmpty(sColDataLength) && !item[ColCommon.ExcelCol.DataLength].Equals(sColDataLength))
@@ -2253,10 +2294,45 @@ namespace Breezee.WorkHelper.DBTool.UI
                         {
                             sbErr.Append("全类型不同;");
                         }
+                    } 
+                    #endregion
+                }
+                else if (curImportDBType == DataBaseType.Oracle)
+                {
+                    #region Oracle
+                    if ((sColType.Equals("varchar2", StringComparison.OrdinalIgnoreCase) || sColType.Equals("nvarchar2", StringComparison.OrdinalIgnoreCase))
+                                    && sExcelType.Equals("varchar2", StringComparison.OrdinalIgnoreCase) || sExcelType.Equals("nvarchar2", StringComparison.OrdinalIgnoreCase))
+                    {
+                        //针对varchar和character varying为相同类型的处理
+                        if (!string.IsNullOrEmpty(sColDataLength) && !item[ColCommon.ExcelCol.DataLength].Equals(sColDataLength))
+                        {
+                            sbErr.Append("长度不同;");
+                            isSame = false;
+                        }
                     }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(sColType) && !sExcelType.Equals(sColType))
+                        {
+                            sbErr.Append("类型不同;");
+                            isSame = false;
+                        }
+
+                        if (!string.IsNullOrEmpty(sColDataLength) && !item[ColCommon.ExcelCol.DataLength].Equals(sColDataLength))
+                        {
+                            sbErr.Append("长度不同;");
+                            isSame = false;
+                        }
+                        if (isSame && !item[ColCommon.ExcelCol.DataTypeFull].Equals(sColTypeSize))
+                        {
+                            sbErr.Append("全类型不同;");
+                        }
+                    } 
+                    #endregion
                 }
                 else
                 {
+                    #region 其他
                     if (!string.IsNullOrEmpty(sColType) && !item[ColCommon.ExcelCol.DataType].ToString().Equals(sColType))
                     {
                         sbErr.Append("类型不同;");
@@ -2270,7 +2346,8 @@ namespace Breezee.WorkHelper.DBTool.UI
                     if (isSame && !item[ColCommon.ExcelCol.DataTypeFull].Equals(sColTypeSize))
                     {
                         sbErr.Append("全类型不同;");
-                    }
+                    } 
+                    #endregion
                 }
                 // 查找同名列
                 sFliter = string.Format("{0}='{1}' and {2}='{3}' and {4} is null", sTableCode, item[sTableCode].ToString(), sColCode,

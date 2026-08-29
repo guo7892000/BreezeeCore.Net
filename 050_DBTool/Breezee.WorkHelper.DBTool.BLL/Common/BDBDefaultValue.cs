@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using Breezee.WorkHelper.DBTool.Entity;
 using Breezee.Core.IOC;
+using Breezee.AutoSQLExecutor.Core;
 
 namespace Breezee.WorkHelper.DBTool.BLL
 {
@@ -31,7 +32,7 @@ namespace Breezee.WorkHelper.DBTool.BLL
             {
                 var dal = ContainerContext.Container.Resolve<IDDBDefaultValue>();
                 dicRet = ExecuteResultHelper.QuerySuccess();
-                dicRet[StaticConstant.FRA_QUERY_RESULT] = dal.QueryDefaultValue(dicQuery);
+                dicRet[Core.Entity.StaticConstant.FRA_QUERY_RESULT] = dal.QueryDefaultValue(dicQuery);
             }
             catch (Exception ex)
             {

@@ -73,7 +73,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             cbbDatabaseType.SelectedIndex = 0;
             //增加右键折叠功能，同时父容器也要折叠
             groupBox1.AddFoldRightMenu(true); 
-
+            toolTip1.SetToolTip(txbExtParam, "连接字符串中其他参数配置信息。");
         }
         #endregion
 
@@ -107,7 +107,7 @@ namespace Breezee.WorkHelper.DBTool.UI
                     }
                 }
                 txbPassword.Text = dr["USER_PASSWORD"].ToString();
-                
+                txbExtParam.Text = dr["TYPE_DESC"].ToString();
             }
             //调用代理
             if (DBConnName_SelectedIndexChanged != null)
@@ -216,6 +216,7 @@ namespace Breezee.WorkHelper.DBTool.UI
                 UseConnString = ckbUseConString.Checked,
                 ConnString = txbDBConString.Text.Trim(),
                 DbConnConfigName = cbbDbConnName.Text.Trim(),
+                OtherString = txbExtParam.Text.Trim()
             };
             DbServerInfo.ResetConnKey(DbServer);
 
@@ -332,7 +333,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             if (isQueryTableColumnRealTime)
             {
                 //所有用户表：GetSqlSchemaTables 和 GetSqlSchemaTables
-                userTableDic[DbServer.DbConnKey] = _dataAccess.GetSqlSchemaTables();
+                userTableDic[DbServer.DbConnKey] = _dataAccess.GetSqlSchemaTables(string.Empty, DbServer.SchemaName);
                 //所有用户表的所有列
                 userColumnDic[DbServer.DbConnKey] = _dataAccess.GetSqlSchemaTableColumns(string.Empty, DbServer.SchemaName);
             }
@@ -341,7 +342,7 @@ namespace Breezee.WorkHelper.DBTool.UI
                 if (!isSameServer || userTableDic.ContainsKey(DbServer.DbConnKey) || userTableDic[DbServer.DbConnKey].Rows.Count == 0)
                 {
                     //所有用户表：GetSqlSchemaTables 和 GetSqlSchemaTables
-                    userTableDic[DbServer.DbConnKey] = _dataAccess.GetSqlSchemaTables();
+                    userTableDic[DbServer.DbConnKey] = _dataAccess.GetSqlSchemaTables(string.Empty, DbServer.SchemaName);
                 }
                 if (!isSameServer || userColumnDic.ContainsKey(DbServer.DbConnKey) || userColumnDic[DbServer.DbConnKey].Rows.Count == 0)
                 {
@@ -353,7 +354,7 @@ namespace Breezee.WorkHelper.DBTool.UI
             if (!defaultValueDic.ContainsKey(DbServer.DbConnKey))
             {
                 //异步查询默认值
-                Task.Run(() => QueryColumnsDefaultValue(DbServer));
+                await Task.Run(() => QueryColumnsDefaultValue(DbServer));
             }
             else
             {

@@ -1,7 +1,6 @@
 ﻿using Autofac;
 using Breezee.AutoSQLExecutor.Core;
 using Breezee.Core;
-using Breezee.Core.Interface;
 using Breezee.WorkHelper.DBTool.Entity;
 using Breezee.WorkHelper.DBTool.IBLL;
 using Breezee.WorkHelper.DBTool.IDAL;

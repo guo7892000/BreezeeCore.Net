@@ -36,16 +36,18 @@
             this.tsbExit = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnSelectFile = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txbSelectPath = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cbbCharSetEncode = new System.Windows.Forms.ComboBox();
+            this.ckbAutoOpen = new System.Windows.Forms.CheckBox();
+            this.lblMergeInfo = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblRealReadDir = new System.Windows.Forms.Label();
             this.rtbString = new System.Windows.Forms.RichTextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.ckbAutoOpen = new System.Windows.Forms.CheckBox();
-            this.btnSelectFile = new System.Windows.Forms.Button();
-            this.txbSelectPath = new System.Windows.Forms.TextBox();
-            this.lblMergeInfo = new System.Windows.Forms.Label();
+            this.ckbDelDirBfGen = new System.Windows.Forms.CheckBox();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -61,6 +63,7 @@
             this.tsbExit});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStrip1.Size = new System.Drawing.Size(933, 27);
             this.toolStrip1.TabIndex = 23;
             this.toolStrip1.Text = "toolStrip1";
@@ -122,6 +125,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.cbbCharSetEncode, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.ckbAutoOpen, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.ckbDelDirBfGen, 5, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 17);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -132,46 +136,15 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(927, 58);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
-            // label1
+            // btnSelectFile
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(3, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 12);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "文件字符集：";
-            // 
-            // cbbCharSetEncode
-            // 
-            this.cbbCharSetEncode.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tableLayoutPanel1.SetColumnSpan(this.cbbCharSetEncode, 2);
-            this.cbbCharSetEncode.FormattingEnabled = true;
-            this.cbbCharSetEncode.Location = new System.Drawing.Point(98, 32);
-            this.cbbCharSetEncode.Name = "cbbCharSetEncode";
-            this.cbbCharSetEncode.Size = new System.Drawing.Size(121, 20);
-            this.cbbCharSetEncode.TabIndex = 7;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.rtbString);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(0, 105);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(933, 417);
-            this.groupBox3.TabIndex = 35;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "生成的文件清单";
-            // 
-            // rtbString
-            // 
-            this.rtbString.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtbString.Location = new System.Drawing.Point(3, 17);
-            this.rtbString.Name = "rtbString";
-            this.rtbString.Size = new System.Drawing.Size(927, 397);
-            this.rtbString.TabIndex = 0;
-            this.rtbString.Text = "";
+            this.btnSelectFile.Location = new System.Drawing.Point(110, 3);
+            this.btnSelectFile.Name = "btnSelectFile";
+            this.btnSelectFile.Size = new System.Drawing.Size(23, 23);
+            this.btnSelectFile.TabIndex = 2;
+            this.btnSelectFile.Text = "...";
+            this.btnSelectFile.UseVisualStyleBackColor = true;
+            this.btnSelectFile.Click += new System.EventHandler(this.BtnSelectFile_Click);
             // 
             // label3
             // 
@@ -184,46 +157,99 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "配置文件选择：";
             // 
+            // txbSelectPath
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.txbSelectPath, 5);
+            this.txbSelectPath.Location = new System.Drawing.Point(139, 3);
+            this.txbSelectPath.Multiline = true;
+            this.txbSelectPath.Name = "txbSelectPath";
+            this.txbSelectPath.Size = new System.Drawing.Size(624, 21);
+            this.txbSelectPath.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(3, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 12);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "生成文件字符集：";
+            // 
+            // cbbCharSetEncode
+            // 
+            this.cbbCharSetEncode.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tableLayoutPanel1.SetColumnSpan(this.cbbCharSetEncode, 2);
+            this.cbbCharSetEncode.FormattingEnabled = true;
+            this.cbbCharSetEncode.Location = new System.Drawing.Point(110, 32);
+            this.cbbCharSetEncode.Name = "cbbCharSetEncode";
+            this.cbbCharSetEncode.Size = new System.Drawing.Size(121, 20);
+            this.cbbCharSetEncode.TabIndex = 7;
+            // 
             // ckbAutoOpen
             // 
             this.ckbAutoOpen.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ckbAutoOpen.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.ckbAutoOpen, 2);
-            this.ckbAutoOpen.Location = new System.Drawing.Point(225, 34);
+            this.ckbAutoOpen.Location = new System.Drawing.Point(237, 34);
             this.ckbAutoOpen.Name = "ckbAutoOpen";
             this.ckbAutoOpen.Size = new System.Drawing.Size(120, 16);
             this.ckbAutoOpen.TabIndex = 5;
             this.ckbAutoOpen.Text = "自动打开生成目录";
             this.ckbAutoOpen.UseVisualStyleBackColor = true;
             // 
-            // btnSelectFile
-            // 
-            this.btnSelectFile.Location = new System.Drawing.Point(98, 3);
-            this.btnSelectFile.Name = "btnSelectFile";
-            this.btnSelectFile.Size = new System.Drawing.Size(23, 23);
-            this.btnSelectFile.TabIndex = 2;
-            this.btnSelectFile.Text = "...";
-            this.btnSelectFile.UseVisualStyleBackColor = true;
-            this.btnSelectFile.Click += new System.EventHandler(this.BtnSelectFile_Click);
-            // 
-            // txbSelectPath
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.txbSelectPath, 5);
-            this.txbSelectPath.Location = new System.Drawing.Point(127, 3);
-            this.txbSelectPath.Multiline = true;
-            this.txbSelectPath.Name = "txbSelectPath";
-            this.txbSelectPath.Size = new System.Drawing.Size(624, 21);
-            this.txbSelectPath.TabIndex = 1;
-            // 
             // lblMergeInfo
             // 
             this.lblMergeInfo.AutoSize = true;
             this.lblMergeInfo.ForeColor = System.Drawing.Color.Red;
-            this.lblMergeInfo.Location = new System.Drawing.Point(164, 2);
+            this.lblMergeInfo.Location = new System.Drawing.Point(46, 0);
             this.lblMergeInfo.Name = "lblMergeInfo";
             this.lblMergeInfo.Size = new System.Drawing.Size(29, 12);
             this.lblMergeInfo.TabIndex = 0;
             this.lblMergeInfo.Text = "说明";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.lblRealReadDir);
+            this.groupBox3.Controls.Add(this.rtbString);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(0, 105);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(933, 417);
+            this.groupBox3.TabIndex = 35;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "生成的文件清单";
+            // 
+            // lblRealReadDir
+            // 
+            this.lblRealReadDir.AutoSize = true;
+            this.lblRealReadDir.ForeColor = System.Drawing.Color.Red;
+            this.lblRealReadDir.Location = new System.Drawing.Point(164, 0);
+            this.lblRealReadDir.Name = "lblRealReadDir";
+            this.lblRealReadDir.Size = new System.Drawing.Size(89, 12);
+            this.lblRealReadDir.TabIndex = 1;
+            this.lblRealReadDir.Text = "实际读取的目录";
+            // 
+            // rtbString
+            // 
+            this.rtbString.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbString.Location = new System.Drawing.Point(3, 17);
+            this.rtbString.Name = "rtbString";
+            this.rtbString.Size = new System.Drawing.Size(927, 397);
+            this.rtbString.TabIndex = 0;
+            this.rtbString.Text = "";
+            // 
+            // ckbDelDirBfGen
+            // 
+            this.ckbDelDirBfGen.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ckbDelDirBfGen.AutoSize = true;
+            this.ckbDelDirBfGen.Location = new System.Drawing.Point(363, 34);
+            this.ckbDelDirBfGen.Name = "ckbDelDirBfGen";
+            this.ckbDelDirBfGen.Size = new System.Drawing.Size(222, 16);
+            this.ckbDelDirBfGen.TabIndex = 5;
+            this.ckbDelDirBfGen.Text = "生成前清空【900_FinalScript】目录";
+            this.ckbDelDirBfGen.UseVisualStyleBackColor = true;
             // 
             // FrmDBTScriptMerge
             // 
@@ -245,6 +271,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,5 +295,7 @@
         private System.Windows.Forms.TextBox txbSelectPath;
         private System.Windows.Forms.CheckBox ckbAutoOpen;
         private System.Windows.Forms.Label lblMergeInfo;
+        private System.Windows.Forms.Label lblRealReadDir;
+        private System.Windows.Forms.CheckBox ckbDelDirBfGen;
     }
 }

@@ -40,6 +40,10 @@ namespace Breezee.WorkHelper.DBTool.Entity
         // 点击复制
         public static readonly string ClickCopy_Path = "ClickCopy_Path";
         public static readonly string DirString_LastSelectedPath = "DirString_LastSelectedPath";
+        public static readonly string DirString_MulDir = "DirString_MulDir"; //多目录
+        public static readonly string DirString_ExcludeDir = "DirString_ExcludeDir"; //排除目录
+        public static readonly string DirString_ExcludeFile = "DirString_ExcludeFile"; //排除文件
+        public static readonly string DirString_ExcludeExt = "DirString_ExcludeExt"; //排除后缀
         // 获取SQL
         public static readonly string DbGetSql_ParamType = "DbGetSql_ParamType";
         public static readonly string DbGetSql_FirstWordType = "DbGetSql_FirstWordType";
@@ -51,6 +55,7 @@ namespace Breezee.WorkHelper.DBTool.Entity
         public static readonly string MergeScript_Path = "MergeScript_Path";
         #region 获取修改文件
         //获取修改文件
+        public static readonly string GetFile_GetType = "GetFile_GetType";
         public static readonly string GetFile_ReadPath = "GetFile_ReadPath";
         public static readonly string GetFile_TargetPath = "GetFile_TargetPath";
         public static readonly string GetFile_ExcludeEndprx = "GetFile_ExcludeEndprx";
@@ -179,5 +184,10 @@ namespace Breezee.WorkHelper.DBTool.Entity
         // MyBatis参数化（占位符）的SQL转换实际可执行的SQL
         public static readonly string MyBatisSqlConvert_SqlAndParam = "MyBatisSqlConvert_SqlAndParam"; // SQL和参数
         public static readonly string MyBatisSqlConvert_Param = "MyBatisSqlConvert_Param"; // 参数
+        // 获取Java发布文件
+        public static readonly string GetJavaFile_IsOpenGenerateDir = "GetJavaFile_IsOpenGenerateDir"; // 是否打开生成的目录
+        public static readonly string GetJavaFile_IsEndToNow = "GetJavaFile_IsEndToNow"; // 是否结束时间为当前时间
+        // 读取相同格式Excel内容
+        public static readonly string ReadSameFormatExcel_Path = "ReadSameFormatExcel_Path";
     }
 }
