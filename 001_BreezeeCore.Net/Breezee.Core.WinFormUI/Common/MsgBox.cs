@@ -345,7 +345,8 @@ namespace Breezee.Core.WinFormUI
             btnMore.Click += btnMore_Click;
 
             panelErrorInfo.Visible = false;
-            //设置对话框高度：NET 4.8中设置为125，NET 6以上中设置为172
+            // 设置对话框高度：NET 4.8中设置为125，NET 6以上中设置为172
+            // Breezee.Framework.Mini.Entity\Config\Mini\Data\NetVersion.xml为对应配置值
             this.Height = "4".Equals(WinFormContext.Instance.NetVersion) ? 125 : 172;
 
             #region 设置效果
