@@ -34,6 +34,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core.Adapter.BLL\Breezee.Core.Adapter.BLL.csproj" />
+    <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core.Adapter.IBLL\Breezee.Core.Adapter.IBLL.csproj" />
     <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core.Entity\Breezee.Core.Entity.csproj" />
     <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core.Interface\Breezee.Core.Interface.csproj" />
     <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core.IOC\Breezee.Core.IOC.csproj" />
@@ -55,7 +56,11 @@
     <ProjectReference Include="..\..\050_DBTool\Breezee.WorkHelper.DBTool.DAL.SQLite\Breezee.WorkHelper.DBTool.DAL.SQLite.csproj" />
     <ProjectReference Include="..\..\050_DBTool\Breezee.WorkHelper.DBTool.DAL.SqlServer\Breezee.WorkHelper.DBTool.DAL.SqlServer.csproj" />
     <ProjectReference Include="..\..\050_DBTool\Breezee.WorkHelper.DBTool.DAL\Breezee.WorkHelper.DBTool.DAL.csproj" />
+    <ProjectReference Include="..\..\050_DBTool\Breezee.WorkHelper.DBTool.Doc\Breezee.WorkHelper.DBTool.Doc.csproj" />
     <ProjectReference Include="..\..\050_DBTool\Breezee.WorkHelper.DBTool.Entity\Breezee.WorkHelper.DBTool.Entity.csproj" />
+    <ProjectReference Include="..\..\050_DBTool\Breezee.WorkHelper.DBTool.IBLL\Breezee.WorkHelper.DBTool.IBLL.csproj" />
+    <ProjectReference Include="..\..\050_DBTool\Breezee.WorkHelper.DBTool.IDAL\Breezee.WorkHelper.DBTool.IDAL.csproj" />
+    <ProjectReference Include="..\..\050_DBTool\Breezee.WorkHelper.DBTool.UI\Breezee.WorkHelper.DBTool.UI.csproj" />
     <ProjectReference Include="..\Breezee.Framework.Mini.BLL\Breezee.Framework.Mini.BLL.csproj" />
     <ProjectReference Include="..\Breezee.Framework.Mini.DAL.MySql\Breezee.Framework.Mini.DAL.MySql.csproj" />
     <ProjectReference Include="..\Breezee.Framework.Mini.DAL.Oracle\Breezee.Framework.Mini.DAL.Oracle.csproj" />
@@ -65,6 +70,7 @@
     <ProjectReference Include="..\Breezee.Framework.Mini.DAL\Breezee.Framework.Mini.DAL.csproj" />
     <ProjectReference Include="..\Breezee.Framework.Mini.Entity\Breezee.Framework.Mini.Entity.csproj" />
     <ProjectReference Include="..\Breezee.Framework.Mini.IBLL\Breezee.Framework.Mini.IBLL.csproj" />
+    <ProjectReference Include="..\Breezee.Framework.Mini.IDAL\Breezee.Framework.Mini.IDAL.csproj" />
   </ItemGroup>
 
   <ItemGroup>
