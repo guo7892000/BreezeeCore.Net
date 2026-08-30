@@ -21,6 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Config\Mini\Data\NetVersion.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core.Interface\Breezee.Core.Interface.csproj" />
     <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core.IOC\Breezee.Core.IOC.csproj" />
     <ProjectReference Include="..\..\001_BreezeeCore.Net\Breezee.Core.Tool\Breezee.Core.Tool.csproj" />
@@ -28,9 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Config\Mini\Data\NetVersion.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="Config\Mini\Data\DLLList.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
