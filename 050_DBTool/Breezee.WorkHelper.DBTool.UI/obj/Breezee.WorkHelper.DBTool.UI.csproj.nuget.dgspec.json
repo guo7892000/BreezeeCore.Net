@@ -6448,6 +6448,10 @@
               "target": "Package",
               "version": "[0.105.1, )"
             },
+            "CommonMark.NET": {
+              "target": "Package",
+              "version": "[0.15.1, )"
+            },
             "FluentFTP": {
               "target": "Package",
               "version": "[48.0.3, )"

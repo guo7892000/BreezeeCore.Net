@@ -178,7 +178,7 @@ namespace Breezee.WorkHelper.DBTool.UI
                     richTextBox1.Visible = false;
                     webBrowser1.Visible = true;
                     webBrowser1.Dock = DockStyle.Fill;
-                    var html = mdContent;   
+                    var html = CommonMark.CommonMarkConverter.Convert(mdContent);
                     webBrowser1.DocumentText = html;
                     // 启用自动换行
                     SetAutoWrap(true);

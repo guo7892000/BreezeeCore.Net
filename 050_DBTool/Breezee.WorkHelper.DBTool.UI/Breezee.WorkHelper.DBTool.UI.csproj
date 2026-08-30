@@ -78,6 +78,7 @@
 
   <ItemGroup>
     <PackageReference Include="ClosedXML" Version="0.105.1" />
+    <PackageReference Include="CommonMark.NET" Version="0.15.1" />
     <PackageReference Include="FluentFTP" Version="48.0.3" />
     <PackageReference Include="LibGit2Sharp" Version="0.27.2" />
     <PackageReference Include="Ookii.Dialogs.WinForms" Version="4.0.0" />
@@ -1037,6 +1038,9 @@
     <None Update="Help\Html\DBTool\DB\AutoParamVerify.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Help\Html\DBTool\DB\CodeDevelop.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Help\Html\DBTool\DB\DataSqlDBQuery.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -1127,6 +1131,9 @@
     <None Update="Help\Html\DBTool\DB\Images\AutoParamVerify02.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Help\Html\DBTool\DB\Images\CodeDevelop.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Help\Html\DBTool\DB\Images\CommonMergeScript.001.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -1148,10 +1155,25 @@
     <None Update="Help\Html\DBTool\DB\Images\DataSqlExcelImport.004.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Help\Html\DBTool\DB\Images\DataStandardSet_01.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Help\Html\DBTool\DB\Images\DataStringDBQuery.001.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Help\Html\DBTool\DB\Images\DataStringIn.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\DataStringIn.002.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\DataStringIn.003.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\DataStringIn.004.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\DataStringIn.005.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Help\Html\DBTool\DB\Images\DBColumnDictionary.001.jpg">
@@ -1205,6 +1227,9 @@
     <None Update="Help\Html\DBTool\DB\Images\getUpdateFile01.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Help\Html\DBTool\DB\Images\getUpdateFile02.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Help\Html\DBTool\DB\Images\MyBatisSqlParamReplace.01.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -1224,6 +1249,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Help\Html\DBTool\DB\Images\SqlQueryExecute01.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\DB\Images\SqlStady.001.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Help\Html\DBTool\DB\Images\TableSqlExcelImport.001.jpg">
@@ -1298,6 +1326,9 @@
     <None Update="Help\Html\DBTool\DB\SqlQueryExecute.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Help\Html\DBTool\DB\SqlStady.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Help\Html\DBTool\DB\SqlTableColumnRemark.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -1316,6 +1347,9 @@
     <None Update="Help\Html\DBTool\String\FilterRepeatRowData.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Help\Html\DBTool\String\GetJavaPublishFile.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Help\Html\DBTool\String\Images\CommonClickCopy.001.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -1325,6 +1359,9 @@
     <None Update="Help\Html\DBTool\String\Images\CommonClickCopy.003.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Help\Html\DBTool\String\Images\CommonClickCopy.004.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Help\Html\DBTool\String\Images\ExcelCol2Row.001.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -1332,6 +1369,21 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Help\Html\DBTool\String\Images\FilterRepeatRowData.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\Images\GetJavaPublishFile.001.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\Images\GetJavaPublishFile.002.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\Images\GetJavaPublishFile.003.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\Images\GetJavaPublishFile.004.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\Images\NotStuctExcelFileRead01.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Help\Html\DBTool\String\Images\StringDirectoryList.001.jpg">
@@ -1352,6 +1404,9 @@
     <None Update="Help\Html\DBTool\String\Images\TextFileReplaceString.003.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Help\Html\DBTool\String\Images\TextFileReplaceString.004.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Help\Html\DBTool\String\Images\TextFileReplaceStringUC.001.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -1361,10 +1416,16 @@
     <None Update="Help\Html\DBTool\String\Images\TextFileReplaceStringUC.003.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Help\Html\DBTool\String\Images\TextFileReplaceStringUC.004.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Help\Html\DBTool\String\Images\TowExcelMerge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Help\Html\DBTool\String\Images\TowExcelMerge_002.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Help\Html\DBTool\String\NotStuctExcelFileRead.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Help\Html\DBTool\String\StringConnChange.html">

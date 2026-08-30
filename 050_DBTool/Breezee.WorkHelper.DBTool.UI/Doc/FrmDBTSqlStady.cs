@@ -25,6 +25,11 @@ namespace Breezee.WorkHelper.DBTool.UI
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 窗体加载事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmDBTExchangeStringPlace_Load(object sender, EventArgs e)
         {
             //SQL学习文本根路径
@@ -176,7 +181,7 @@ namespace Breezee.WorkHelper.DBTool.UI
                     richTextBox1.Visible = false;
                     webBrowser1.Visible = true;
                     webBrowser1.Dock = DockStyle.Fill;
-                    var html = mdContent; //CommonMark.CommonMarkConverter.Convert(mdContent);
+                    var html = CommonMark.CommonMarkConverter.Convert(mdContent);
                     webBrowser1.DocumentText = html;
                 }
                 else
