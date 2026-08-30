@@ -20,7 +20,8 @@ using Timer = System.Windows.Forms.Timer;
  * 创建日期：2014-7-25
  * 对象说明：主要提供弹出对话框窗体
  * 修改历史：
- *      V1.0 新建 hgh 2014-7-25
+ *   2014-07-25 新建 hgh 
+ *   2026-08-30 兼容net framework4.8和net10 hgh    
  * ************************************/
 namespace Breezee.Core.WinFormUI
 {
@@ -34,7 +35,7 @@ namespace Breezee.Core.WinFormUI
         private static int[] A_loc = { 122, 4 };
         private static int[] B_loc = { 186, 4 };
         private static int[] C_loc = { 250, 4 };
-        
+
         //窗体出现效果
         private const int AW_HOR_POSITIVE = 0x00000001;    //自左向右显示窗体
         private const int AW_HOR_NEGATIVE = 0x00000002;    //自右向左显示窗体
@@ -50,6 +51,14 @@ namespace Breezee.Core.WinFormUI
         private static extern bool AnimateWindow(IntPtr hwnd, int dwTime, int dwFlags);
 
         private string sShowType = "淡入窗体动画效果";
+        private int _iHeight = 125;
+        private bool IsMore = false;
+        private Point mPoint = new Point();
+        private string Message;
+        private string error = string.Empty;
+        private const int _maxWidth = 40;//每行最多字符设置
+        private const int _row = 5;//最多行数
+        private int timeout = 0;
         #endregion
 
         #region 构造函数
@@ -59,6 +68,107 @@ namespace Breezee.Core.WinFormUI
 
             setSkin();
         }
+
+        #region 加载事件
+        /// <summary>
+        /// 窗体加载事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MDS_FrmMsgBox_Load(object sender, EventArgs e)
+        {
+            int ScreenWidth = Screen.PrimaryScreen.WorkingArea.Width;
+            int ScreenHeight = Screen.PrimaryScreen.WorkingArea.Height;
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(ScreenWidth / 2 - this.Width / 2, ScreenHeight / 2 - 60);
+            //
+            lblMessage.MouseEnter += lblMessage_MouseEnter;
+            btnMore.Click += btnMore_Click;
+
+            panelErrorInfo.Visible = false;
+
+            // 设置对话框高度：NET 4.8中设置为125，NET 6以上中设置为172
+            // 在Breezee.Framework.Mini.Entity\Config\Mini\Data\NetVersion.xml为对应配置值
+            //_iHeight = "4".Equals(WinFormContext.Instance.NetVersion) ? 125 : 172;
+
+#if NETCOREAPP || NET5_0_OR_GREATER || NET6_0_OR_GREATER
+            _iHeight = 172; //net 6及更高版本
+#else
+            _iHeight = 125; //NET 4.8
+#endif
+
+            this.Height = _iHeight;
+
+            #region 设置效果
+            switch (sShowType)
+            {
+                case "自左向右滚动窗体动画效果":
+                    AnimateWindow(this.Handle, 500, AW_HOR_POSITIVE);
+                    break;
+                case "自左向右滑动窗体动画效果":
+                    AnimateWindow(this.Handle, 500, AW_SLIDE + AW_HOR_POSITIVE);
+                    break;
+                case "自右向左滚动窗体动画效果":
+                    AnimateWindow(this.Handle, 500, AW_HOR_NEGATIVE);
+                    break;
+                case "自右向左滑动窗体动画效果":
+                    AnimateWindow(this.Handle, 500, AW_SLIDE + AW_HOR_NEGATIVE);
+                    break;
+                case "自上向下滚动窗体动画效果":
+                    AnimateWindow(this.Handle, 500, AW_VER_POSITIVE);
+                    break;
+                case "自上向下滑动窗体动画效果":
+                    AnimateWindow(this.Handle, 500, AW_SLIDE + AW_VER_POSITIVE);
+                    break;
+                case "自下向上滚动窗体动画效果":
+                    AnimateWindow(this.Handle, 500, AW_VER_NEGATIVE);
+                    break;
+                case "自下向上滑动窗体动画效果":
+                    AnimateWindow(this.Handle, 500, AW_SLIDE + AW_VER_NEGATIVE);
+                    break;
+                case "向外扩展窗体动画效果":
+                    AnimateWindow(this.Handle, 500, AW_SLIDE + AW_CENTER);
+                    break;
+                case "淡入窗体动画效果":
+                    AnimateWindow(this.Handle, 500, AW_BLEND);
+                    break;
+            }
+            #endregion
+
+            if (timeout > 0)
+            {
+                StartTimer(timeout);
+                labTimer.Visible = true;
+                labTimer.Text = (timeout / 1000).ToString() + "秒";
+            }
+        }
+
+        /// <summary>
+        /// 窗体关闭中事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MDS_FrmMsgBox_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            AnimateWindow(this.Handle, 500, AW_CENTER | AW_HIDE | AW_BLEND);
+        }
+
+        private void MDS_FrmMsgBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            mPoint.X = e.X;
+            mPoint.Y = e.Y;
+        }
+
+        private void MDS_FrmMsgBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Point myPosittion = MousePosition;
+                myPosittion.Offset(-mPoint.X, -mPoint.Y);
+                Location = myPosittion;
+            }
+        }
+        #endregion
 
         /// <summary>
         /// 设置背景
@@ -81,20 +191,15 @@ namespace Breezee.Core.WinFormUI
         #endregion
 
         #region 设置消息
-        private string Message;
-        private string error = string.Empty;
-        private const int _maxWidth = 40;//每行最多字符设置
-        private const int _row = 5;//最多行数
-
-        private void SetLocation(Control ctl,int[] sizes)
+        private void SetLocation(Control ctl, int[] sizes)
         {
-            ctl.Location = new Point(sizes[0],sizes[1]);
+            ctl.Location = new Point(sizes[0], sizes[1]);
         }
         protected void SetTimeOutInfo(int msgtimeout)
         {
             timeout = msgtimeout;
         }
-       
+
         /// <summary>
         /// 内容信息过长，自动换行,屏蔽，采用label自动换行。
         /// </summary>
@@ -121,7 +226,7 @@ namespace Breezee.Core.WinFormUI
                 else if (sNow.Equals("\r"))
                 {
                     continue;
-                } 
+                }
                 #endregion
 
                 if (row >= _row && wid >= _maxWidth - 6)
@@ -191,10 +296,10 @@ namespace Breezee.Core.WinFormUI
         protected void SetBtn(MyButtons myButtons)
         {
             switch (myButtons)
-            { 
+            {
                 case MyButtons.OK:
                     this.btnConfirm.Visible = true;
-                    SetLocation(this.btnConfirm,C_loc);
+                    SetLocation(this.btnConfirm, C_loc);
                     break;
                 case MyButtons.OKMore:
                     this.btnConfirm.Visible = true;
@@ -315,7 +420,7 @@ namespace Breezee.Core.WinFormUI
             if (panelErrorInfo.Visible)
             {
                 panelErrorInfo.Visible = false;
-                this.Height = 125;
+                this.Height = _iHeight;
             }
             else
             {
@@ -328,96 +433,13 @@ namespace Breezee.Core.WinFormUI
                 {
                     Txt_ErrorInfo.Text = this.error;
                 }
+
                 this.Height = 250;
             }
         }
         #endregion
 
-        #region 加载事件
-        private void MDS_FrmMsgBox_Load(object sender, EventArgs e)
-        {
-            int ScreenWidth = Screen.PrimaryScreen.WorkingArea.Width;
-            int ScreenHeight = Screen.PrimaryScreen.WorkingArea.Height;
-            this.StartPosition = FormStartPosition.Manual;
-            this.Location = new Point(ScreenWidth / 2 - this.Width / 2, ScreenHeight / 2 - 60);
-            //
-            lblMessage.MouseEnter += lblMessage_MouseEnter;
-            btnMore.Click += btnMore_Click;
-
-            panelErrorInfo.Visible = false;
-            // 设置对话框高度：NET 4.8中设置为125，NET 6以上中设置为172
-            // Breezee.Framework.Mini.Entity\Config\Mini\Data\NetVersion.xml为对应配置值
-            this.Height = "4".Equals(WinFormContext.Instance.NetVersion) ? 125 : 172;
-
-            #region 设置效果
-            switch (sShowType)
-            {
-                case "自左向右滚动窗体动画效果":
-                    AnimateWindow(this.Handle, 500, AW_HOR_POSITIVE);
-                    break;
-                case "自左向右滑动窗体动画效果":
-                    AnimateWindow(this.Handle, 500, AW_SLIDE + AW_HOR_POSITIVE);
-                    break;
-                case "自右向左滚动窗体动画效果":
-                    AnimateWindow(this.Handle, 500, AW_HOR_NEGATIVE);
-                    break;
-                case "自右向左滑动窗体动画效果":
-                    AnimateWindow(this.Handle, 500, AW_SLIDE + AW_HOR_NEGATIVE);
-                    break;
-                case "自上向下滚动窗体动画效果":
-                    AnimateWindow(this.Handle, 500, AW_VER_POSITIVE);
-                    break;
-                case "自上向下滑动窗体动画效果":
-                    AnimateWindow(this.Handle, 500, AW_SLIDE + AW_VER_POSITIVE);
-                    break;
-                case "自下向上滚动窗体动画效果":
-                    AnimateWindow(this.Handle, 500, AW_VER_NEGATIVE);
-                    break;
-                case "自下向上滑动窗体动画效果":
-                    AnimateWindow(this.Handle, 500, AW_SLIDE + AW_VER_NEGATIVE);
-                    break;
-                case "向外扩展窗体动画效果":
-                    AnimateWindow(this.Handle, 500, AW_SLIDE + AW_CENTER);
-                    break;
-                case "淡入窗体动画效果":
-                    AnimateWindow(this.Handle, 500, AW_BLEND);
-                    break;
-            } 
-            #endregion
-
-            if (timeout > 0)
-            {
-                StartTimer(timeout);
-                labTimer.Visible = true;
-                labTimer.Text = (timeout / 1000).ToString() + "秒";
-            }
-        }
-
-        private void MDS_FrmMsgBox_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            AnimateWindow(this.Handle, 500, AW_CENTER | AW_HIDE | AW_BLEND);
-        }
-
-        private Point mPoint = new Point();
-        private void MDS_FrmMsgBox_MouseDown(object sender, MouseEventArgs e)
-        {
-            mPoint.X = e.X;
-            mPoint.Y = e.Y;
-        }
-
-        private void MDS_FrmMsgBox_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                Point myPosittion = MousePosition;
-                myPosittion.Offset(-mPoint.X, -mPoint.Y);
-                Location = myPosittion;
-            }
-        }
-        #endregion
-
         #region 记时器
-        private int timeout = 0;
 
         private void StartTimer(int interval)
         {
@@ -467,8 +489,8 @@ namespace Breezee.Core.WinFormUI
         }
         #endregion
 
-        #region 更多信息按钮事件
-        private bool IsMore = false;
+        #region 更多信息
+
         private void lblMessage_MouseEnter(object sender, EventArgs e)
         {
             if (IsMore)
@@ -477,18 +499,29 @@ namespace Breezee.Core.WinFormUI
             }
         }
 
+        /// <summary>
+        /// 更多信息按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnMore_Click(object sender, EventArgs e)
         {
             if (panelErrorInfo.Visible)
             {
                 panelErrorInfo.Visible = false;
-                this.Height = 125;
+                this.Height = _iHeight;
             }
             else
             {
                 panelErrorInfo.Visible = true;
                 Txt_ErrorInfo.Text = Message;
-                this.Height = 250;
+                //net 10显示不够高
+                //this.Height = "4".Equals(WinFormContext.Instance.NetVersion) ? 250 : 350;
+#if NETCOREAPP || NET5_0_OR_GREATER || NET6_0_OR_GREATER
+                this.Height = 350; //net 6及更高版本
+#else
+                this.Height = 250; //NET 4.8
+#endif
             }
         }
         #endregion
@@ -519,7 +552,7 @@ namespace Breezee.Core.WinFormUI
             mmbox.SetBtn(MyButtons.OKError);
             mmbox.setPicIcon(MyIcon.Error);
             //写日志
-            WinFormContext.Instance.LogErr(message + "。\n"+sException);
+            WinFormContext.Instance.LogErr(message + "。\n" + sException);
             //显示对话框
             mmbox.ShowDialog();
             return mmbox.DialogResult;
@@ -531,9 +564,9 @@ namespace Breezee.Core.WinFormUI
             StackTrace trace = new System.Diagnostics.StackTrace(ex, true);
             if (trace != null && trace.FrameCount > 0)
             {
-                msg = "文件位置:" + trace.GetFrame(0).GetFileName() 
-                    + ";\r\n行号:" + trace.GetFrame(0).GetFileLineNumber().ToString(System.Globalization.NumberFormatInfo.InvariantInfo) 
-                    + ";\r\n类名:" + trace.GetFrame(0).GetMethod().DeclaringType.FullName 
+                msg = "文件位置:" + trace.GetFrame(0).GetFileName()
+                    + ";\r\n行号:" + trace.GetFrame(0).GetFileLineNumber().ToString(System.Globalization.NumberFormatInfo.InvariantInfo)
+                    + ";\r\n类名:" + trace.GetFrame(0).GetMethod().DeclaringType.FullName
                     + ";\r\n方法名：" + trace.GetFrame(0).GetMethod().Name + ";\r\n";
             }
             msg += ex.Message;
@@ -565,17 +598,17 @@ namespace Breezee.Core.WinFormUI
             return mmbox.DialogResult;
         }
 
-        public static DialogResult Show(string message, string title = "温馨提示",string longMsg="")
+        public static DialogResult Show(string message, string title = "温馨提示", string longMsg = "")
         {
             return Show(message, title, MyButtons.OK, MyIcon.Information, longMsg);
         }
 
-        public static DialogResult Show(int msg_timeout,string message, string title = "信息提示",string longMsg="")
+        public static DialogResult Show(int msg_timeout, string message, string title = "信息提示", string longMsg = "")
         {
             return Show(message, title, MyButtons.OK, MyIcon.Information, longMsg, msg_timeout);
         }
 
-        public static DialogResult Show(string message, string title, MyButtons myButtons,string longMsg="")
+        public static DialogResult Show(string message, string title, MyButtons myButtons, string longMsg = "")
         {
             return Show(message, title, myButtons, MyIcon.Information, longMsg);
         }
@@ -605,7 +638,7 @@ namespace Breezee.Core.WinFormUI
         private void tsmiCopy_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(Message);
-        } 
+        }
         #endregion
     }
 
@@ -635,16 +668,16 @@ namespace Breezee.Core.WinFormUI
     #region 图像窗体类
     public static class ImageFormClass
     { /// <summary>
-        /// 背景赋值
-        /// </summary>
-        /// <param name="torl"></param>
-        /// <param name="bmap"></param>
-        /// <param name="sizes"></param>
+      /// 背景赋值
+      /// </summary>
+      /// <param name="torl"></param>
+      /// <param name="bmap"></param>
+      /// <param name="sizes"></param>
         public static void SetPanelBackImage(Control torl, Bitmap bmap)
         {
             torl.BackgroundImage = bmap;
             torl.BackgroundImageLayout = ImageLayout.Stretch;
         }
-    } 
+    }
     #endregion
 }
